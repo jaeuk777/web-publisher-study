@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1, ul, li, a, div {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        ul, li, h1 {
+            list-style: none;
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        .service li {
+            float: left;
+            /* padding-top: 30px; */
+            /* width: 150px; */
+            padding:30px 10px 20px;
+            border-left: 1px solid rebeccapurple;
+        }
+
+        h1 {
+            padding-bottom: 30px;
+            border-bottom: 1px solid red;
+            margin-bottom: 50px;
+        }
+    
+        .service {
+            position: relative;
+        }
+        p {
+            position: absolute;
+            left: 17%;
+            top: 5px;
+        }
+
+        .banner {
+            padding-top: 100px;
+            width: 1000px;
+            height: 100px;
+        }
+
+        .banner li {
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            float: left;
+        }
+
+        .box div{
+            width: auto;
+            height: 200px;
+            float: left;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .box1 ul {
+            width: 300px;
+            height: 200px;
+        }
+
+        .box2 ul {
+            width: 300px;
+            height: 200px;
+        }
+
+        .box ul {
+            width: 300px;
+            height: 200px;
+        }
+        .box li {
+            width: fit-content;
+        }
+
+        .mainbanner {
+            position: relative;
+            width: 770px;
+            height: 350px;
+            background-color: rgb(148, 148, 255);
+        }
+        .mainbanner h1 {
+            padding: 0px;
+            font-size: 15px;
+            font-weight: normal;
+            width: 60px;
+            height: 175PX;
+            background-color: blueviolet;
+        }
+
+        .mainbanner h1.on{
+            background-color: brown;
+        }
+
+        .mainbanner div {
+            position: absolute;
+            left: 60px;
+            top: 0;
+            z-index: 1;
+            width: 690px;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .mainbanner div.on {
+            z-index: 10;
+        }
+        .mainbanner ul {
+            width: 2070px;
+            margin-left: -690px;
+            
+        }
+
+        .mainbanner li {
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="mainbanner">
+            <h1 class="on">주요뉴스</h1>
+            <div class="on">
+                <ul>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/62740c26300947d98e5d97bc6428738d.jpg" alt="서울야외도서관야간개장"></li>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/a78dbc5710ef43819f15851409a2ec2c.jpg" alt="기후동행카드혜택"></li>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/5990f105f0e343868e0868b37aaa8545.jpg" alt="서울페스타개최"></li>
+                </ul>
+            </div>
+            
+            <h1>시민참여</h1>
+            <div>
+                <ul>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/8a2dc0ccf3e84a2db0f2d6a279fd6cc4.jpg" alt="한강3종축제"></li>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/a3fb4ce99ea14f87aa04aca857ebb7ef.jpg" alt="넥스트로컬청년사업가6기모집"></li>
+                    <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/5be6a15c64d54a50a18862377fda70c8.jpg" alt="통행메이트2기모집"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>주요서비스</h1>
+        <p>더보기</p>
+        <div class="service">
+            <ul>
+                <li><a href="https://yeyak.seoul.go.kr/">공공서비스예약<img src="" alt=""></a></li>
+                <li><a href="https://eungdapso.seoul.go.kr/">응답소(민원신고)</a></li>
+                <li><a href="http://job.seoul.go.kr/">서울일자리</a></li>
+                <li><a href="https://land.seoul.go.kr:444/land/">부동산정보</a></li>
+                <li><a href="https://slearn.seoul.go.kr/">서울런</a></li>
+                <li><a href="http://wis.seoul.go.kr/">서울복지포탈</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="banner">
+                <ul>
+                    <li><a href="">스토리인서울<img src="" alt=""></a></li>
+                    <li><a href="">페스티벌서울<img src="" alt=""></a></li>
+                    <li><a href="">수산물방사능검사<img src="" alt=""></a></li>
+                    <li><a href="">정부24<img src="" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="box">
+        
+        <div class="box1">
+        <h1>이벤트 신청<a href="" class="click">더보기</a></h1>
+            <ul  class="re">
+                <li><b>복지</b><a href="">2024년 제 6기 서울 100인의 아빠단 모집</a></li>
+                <li><b>행정</b><a href="">2024 서울시청 소울라운지 미디어아트 공모전 실시</a></li>
+                <li><b>복지</b><a href="">함께 요리하고 캠핑·게임하며 친구 사귀어요… 서울 청년 `건강한 밥상` 신청하세요</a></li>
+                <li><b>행정</b><a href="">청년이 직접 청년 눈높이로 청년정책 알린다…스펙 향</a></li>
+                <li><b>경제</b><a href="">제8회 서울혁신챌린지 모집 공고</a></li>
+            </ul>
+        </div>    
+
+        <div class="box2">
+        <h1>이달의 행사 및 축제</h1>
+            <ul class="re2">
+                <li><b>환경</b><a href="">문화비축기지 가정의 달 특별공연, 그림자놀이</a></li>
+                <li><b>문화</b><a href="">2024 서울축제지도 - 봄편</a></li>
+                <li><b>문화</b><a href="">2024. 4월 문화달력</a></li>
+                <li><b>문화</b><a href="">《길드는 서로들》(2024.04.10.~07.07.)</a></li>
+                <li><b>문화</b><a href="">《시공時空 시나리오》(2024.04.04.~07.07.)</a></li>
+            </ul>
+        </div>    
+        
+        <div class="box3">
+        <h1>자주 찾은 서비스</h1>
+            <ul class="re3">
+                <li>지방세납부</li>
+                <li>법무행정(자치법규)</li>
+                <li>서울안전누리</li>
+                <li>공공서비스예약</li>
+                <li>평생학습포털</li>
+                <li>청년몽땅정보통</li>
+                <li>인재개발원</li>
+                <li>서울일자리포털</li>
+                <li>내손안에서울</li>
+                <li>에코마일리지</li>
+            </ul>
+        </div>    
+    </div>
+</body>
+</html>

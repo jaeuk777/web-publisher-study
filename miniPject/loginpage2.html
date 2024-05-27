@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보 입력</title>
+    <link rel="stylesheet" href="/miniPject/project.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+        body {
+            font-size: 14px;
+            font-family: 'Roboto',sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 400px;
+            height: 350px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .container > h1 {
+            font-size: 24px;
+            color: #6A24FE;
+            margin-bottom: 20px;
+        }
+        #userForm > input{
+            width: 100%;
+            height: 48px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            background-color: #f8f8f8;
+        }
+        #userForm > label{
+            color: #2a2a2a;
+        }
+        #userForm button{
+            width: 100%;
+            height: 40px;
+            padding: 0 10px;
+            color: #fff;
+            background-color: #6A24FE;
+        }
+        #gender{
+            width: 30%;
+            height: 20px;
+            /* background-color: #6A24FE; */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>사용자 정보 입력</h1>
+        <form id="userForm">
+            <label for="height">키 (cm):</label>
+            <input type="number" id="height" name="height" required>
+            <br>
+            <label for="weight">몸무게 (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+            <br>
+            <label for="age">나이:</label>
+            <input type="number" id="age" name="age" required>
+            <br>
+            <label  id="gender" for="gender">성별:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+            <br>
+            <button type="submit">제출</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const height = document.getElementById('height').value;
+            const weight = document.getElementById('weight').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+
+            const userInfo = {
+                height: height,
+                weight: weight,
+                age: age,
+                gender: gender
+            };
+
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+            window.location.href = '/miniPject/minipject.html';
+        });
+    </script>
+</body>
+</html>

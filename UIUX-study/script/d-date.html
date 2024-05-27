@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디데이 계산</title>
+</head>
+<body>
+    <script>
+        // 태어난 날부터 오늘까지 경과된 일자
+        // 태어난날 (1996.12.15)
+        let birth = new Date(2000,11,10);
+        console.log(birth);
+        // 오늘 (2024.5.10)
+        let today = new Date(); // 1월 = 0월
+        console.log(today);
+        // getTime() : 1970년도부터 경과한
+
+        // console.log(today.getTime());
+        // console.log(birth.getTime());
+        let diff = today.getTime()-birth.getTime()
+        console.log(Math.floor(diff/1000/60/24/365)); // 밀리초단위(1000)>초(60)>분(60)>시간(24)
+
+        let begin = new Date(2024,3,22);
+        let beginDiff = begin.getTime()-today.getTime();
+        let tw = (1000*60*60*24);
+        beginDiff = Math.ceil(begin/tw); // 4월 10, 개강일입니다. 17일이 지남
+        if(beginDiff>0) {
+            // 개강일이 몇일 남았습니다.
+        }else if(beginDiff==0){
+            // 개강일 입니다
+        }else{
+            // 개강일이 몇일 지났습니다.
+            beginDiff = Math.abs(beginDiff);
+            console.log(`개강일이 ${beginDiff} 입니다`)
+        }
+
+        // 개강일 : 4/22 >> 개강일 지남
+
+        // let verystrong = new Date(2024,3,22);
+        // let todate = new Date();
+        // let passaway = todate.getTime()-verystrong.getTime();
+        // console.log(passaway/1000/60/24/365);
+        // 15일 (석가탄신일) : '부처님오신날'
+        // let buddism = new Date(2024,5,15);
+        // let width = new Date();
+        // let wd = (1000*60*24*365);
+        // if (buddism) {
+        //     console.log('와 부처님 오신날')
+        // }
+        // console.log(buddism);
+
+    </script>
+</body>
+</html>

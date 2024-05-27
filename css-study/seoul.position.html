@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울시</title>
+    <style>
+        /* reset, base */
+        body, div, h1, ul, li, dd, dt, dl, ol {
+            padding: 0;
+            margin: 0;
+        }
+        ul, ol, li {
+            list-style: none;
+        }
+        h1, h2, h3, h4, h5, h6 strong {
+            font-size: 15px;
+            font-weight: normal;
+        }
+        .banner {
+            position: relative;
+            width: 770px;
+            height: 350px;
+            background-color: rgb(148, 148, 255);
+        }
+        .banner h1 {
+            width: 60px;
+            height: 175PX;
+            background-color: blueviolet;
+        }
+
+        .banner h1.on{
+            background-color: brown;
+        }
+
+        .banner div {
+            position: absolute;
+            left: 60px;
+            top: 0;
+            z-index: 1;
+            width: 690px;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .banner div.on {
+            z-index: 10;
+        }
+        .banner ul {
+            width: 2070px;
+            margin-left: -690px;
+            
+        }
+
+        .banner li {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1 class="on">주요뉴스</h1>
+        <div class="on">
+            <ul>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/62740c26300947d98e5d97bc6428738d.jpg" alt="서울야외도서관야간개장"></li>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/a78dbc5710ef43819f15851409a2ec2c.jpg" alt="기후동행카드혜택"></li>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/5990f105f0e343868e0868b37aaa8545.jpg" alt="서울페스타개최"></li>
+            </ul>
+        </div>
+        
+        <h1>시민참여</h1>
+        <div>
+            <ul>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/8a2dc0ccf3e84a2db0f2d6a279fd6cc4.jpg" alt="한강3종축제"></li>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/a3fb4ce99ea14f87aa04aca857ebb7ef.jpg" alt="넥스트로컬청년사업가6기모집"></li>
+                <li><img width="690" height="350" src="https://www.seoul.go.kr/upload/hotissue/5be6a15c64d54a50a18862377fda70c8.jpg" alt="통행메이트2기모집"></li>
+            </ul>
+        </div>
+    </div> <!-- // banner, scan -->
+    
+</body>
+</html>

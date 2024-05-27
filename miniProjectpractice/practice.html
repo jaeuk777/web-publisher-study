@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날씨 연습</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+        <button class="button" type="button">현재 위치</button>
+        <dl>
+            <dt>기온</dt>
+            <dd class="temperature"></dd>
+            <dt>위치</dt>
+            <dd class="place"></dd>
+            <dt>설명</dt>
+            <dd class="description"></dd>
+        </dl>
+    </div>
+    <script>
+        const button = document.querySelector('.button')
+        button.addEventListener('click',() => {
+            navigator.geolocation.getCurrentPosition(success);
+        });
+
+        const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
+        const success = (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        getWeather(latitude, longitude);
+        };
+        const getWeather = (lat, lon) => {
+            const tempSection = document.querySelector('.temperature');
+            const placeSection = document.querySelector('.place');
+            const descSection = document.querySelector('.description');
+        fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
+        )
+            .then((response) => {
+            return response.json();
+            })
+            .then((json) => {
+            const temperature = (json.main.temp-273.15).toFixed(0);
+            const place = json.name;
+            const description = json.weather[0].description;
+
+            tempSection.innerHTML = temperature;
+            placeSection.innerHTML = place;
+            descSection.innerHTML = description;
+            console.log(json);
+            })
+            .catch((error) => {
+            alert(error);
+            });
+        }
+
+    </script>
+</body>
+</html>

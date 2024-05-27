@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* .naver_webtoon .on {color: yellow; background-color: aqua;}
+
+        .familysite dt.on {background-color: aquamarine;}
+
+        .familysite dd.on {display: none; background-color: aquamarine};
+         */
+        .cha_tab {
+            float: left;
+            position: relative;
+            height: 500px; 
+            width: 1250px; 
+            background-color: aqua;
+        }
+
+        .cha_tab div {
+            float: left;
+        }
+
+        .cha_tab .tab1 {
+            /* position: absolute; */
+            height:300px;
+            width:250px;
+            background-color: rgb(109, 247, 11);
+        }
+
+        .cha_tab .tab1 ul {
+            display: none;
+            width: 1100px;
+            height: 400px;
+            background-color: brown;
+            z-index: 10px;
+        }
+        .cha_tab .tab2 {
+            /* position: absolute; */
+            height:300px;
+            width:250px;
+            background-color: rgb(109, 247, 11);
+        }
+        .cha_tab .tab2 ul {
+            display: none;
+            width: 1100px;
+            height: 400px;
+            background-color: brown;
+            z-index: 10px;
+        }
+        .cha_tab .tab3 {
+            /* position: absolute; */
+            height:300px;
+            width:250px;
+            background-color: rgb(109, 247, 11);
+        }
+        .cha_tab .tab3 ul {
+            display: none;
+            width: 1100px;
+            height: 400px;
+            background-color: brown;
+            z-index: 10px;
+        }
+        .cha_tab .tab4 {
+            /* position: absolute; */
+            height:300px;
+            width:250px;
+            background-color: rgb(109, 247, 11);
+        }
+        .cha_tab .tab4 ul {
+            display: none;
+            width: 1100px;
+            height: 400px;
+            background-color: brown;
+            z-index: 10px;
+        }
+
+        .cha_tab .tab1 ul.on {
+            height: 1100px;
+            width: 400px;
+            background-color: brown;
+            display:inline-block
+        }
+        
+
+        .cha_tab .tab1 ul.off {
+            display: none;
+        }
+
+
+        .cha_tab ul {
+            display: none;
+            width: 1100px;
+            height: 400px;
+            background-color: brown;
+            z-index: 10px;
+        }
+
+        .cha_tab ul.on {
+            height: 1100px;
+            width: 400px;
+            background-color: brown;
+            display:inline-block
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <div id="box1">id : box1 아룸울 가진 div</div>
+    <div class="box2">class:box2 이름을 가진 div</div>
+    <div class="box2">class:box2 이름을 가진 div</div>
+    <div class="box2">class:box2 이름을 가진 div</div>
+    <div class="box2">class:box2 이름을 가진 div</div>
+
+    
+    <script>
+        const box1 = document.getElementById('box1');
+        box1.style.color = 'red';
+        box1.style.backgroundColor = 'yellow';
+
+        const box2 = document.getElementsByClassName('box2');
+        box2[1].style.border = '10px solid red';
+        box2[3].style.borderbottom = '2px solid gray'
+
+        // .box2에 모두 통일한 디자인 : 테두리, 색상, 배경색, 글자크기 20px
+        const box3 = document.getElementsByClassName('box2');
+        // box3.style.border = '10px solid red';
+        // box3.style.backgroundColor = 'yellow'
+        // box3.style.fontsize = '5px'
+
+        // box3[0].style.border = '2px solid blue'
+        // box3[1].style.border = '2px solid blue'
+        // box3[2].style.border = '2px solid blue'
+        // box3[3].style.border = '2px solid blue'
+        let box2Num = box2.length;
+        // console.log(box2Num);
+        let bgColorName = ['red','blue','pink','aqua,','yellow','brown'];
+        for(let i=0; i<box2Num; i++) {
+            box3[i].style.border = '2px solid blue';
+            box3[i].style.color = 'blue';
+            box3[i].style.backgroundColor = bgColorName[i];
+            box3[i].style.fontSize = '20px';
+        }
+    </script> -->
+
+
+    <!-- <div class="banner">
+        <ul class="lists">
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+        </ul>
+        <div class="indicator">아이콘 생성됨 영역</div>
+    </div>
+    <script>
+        const bannerBox = document.getElementsByClassName('banner')[0];
+        const bannerLists = bannerBox.getElementsByTagName('li');
+        const bannerLength = bannerLists.length;
+        console.log(bannerLength);
+        const iconBox = bannerBox.getElementsByClassName('indicator')[0];
+
+        let icons = '';
+        console.log(iconBox);
+        for(let i=1; i<bannerLength; i++) {
+            console.log('빈복'+i);
+            // '<span>'+i+'번</span>'
+            icons += '<span>'+i+'번</span>';
+        }
+
+        iconBox.innerHTML = icons;
+
+
+        
+
+        
+    </script> -->
+
+    <!-- // 15개의 리스트 생성
+    // 1 ~ 15 번호 달기 -->
+
+    <!-- <div class="naver_webtoon">
+        <div>
+            <p>월요웹툰</p>
+            <p>화요웹툰</p>
+            <p>수요웹툰</p>
+            <p>목요웹툰</p>
+            <p>금요웹툰</p>
+            <p>토요웹툰</p>
+            <p>일요웹툰</p>
+        </div>
+        <ul></ul>
+    </div>
+
+    <script>
+        const tabmenu = document.querySelectorAll('.naver_webtoon p');
+        const tabLength = tabmenu.length;
+        console.log('네이버 탭메뉴 갯수 :' +tabLength);
+        let today = new Date().getDay(); // 일:0~~
+        // 네이버웹툰 턉메뉴에 요일 디자인 .on
+
+
+        console.log(today);
+        if(today==0) today = 7;
+
+        tabmenu[today-1].className = 'on';
+        
+
+        const imgBox = document.getElementsByClassName('naver_webtoon')[0];
+        const imgBoxLists = imgBox.getElementsByTagName('ul')[0];
+
+        let webimg = '';
+        for (let i=1;i<15;i++) {
+            webimg += '<div"><li style="float: left; list-style: none; padding: 10px; margin: 10px; background-color: aqua; width: 100px; height: 100px;"><span>'+i+'</span></li></div>';
+        }
+        imgBoxLists.innerHTML = webimg;
+
+        console.log(new Date().getDate()); // 일(0)
+
+    </script>
+
+    <dl class="familysite">
+        <dt>소속기관</dt>
+        <dd>
+            <div>기관리스트</div>
+            <div>기관리스트</div>
+            <div>기관리스트</div>
+            <div>기관리스트</div>
+            <div>기관리스트</div>
+        </dd>
+    </dl>
+    <script>
+        // dt를 클릭하면 dd(보이게/안보이게)
+        const dtBox = document.querySelector('.familysite dt');
+        const ddBox = document.querySelector('.familysite dd');
+
+        // let bools = true;
+        dtBox.addEventListener('click',()=> {
+            // console.log('클릭 실행');
+            if(ddBox.className=='') {
+                ddBox.className = 'on';
+                bools = false;
+            }else{
+                ddBox.className = '';
+                bools = true;
+            }
+        });
+    </script> -->
+
+    <div class="cha_tab">
+        <div class="tab1">
+            <h1>공지사항</h1>
+            <ul>공지사항 리스트
+                <li></li>
+                <li></li>
+            </ul>
+            <span>공지사항 더보기</span>
+        </div>
+        <div class="tab2">
+            <h1>보도자료</h1>
+            <ul>보도자료 리스트
+                <li></li>
+                <li></li>
+            </ul>
+            <span>보도자료 더보기</span>
+        </div>
+
+        <div class="tab3">
+            <h1>설명자료</h1>
+            <ul>설명자료 리스트
+                <li></li>
+                <li></li>
+            </ul>
+            <span>설명자료 더보기</span>
+        </div>
+
+        <div class="tab4">
+            <h1>입찰정보</h1>
+            <ul>입창정보 리스트
+                <li></li>
+                <li></li>
+            </ul>
+            <span>입찰정보 더보기</span>
+        </div>
+    </div>
+
+    <script>
+        // const h1Box = document.querySelector('.cha_tab .tab1 h1 ');
+        // const h1BoxE = document.querySelector('.cha_tab .tab1 ul');
+        // const h2Box = document.querySelector('.cha_tab .tab2 h1 ');
+        // const h2BoxE = document.querySelector('.cha_tab .tab2 ul');
+        // const h3Box = document.querySelector('.cha_tab .tab3 h1 ');
+        // const h3BoxE = document.querySelector('.cha_tab .tab3 ul');
+        // const h4Box = document.querySelector('.cha_tab .tab4 h1 ');
+        // const h4BoxE = document.querySelector('.cha_tab .tab4 ul');
+        
+        const h1BoxAll = document.querySelectorAll('.cha_tab h1');
+        const ulBoxAll = document.querySelectorAll('.cha_tab ul');
+        console.log(h1BoxAll);
+
+        // for (let i=0; i<h1BoxAll.length; i++) {
+        //     let bools = true;
+        //     h1BoxAll[i].addEventListener('click',()=> {
+        //         if(bools) {
+        //             ulBoxAll.className = 'on';
+        //             bools = false;
+        //         }else{
+        //             ulBoxAll.className = 'off';
+        //             bools = true;
+        //         }
+        //         console.log(ulBoxAll);
+        //     })
+        // }
+
+        for (let i=0; i<h1BoxAll.length; i++) {
+            let bools = true;
+            h1BoxAll[i].addEventListener('click',()=> {
+                ulBoxAll.className = 'on';
+            })
+            console.log(ulBoxAll);
+            for(let j=0; j<h1BoxAll.length; j++) {
+                h1BoxAll[j].addEventListener('click',()=> {
+                    ulBoxAll.className = 'off';
+                })
+            }
+        }
+
+        // let bools = true;
+        // h1Box.addEventListener('click',()=> {
+        //     if(bools) {
+        //         h1BoxE.className = 'on';
+        //         bools = false;
+        //     }else{
+        //         h1BoxE.className = 'off';
+        //         bools = true;
+        //     }
+        // });
+
+
+
+        // h2Box.addEventListener('click',()=> {
+        //     if(bools) {
+        //         h2BoxE.className = 'on';
+        //         bools = false;
+        //     }else{
+        //         h2BoxE.className = 'off';
+        //         bools = true;
+        //     }
+        // })
+
+        // h3Box.addEventListener('click',()=> {
+        //     if(bools) {
+        //         h3BoxE.className = 'on';
+        //         bools = false;
+        //     }else{
+        //         h3BoxE.className = 'off';
+        //         bools = true;
+        //     }
+        // })
+        // h4Box.addEventListener('click',()=> {
+        //     if(bools) {
+        //         h4BoxE.className = 'on';
+        //         bools = false;
+        //     }else{
+        //         h4BoxE.className = 'off';
+        //         bools = true;
+        //     }
+        // })
+    </script>
+</body>
+</html>

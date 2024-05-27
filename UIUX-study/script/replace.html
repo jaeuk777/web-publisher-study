@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="nav">
+        <li><img src="https://www.hollys.co.kr/websrc/images/layout/gnb_01.png" alt="할리스 공홈 메뉴이미지"></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+    </ul>
+
+    <script>
+        // 1. 요소를 찾아와야함
+        const navList = document.querySelector('.nav li');
+        console.log(navList);
+
+        // 반복에 대한 해결!!!
+        navList.forEach((item,index) => { // map()
+            item.addEventListener('mouseenter', (i) => {
+                let img = navList.querySelector('img');
+                img.src = img.src.replace('.png','_on.png')
+            })
+            
+            item.addEventListener('mouseleave', (i) => {
+                let img = navList.querySelector('img');
+                img.src = img.src.replace('_on.png','.png')
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>범죄도시 좌석선택</title>
+    <style>
+        body, h1, h2, h3, ul, li, dl, dd, dt, span {padding: 0; margin:0;}
+        .movie_seat {width: 100%;height: 100%;}
+        .movie_seat h2 {text-align: center;}
+        .movie_seat #aSeat{
+            margin: 10px;
+            padding: 10px;
+        }
+        .seat_box {
+            width: 1010px;
+            height: 60px;
+            /* background-color: aqua; */
+            display: flex;
+        }
+        .seat_box span {
+            font-size: 20px;
+            text-align: center;
+            width: 40px;
+            height: 24px;
+            padding: 15px;
+            
+        }
+        .seat_box span:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <section class="movie_seat">
+        <h2>자리 선택</h2>
+    </section>
+    <!-- <section class="order">
+        <h2>인원선택</h2>
+    </section> -->
+    <script>
+        const movieSeat = document.querySelector('section .movie_seat');
+        function movie () {
+            let SeatNum = ['A','B','C','D','E','F','G'];
+            for(let i=0;i<SeatNum.length;i++) {
+                document.write('<div class="seat_box">')
+                for(let j=1;j<16;j++) {
+                    document.write(`<span class="aSeat">${SeatNum[i]}${j}</span>`)
+                }   
+                document.write(`</div>`)
+            }
+        }
+        movieSeat.innerHTML = movie();
+
+        // function 
+    </script>
+</body>
+</html>

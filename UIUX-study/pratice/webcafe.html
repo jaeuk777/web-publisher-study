@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재욱스카페</title>
+    <style>
+        div li ul img dl dt {
+            padding: 0;
+            margin: 0;
+        }
+        .webcafe {
+            width: 50%;
+            height: 100%;
+            /* background-color: rgb(210, 255, 255); */
+            margin-left: 350px;
+            margin-right: 350px;
+            text-align: center;
+            align-items: center;
+        }
+        .webcafe ul li {
+            margin: 5px;
+            /* padding: 25px; */
+            height: 200px;
+            width: 160px;
+            display: inline-block;
+            list-style: none;
+            /* background-color: brown; */
+        }
+
+        .webcafe img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .webcafe dl {
+            background-color: rgb(243, 255, 251);
+        }
+
+        .Am article {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            display: block;
+        }
+
+        .cafeBanner {
+            width: 50%;
+            height: 100%;
+            background-color: rgb(210, 255, 255);
+            margin-left: 350px;
+            margin-right: 350px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .cafeBanner p {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 구조 : ul>li>img, dl>dt 음료명, dd가격 -->
+    <!-- 음료(li) 선택 : 아이스 '음료명'을 주문하시겠습니까? confirm(): true,false값만 얻을 수 있음-->
+
+    <!-- 확인(네) > 음료명 을 몇잔 드릴까요 prompt() : input에 입력가능-->
+    <!-- 확인(네) > 결제금액은 얼마~ 입니다 -->
+    <!-- 확인(네) > 결제금액 입력하고 prompt() : input에 입력가능-->
+    <!-- ------------------------- -->
+    <!-- 음료 받는 곳에 '음료'가 준비되었습니다. >> 반복문-->
+    <div class="cafeBanner">
+        <p>jaes.cafe</p>
+    </div>
+    <div>
+        <div class="webcafe">
+            <ul>
+                <li class="coffe1"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[106509]_20210430111852870.jpg" alt="">
+                    <dl>아메리카노
+                        <dt>2000원</dt>
+                    </dl>
+                </li>
+                <li class="coffe2"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[38]_20210415154821846.jpg" alt="">
+                    <dl>카푸치노
+                        <dt>3000원</dt>
+                    </dl>
+                </li>
+                <li class="coffe3"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[41]_20210415133833725.jpg" alt="">
+                    <dl>카페라떼
+                        <dt>3000원</dt>
+                    </dl>
+                </li>
+                <li class="coffe4"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/02/[9200000001939]_20210225094313315.jpg" alt="">
+                    <dl>바닐라 라떼
+                        <dt>3500원</dt>
+                    </dl>
+                </li>
+                <li class="coffe4"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/02/[9200000001939]_20210225094313315.jpg" alt="">
+                    <dl>바닐라 라떼
+                        <dt>3500원</dt>
+                    </dl>
+                </li>
+                <li class="coffe4"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/02/[9200000001939]_20210225094313315.jpg" alt="">
+                    <dl>바닐라 라떼
+                        <dt>3500원</dt>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <hr>
+        <div class="Am">
+            <article></article>
+        </div>
+    </div>
+    <script>
+        const coffe1 = document.querySelector('.coffe1');
+        const coffe2 = document.querySelector('.coffe2');
+        const coffe3 = document.querySelector('.coffe3');
+        const coffe4 = document.querySelector('.coffe4');
+        const order = document.querySelector('.Am article')
+        let falsecoffe = false;
+
+        const coffeAll = document.querySelectorAll('')
+        coffe1.addEventListener('click', () => {
+            if (!confirm('아메리카노를 주문 하시겠습니까?')) {
+                alert('아쉽지만 다음에 주문');
+            }else if(le = prompt('몇잔을 주문 하시겠습니까?')){
+                let americano = 2000;
+                let allprise = le*americano;
+                confirm(`총 가격은 ${allprise}`)
+            }else {
+                !alert('감사합니다')
+            }
+            for(let i=0; i<=le; i++) {
+                order.innerHTML += '<span>'+i+'</span>'
+            }
+        })
+        coffe2.addEventListener('click', () => {
+            if (!confirm('아메리카노를 주문 하시겠습니까?')) {
+                alert('아쉽지만 다음에 주문');
+            }else if(le = prompt('몇잔을 주문 하시겠습니까?')){
+                let americano = 2000;
+                let allprise = le*americano;
+                confirm(`총 가격은 ${allprise}`)
+            }else {
+                !alert('감사합니다')
+            }
+            for(let i=0; i<=le; i++) {
+                order.innerHTML += '<div>'+i+'</div>'
+            }
+        })
+        coffe3.addEventListener('click', () => {
+            if (!confirm('아메리카노를 주문 하시겠습니까?')) {
+                alert('아쉽지만 다음에 주문');
+            }else if(le = prompt('몇잔을 주문 하시겠습니까?')){
+                let americano = 2000;
+                let allprise = le*americano;
+                confirm(`총 가격은 ${allprise}`)
+            }else {
+                !alert('감사합니다')
+            }
+            for(let i=0; i<=le; i++) {
+                order.innerHTML += '<div>'+i+'</div>'
+            }
+        })
+        coffe4.addEventListener('click', () => {
+            if (!confirm('아메리카노를 주문 하시겠습니까?')) {
+                alert('아쉽지만 다음에 주문');
+            }else if(le = prompt('몇잔을 주문 하시겠습니까?')){
+                let americano = 2000;
+                let allprise = le*americano;
+                confirm(`총 가격은 ${allprise}`)
+            }else {
+                !alert('감사합니다')
+            }
+            for(let i=0; i<=le; i++) {
+                order.innerHTML += '<div>'+i+'</div>'
+            }
+        })
+
+
+        // function coffeAme () {
+        // }
+    </script>
+</body>
+</html>

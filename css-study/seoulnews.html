@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분야별 새소식 | 서울시</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <style>
+
+        #header {
+            float: left;
+        }
+
+        #container {
+            width: 1120px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* #aside - 사이드 메뉴 */
+        #aside {
+            float: left;
+            width: 200px;
+            background-color: rgb(232, 255, 247);
+        }
+
+        #aside h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #contents {
+            /* float: left; */
+            width: 920px;
+            border-left: 1px solid lightblue;
+            padding-left: 10px;
+            background-color: rgb(151, 151, 151);
+            text-align: center;
+        }
+
+        #aside span {
+            display: block;
+            padding: 10px 20px;
+            border-top: 1px solid gray;
+        }
+
+        #aside li ul {
+            display: none;
+        }
+
+        #aside li li {
+            padding: 10px 20px;
+            border-top: 1px solid gray;
+        }
+
+        #aside li span:hover,
+        #aside li li:hover {
+            color: black;
+            cursor: pointer;
+
+        }
+
+        #aside li.on {
+            background-color: azure;
+        }
+
+        #aside li.on span {
+            color: white;
+            background-color: aqua;
+        }
+
+        #aside li.on ul {
+            display: block;
+        }
+
+        #aside li.on2 {
+            background-color: azure;
+        }
+
+        #aside li.on2 span {
+            color: white;
+            background-color: aqua;
+        }
+
+        #aside li.on2 ul {
+            display: block;
+        }
+
+        #footer {
+            float: left;
+            width: 920px;
+        }
+
+        #main {
+            padding-left: 130px;
+            margin: 100px;
+            width: 700px;
+            height: 400px;
+        }
+
+        #main ul {
+            padding: 20px;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+
+        #main {
+            border: 10px black;
+        }
+
+        #main .ch1 .sp1 {
+            margin-top: 20px;
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch1 ul li {
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch2 .sp2 {
+            margin-top: 20px;
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch2 ul li {
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch3 .sp3 {
+            margin-top: 20px;
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch3 ul li {
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch4 .sp4 {
+            margin-top: 20px;
+            padding: 10px;
+            float: left;
+        }
+
+        #main .ch4 ul li {
+            padding: 10px;
+            float: left;
+        }
+
+
+        /* li > ul {} 자식 */
+        /* li ul {} 자식, 자손 모두 포함 */
+    </style>
+</head>
+
+<body>
+
+    <!-- 상단 : header -->
+    <div id="header">
+        <!-- <div>
+            <ul><img src="" alt="">
+                <li>서울소식</li>
+                <li>시민참여</li>
+                <li>분야별정보</li>
+                <li>서울소개</li>
+                <li>부서안내</li>
+                <li>정보공개</li>
+                <li>응답소</li>
+                <li>로그인</li>
+                <li>나의서울</li>
+                <li>전자우편</li>
+            </ul>
+        </div> -->
+    </div>
+
+    <!-- 가운데 : 사이드 메뉴, 본문 -->
+    <div id="container">
+        <div id="aside">
+            <h1>서울소식</h1>
+            <ul>
+                <li class="on">
+                    <span>새소식</span>
+                    <ul>
+                        <li>분야별 새소식</li>
+                        <li>이달의 행사 및 축제</li>
+                        <li>이벤트 신청</li>
+                        <li>자치구 주요뉴스</li>
+                        <li>강화 교육</li>
+                        <li>인사발령</li>
+                    </ul>
+                </li>
+                <span>
+                    <li>
+                        <ul><a href="">서울시 정책 뉴스</a></ul>
+                    </li>
+                </span>
+                <li class="on2">
+                    <span>공고</span>
+                    <ul>
+                        <li>입창공고</li>
+                        <li>수의계약내역</li>
+                        <li>채용시험</li>
+                        <li>서울시보</li>
+                        <li>고시공고</li>
+                        <li>도시관리계획안열람공고</li>
+                        <li>석면해제|제거일정</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>보도|해명자료</span>
+                    <ul>
+                        <li>보도자료</li>
+                        <li>해명자료</li>
+                    </ul>
+                </li>
+                <span>
+                    <li><a href="">내 손안에 서울</a></li>
+                </span>
+                <span>
+                    <li><a href="">서울사람</a></li>
+                </span>
+                <span>
+                    <li><a href="">내친구서울</a></li>
+                </span>
+            </ul>
+        </div>
+        <hr>
+        <div id="contents">
+            <h1 style="font-size: 40px;">분야별 새소식</h1>
+            <p style="font-size: 20px;"><a href="">home</a> > <a href="">서울소식</a> > <a href="">새소식분야별</a> > 새소식</p>
+        </div>
+        <div id="main">
+            <ul>
+                <li class="ch1"><span class="sp1">분야선택</span>
+                    <div>
+                        <ul>
+                            <li>모든분야</li>
+                            <li>안전</li>
+                            <li>주택</li>
+                            <li>경제</li>
+                            <li>환경</li>
+                            <li>문화</li>
+                            <li>복지</li>
+                            <li>행정</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ch2"><span class="sp2">상세 선택</span>
+                    <div>
+                        <ul>
+                            <li><input type="checkbox">모집</li>
+                            <li>공고</li>
+                            <li>신청</li>
+                            <li>위촉</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ch3"><span class="sp3">기간 선택</span>
+                    <div>
+                        <ul>
+                            <li>오늘</li>
+                            <li>최근 일주일</li>
+                            <li>최근 한달</li>
+                            <li>달력</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="ch4"><span class="sp4">검색어</span>
+                    <ul>
+                        <li>검색어 입력창</li>
+                        <li>검색</li>
+                        <li>초기화</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 하단 : footer -->
+    <div id="footer">
+        <div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

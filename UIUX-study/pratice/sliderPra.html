@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body,ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  overflow-x:hidden;
+}
+
+.slider {
+  position: relative;
+  height: 500px;
+  background-color: red;
+}
+.slider .btn-slide > div{
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translateY(-50%);
+  background-color: purple;
+  cursor: pointer;
+  z-index: 20;
+}
+.slider .btn-slide > div:first-child{
+  left: 0;
+}
+.slider .btn-slide > div:last-child{
+  right: 0;
+}
+
+.slider .slides > div{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  z-index: 0;
+}
+
+.slider .slides > div.active{
+  left: 0;
+  transition: left 1s;
+  z-index: 10;
+}
+.slider .slides > div.rm-active{
+  transition: left 1s, right 1s;
+  z-index: 10;
+}
+.slider .slides > div.left-set {
+  left: -100%;
+}
+.slider .slides > div.right-set {
+  left: 100%;
+}
+.slider .slides > div:nth-child(even){
+  background-color: blue;
+}
+.slider .slides > div > span {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  font-size: 5rem;
+  transform: translate(-50%, -50%);
+}
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <div class="active"><span>1</span></div>
+            <div class="right-set"><span>2</span></div>
+            <div><span>3</span></div>
+            <div><span>4</span></div>
+            <div class="left-set"><span>5</span></div>
+        </div>
+    
+        <div class="btn-slide" data-now-animating="N">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+    function slide(){
+    var $this = $(this);
+    var $btnSlide = $this.closest('.btn-slide');
+    var NowAnimating = $btnSlide.attr('data-now-animating');
+    var $btnLeft = $this.index() == 0;
+    var $slider = $this.closest('.slider');
+    var $slides = $slider.find('> .slides > div');
+    var $activeSlide = $slider.find('> .slides > div.active');
+    var $activePost;
+    
+    /*클릭 중복 방지*/
+    if (NowAnimating == 'Y') {
+        return;
+    }
+    
+    /*트랜지션 제거*/
+    $slides.removeClass('rm-active');
+    
+    /*버튼이 왼쪽 일 때*/
+    if ($btnLeft) {
+        slide_left($slides,$activeSlide);
+    }
+    
+    /*버튼이 오른쪽 일 때*/
+    else{
+        slide_right($slides,$activeSlide);
+    }
+    
+    /*클릭 중복 방지*/
+    $btnSlide.attr('data-now-animating','Y');
+    /*1초마다 실행*/
+    setTimeout(function(){
+        $btnSlide.attr('data-now-animating','N');
+    }, 1000);
+    }
+
+    function slide_left($slides,$activeSlide){
+    $slides.removeClass('right-set');
+    $activePost = $activeSlide.prev();
+    if ($activePost.length == 0) {
+        $activePost = $('.slider > .slides > div:last-child');
+    }
+    $slides.not('active').addClass('left-set');
+    
+    /*액티브 였던 슬라이드 오른쪽 이동*/
+    $activeSlide.addClass('rm-active');
+    $activeSlide.removeClass('left-set');
+    $activeSlide.addClass('right-set');
+    $activeSlide.removeClass('active');
+    $activePost.addClass('active');
+    $activePost.removeClass('left-set');
+    }
+
+    function slide_right($slides,$activeSlide){
+    $slides.removeClass('left-set');
+    $activePost = $activeSlide.next();
+    if ($activePost.length == 0){
+        $activePost = $('.slider > .slides > div:first-child');
+    }
+    $slides.not('active').addClass('right-set');
+    /*액티브 였던 슬라이드 왼쪽 이동*/
+    $activeSlide.addClass('rm-active');
+    $activeSlide.removeClass('right-set');
+    $activeSlide.addClass('left-set');
+    $activeSlide.removeClass('active');
+    $activePost.addClass('active');
+    $activePost.removeClass('right-set');
+    }
+
+    function slide_init(){
+    $('.slider > .btn-slide > div').click(slide);
+    }
+
+    $(function(){
+    slide_init();
+    })
+    </script>
+</body>
+</html>

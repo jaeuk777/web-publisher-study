@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string, array</title>
+</head>
+<body>
+    <script>
+        // 문자역(원소)의 개수 : length
+        // 메서드(함수())
+        // 조건문, 반복문, +대상선택만 정확히하면 >>> 만드는데 목표 >> 점검
+        // 함수화() >>  함수를 재사용(
+        // 문자역(원소)의 개수 : length
+
+        // 사용자에게 아이디 값을 받아서 조건이 5자 이상 10자 이하
+        // let userId = prompt('아이디를 만들어주새요.');
+        // console.log(userId);
+        // if (userId.length==0) {
+
+        // }else if(userId.length<5 || userId.length>10) {
+        //     // 5자~10자 이외의 결과값 잘못됐다고 알려줘야함
+        //     console.log('5자~10자 이내의 아이디를 만들어주세요');
+        // }
+
+        // 문자열 탐색 메서드
+        // indexOf('문자열'):앞에서부터 일치하는 문자열 인데스번호 추출
+        // lastIndexOf() : 뒤에서 가까운
+        // 문자열을 탐색했을 때 결과가 포함되어있지 않으면 -1을 출력
+        const srt = 'Javascript';
+        console.log(srt.indexOf('a'));
+        console.log(srt.lastIndexOf('a'));
+        console.log(srt.lastIndexOf('A')); // -1
+    </script>
+    <input type="text" id="email" name="">
+    <button type="button">이메일 확인</button>
+    <!-- <script>
+        // 유효성 검증
+        // 이메일 주소를 받는다. user@naver.com
+        // 이메일 주소에 @문자와 . 문자를 포함하는지의 여부를 확인
+
+        document.querySelector('button').addEventListener('click',chceckEmail)
+        function chceckEmail() { // 이메일 주소 체크 여부 판단하는 함수
+            const inputEmail = document.querySelector('#email').value;; // user@naver.com
+            
+            let at = userEmail.indexOf('@');
+            let dot = userEmail.lastIndexOf('.');
+            if (at==-1 || dot==-1) {
+                console.log(inputEmail);
+            }
+        }
+
+        // 저장된 이미지 경로에서 커피명 (순수한 파일명)만 console에 출력
+        let coffeeImg = 'img/americano.jpg'; 
+        // 실행파일 등은 첨부를 할 수 없게 프로그래밍 하는 경우(.exe)
+        let slash = coffeeImg.lastIndexOf('/');
+        let dot = coffeeImg.lastIndexOf('.');
+        // substr(시작인데스, 몇개), substring(시작인덱스,종료인덱스-1) : 문자열 일부를 자르기
+        // coffeeImg.substr(slash+1, dot-slash-1);
+        console.log(coffeeImg.substr(slash+1, dot-slash-1));
+        
+        // 실행파일 등은 첨부를 할 수 없게 프로그래밍 하는 경우(.png)
+        let imgcheck = '';
+        // 해당 파일은 업로드가 불가합니다.
+
+        // substr(시작인덱스, 몇개) / substr(시작인덱스)
+
+        // <input type="file" id="" />
+        // 
+        // = coffeeImg.lastIndexOf('.');
+        // coffeeImg.substr(변수+1)
+
+        // if(번수2=='png'){업로느 불가합니다.}
+
+        // let png = innerImg.lastIndexOf('.png');
+        // let pngnotdot = innerImg.lastIndexOf('png');
+        const filecheck = document.querySelector('.file');
+
+        let jpgcheck = filecheck.lastIndexOf('jpg');
+        console.log(jpgcheck.substr(filecheck-1));
+    </script> -->
+    <div class="file">
+        <input type="file" id="fileF">
+    </div>
+    <script>
+        function checkFile() {
+            let fileVal = document.querySelector('#filef').value;
+            let fileDot = fileVal.lastIndexOf('.');
+            fileVal.substr(fileDot+1);
+            if (exe=='png' || exe=='jpg') {
+                console.log('이미지 파일은 업로드가 불가능')
+            }
+        }
+
+        // replace(바꿀 대상, 대안이될 문자열)) : 문자열 바꾸기
+        const str2 = 'abcdef';
+        console.log(str2.replace('bc','비씨'));
+        console.log(str2.replace(('a','def'),('','카드')))
+        // 클래스명 : 클래스x(className=''), 클래스o(className='on')
+        
+
+    </script>
+</body>
+</html>

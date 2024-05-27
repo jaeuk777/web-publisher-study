@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 함수</title>
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+        // 함수 : 여러번 호출
+        // 내장함수명() , 직접만드는함수명()
+
+        // 개발자가 직접 만드는 함수 : 
+        function test(num1,txt1) { // test(), test(매개변수, 매개변수2...)
+            // alert('경고');
+            console.log(num1);
+            console.log(txt1);
+        }
+
+        test(3, '문자111'); // 인자값
+        test(111 , '문자222');
+
+        function addNum(add1, num1, addnum1) { // 숫자 두개를 더해서 출력하는
+            document.write(add1 + num1 + addnum1);
+            document.write('<div class="on">'+ (add1 * num1 * addnum1)+'</div>');
+        }
+        addNum(5, 7, 100);
+        addNum(100, 50, 30);
+        addNum(39, 20, 111);
+
+        // 한 화면에 리스트 요소(ul)를 생성할 때 A박스=5, B박스=3, c박스=10개를 만들기
+        // document.write()로 출력해볼것
+        function addBox(box1, box2, box3) {
+            for (let i=0; i<11; i++) {
+                document.write(`<ul><li>${box1[i], box2[i], box3[i]}</li></ul>`)
+            }
+        }
+        addBox([1,2,3,4,5], [1,2,3], [1,2,3,4,5,6,7,8,9,10]);
+
+        function listBox(listNum) {
+            let lists = `<ul>`;
+            for(let i=0; i<listNum; i++) {
+                lists += `<li>${i}번쨰 리스트</li>`;
+            }
+            lists += `</ul>`;
+            document.write(lists);
+        }
+
+        listBox(5);
+        listBox(3);
+        listBox(10);
+
+        
+    </script>
+</body>
+</html>

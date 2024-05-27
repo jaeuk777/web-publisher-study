@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .paging button.on {
+            display: none;
+        }
+
+        ul, li {padding: 0; margin: 0; list-style: none;}
+        ul {width: 300px; height: 200px; overflow: hidden;}
+        li {display: none;}
+        li:first-child {display: block;}
+        li img {width: 100%;}
+        .img_box li.on {
+            display: block;
+        }
+        .img_box li.off {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="img_box">
+        <li><img src="https://cdn.pixabay.com/photo/2024/02/05/16/07/gas-8554849_1280.jpg" alt=""></li>
+        <li><img src="https://cdn.pixabay.com/photo/2024/04/20/20/53/noodles-8709379_1280.png" alt=""></li>
+        <li><img src="https://cdn.pixabay.com/photo/2024/04/05/16/27/ai-generated-8677682_1280.jpg" alt=""></li>
+        <li><img src="https://cdn.pixabay.com/photo/2024/04/04/16/37/ai-generated-8675450_1280.jpg" alt=""></li>
+        <li><img src="https://cdn.pixabay.com/photo/2024/04/05/16/27/ai-generated-8677685_1280.jpg" alt=""></li>
+    </ul>
+    <div class="paging">
+        <button type="button" class="btn_prew">이전</button>
+        <span class="cnt">현재페이지번호</span> 
+        / <span class="tatal">총페이지수</span>
+        <button type="button" class="btn_next">다음</button>
+    </div>
+
+    <script>
+        // 현재페이지번호, 총페이지수 생성
+        let cntNum = 1;
+        let tatalNum = 5;
+
+        const imgBoxall = document.querySelectorAll('.img_box li');
+        const cntBox = document.querySelector('.paging .cnt');
+        const tatalBox = document.querySelector('.paging .tatal');
+        const btBox = document.querySelector('.btn_next');
+        const btBoxex = document.querySelector('.btn_prew');
+        cntBox.innerText = cntNum;
+        tatalBox.innerText = tatalNum;
+
+        // btBox.addEventListener('click', () =>{
+        //     if (cntNum < tatalNum) {
+        //         cntNum+=1;
+        //         cntBox.innerText = cntNum;
+        //     }else{
+        //         cntNum=1;
+        //         cntBox.innerText = cntNum;
+        //     }
+        // }) 
+
+        btBox.addEventListener('click', () => {
+            // cntNum++; // cntNum = cntNum+1;
+            // for(i=0; i<5; i++) {
+            //     imgBoxall[i].className = 'off';
+            //     for(j=1; j<i; j++) {
+            //         imgBoxall[j].className = 'on';
+            //     }
+            // }
+            if(cntNum<tatalNum) {
+                imgBoxall[cntNum-1].style.display = 'none';
+                imgBoxall[cntNum].style.display = 'block';
+                cntNum++;
+                cntBox.innerText = cntNum;
+            };
+        })
+        btBoxex.addEventListener('click', () => {
+            if(cntNum>1) {
+                cntNum--;
+                imgBoxall[cntNum].style.display = 'none';
+                imgBoxall[cntNum-1].style.display = 'block';
+                cntBox.innerText = cntNum;
+            };
+        })
+    </script>
+</body>
+</html>

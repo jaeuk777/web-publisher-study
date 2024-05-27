@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+    <style>
+        table {width: 500px; border: 1px solid teal; border-collapse: collapse;}
+        table td {height: 70px; vertical-align: top;}
+    </style>
+</head>
+<body>
+    <!-- 테이블 구조에서 정적인것, 동적인것 구분부터 해보자 -->
+    <table border="1">
+        <caption></caption>
+        <thead class="month_header">
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 동적으로(기본값:5*7)(필요에따라서는:6*7) -->
+        </tbody>
+        <div>
+            <button type="button" class="prev_btn">이전 달</button>
+            <button type="button" class="next_btn">다음 달</button>
+            <button type="buttton" class="today_btn">오늘날</button>
+        </div>
+    </table>
+    <script>
+        // 1-1, thead안에 caption에 오늘 연도.월(2024.5)
+        const tableHead = document.querySelector('table caption');
+        let now = new Date();
+        let thisYear = now.getFullYear(); // 올해
+        let thisMonth = now.getMonth(); // 이달(5월이면 +1)   (월별 코드 오류 방지)
+        let thisday = now.getDate()-1; // 일
+        console.log(`일 : ${thisday}`)
+
+        // 다음 클릭
+        // 2024년 5월 > 6월 > 7월......12월 > (12월보다 크면 1월)
+        // ------ 다음 년도 2025년 1월(연도도 1 증가해야함)
+        let prevBtn = document.querySelector('.prev_btn');
+        let nextBtn = document.querySelector('.next_btn');
+        let todayBtn = document.querySelector('.today_btn');
+        let changeMonth = thisMonth;
+        let changeYear = thisYear;
+        let changeday = thisday;
+        nextBtn.addEventListener('click', () => {
+            changeMonth++;
+            if(changeMonth>11) {
+                changeMonth = 0;
+                changeYear++;
+            }
+            calender(); // ---------------
+        })
+        prevBtn.addEventListener('click', () => {
+            changeMonth--;
+            if(changeMonth<0) {
+                changeMonth = 11;
+                changeYear--;
+            }
+            calender();
+        })
+
+        todayBtn.addEventListener('click', () => {
+            changeYear = thisYear;
+            changeMonth = thisMonth;
+            changeday =  thisday;
+            calender();
+        })
+
+        function calender() {
+            // 3-1. 실제 테이블의 일자 정보 출력
+            // 1일이 시작하는 위치 = 요일과 관련있음
+            let firstDay = new Date(changeYear,changeMonth,1).getDay();
+            console.log(firstDay);
+            // 해당달의 끝나는 날(30,31,28,29...)을 처리하는 방법
+            // 매달 말일을 계산하는 방법 : 다음달 시작일 1
+            let lastDay = new Date(changeYear,changeMonth+1,0).getDate();
+            console.log(lastDay);
+
+            // 1-2. 조건을 더해서 caption(tableHead)에 출력
+            let month = changeMonth+1;
+            if(month<10) {month='0'+month}
+            tableHead.innerText = changeYear+'.'+month;
+
+            // 2-1-1 tbody에 기본 줄*칸 구성(5*7)
+            const tableBody = document.querySelector('table tbody');
+            // 2-1-2 tr을 생성하는 조건(기본값=5, 금,토=6)
+            let rowNum = 5;
+            if(firstDay>4) {rowNum = 6}
+            let cells = ''; // tableBody안에 담을 달력 구조 생성
+            for(let rows=1; rows<=6;rows++) { // 테이블에 5줄 만들기
+                cells += `<tr>`;
+                    for(let cols=1; cols<=7; cols++) { // 줄안에 7칸 만들기
+                        cells += `<td>칸</td>`;
+                    }
+                cells += `</tr>`;
+            }
+
+            // 2-2. tbody안에 cells 담기
+            tableBody.innerHTML = cells;
+
+            // 3-2. for문으로 1~31까지 출력
+            let tbodyTds = document.querySelectorAll('table td');
+            let cellNum = tbodyTds.length;
+            let count = 0;
+            for(let cell=0; cell<cellNum; cell++) { //---------------------
+                if(cell<firstDay || cell>lastDay+firstDay-1) { // 공백처리된 칸(시작일자보다 작은칸, 끝나는 일자보다 큰)
+                    tbodyTds[cell].innerHTML = '&nbsp;';
+                }else{
+                    count++;
+                    tbodyTds[cell].innerHTML = count;
+                }
+            }
+
+            // 3-3. 오늘 날짜에 해당하는 간에 배경색 처리
+            if(changeYear == thisYear) {
+                let todayNum = thisday+firstDay
+                tbodyTds[todayNum].style.backgroundColor = '#ffffd9';
+            }
+        }
+        // 달력 함수 호출
+        calender();
+
+
+
+    </script>
+</body>
+</html>

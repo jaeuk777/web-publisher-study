@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또추첨번호</title>
+    <style>
+        /* span {
+            height: 80px;
+            width: 80px;
+            border-radius: 30px;
+            background-color: rgb(0, 195, 255);
+        } */
+
+        .lotto_box span {
+            display: inline-block;
+            padding: 15px;
+            background-color: gray;
+            color: white;
+            margin:5px;
+            border-radius: 30px;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+        }
+        .lotto_box .type1 {
+            background-color: aqua;
+        }
+        .lotto_box .type2 {
+            background-color: green;
+        }
+        .lotto_box .type3 {
+            background-color: firebrick;
+        }
+        .lotto_box .type4 {
+            background-color: orchid;
+        }
+    </style>
+</head>
+<body>
+    <!-- 랜덤수를 6개 생성 -(1 ~ 45) -->
+    <!-- 1~10 노란 12~20 파란 21~30 빨강 -->
+    <!-- <script>
+        // console.log(rottoNum)
+        // console.log(Math.floor(randomRotto));
+        let rottoNum = document.querySelectorAll('.rotto span')
+        let rottoBox = ()
+        for (let i=0; i<7; i++) {
+            let rottoList = 45;
+            let randomRotto = Math.floor(Math.random()*45);
+            document.write(`<span> ${randomRotto}</span>`);
+            
+        }
+    </script> -->
+
+    <script>
+        let lottoArr = []; // 배열에 순차적으로 저장해봐야지
+        // 1~6 까지 순차적으로
+        for (let i=0; i<6; i++) {
+            lottoArr[i] = Math.floor(Math.random()*45)+1;
+        }
+        console.log(lottoArr);
+
+        // 로또를 표현할 구조 생성
+        let lotto = '<div class="lotto_box">'
+        lottoArr.forEach((item) => {
+            if(item<=10){
+                lotto += `<span class="type1">${item}</span>`
+            }else if(item<=20) {
+                lotto += `<span class="type2">${item}</span>`
+            }else if(item<=30) {
+                lotto += `<span class="type3">${item}</span>`
+            }else {
+                lotto += `<span class="type4">${item}</span>`
+            }
+
+        });
+        lotto += '</div>';
+
+        document.write(lotto);
+    </script>
+
+</body>
+</html>

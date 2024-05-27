@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문</title>
+</head>
+<body>
+    <script>
+        let fruitArr = ['참외','수박','딸기','바나나','키위','토마토'];
+        for(let i=0; i<fruitArr.length; i++) {
+            console.log(`과일이름 : ${fruitArr[i]}`);
+        }
+
+        // forEach()
+        fruitArr.forEach(function(fruit){ // item(배열에 속한 요소)을 출력하기 위한 매개변수
+            document.write(`<div>${fruit}</div>`);
+        });
+
+        fruitArr.forEach(function(fruit,index){ // index
+            document.write(`<div>${index+1}번째 : ${fruit}</div>`);
+        });
+
+        // 숫자를 나열한 배열의 모든 값을 합산해서 출력해보자
+        let sum = 0;
+        let gradeArr = [100,80,50,46,75,91,65];
+        gradeArr.forEach(function(num) {
+            sum += num;
+        })
+
+        let gradeAvg = sum/gradeArr.length
+        console.log(`gradeArr(총합) : ${sum}`);
+        console.log(`gradeArr(평균) : ${gradeAvg}`);
+
+        // 평균점수보다 높은 점수만 출력
+        gradeArr.forEach(function(grade) {
+            if(grade>gradeAvg) {
+                console.log(`평균점수보다 높은 값 : ${grade}`);
+            }
+        })
+
+        // 네이버 메인 쇼핑영역 - 더보기 영역 만들기
+        let shopArea = [
+            {title:'쇼핑', totalPage:13},
+            {title:'맨즈', totalPage:6},
+            {title:'원쁠딜', totalPage:11},
+            {title:'쇼핑라이브', totalPage:7}
+        ];
+        shopArea.forEach(function(item) {
+            document.write(
+                `
+                <div>
+                    <button type="button">이전</button>
+                    <span>${item.title} 더보기 1/${item.totalPage}</span>
+                    <button type="button">다음</button>
+                </div>
+                `
+            )
+        });
+
+        // shopArea.forEach(function(shop){
+        //     document.write(`<div class="shop_header"><span>${shop.title}</span></div>`);
+        // });
+
+        // 상품이 50개가 준비되있음. 10개만 먼저 가져오자
+        for (let i=0; i<50; i++) {
+            document.write(`<div>${i+1}번째 아이템</div>`);
+            if (i==9) break;
+        }
+
+        for (let i=0; i<50; i++) {
+            if(i%2==0) continue; // 건너뛰기
+            document.write(`<div>${i+1}번째 아이템</div>`);
+        }
+
+        // 반복적으로 4개의 더보기 출력(forEach)
+
+    </script>
+    
+
+</body>
+</html>

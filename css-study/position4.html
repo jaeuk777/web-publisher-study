@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h1, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        body {
+            font-size:13px
+        }
+        h1 {
+            font-size: 14px;
+            font-weight: normal;
+        }
+        img {
+            vertical-align: middle;
+        }
+        .notice {
+            overflow: hidden;
+            position: relative;
+            width: 404px;
+            height: 280px;
+        }
+        
+        .notice li {
+            position: absolute;
+            left: 404px;
+            bottom: 0;
+        }
+
+        .notice li.on {
+            left: 0;
+        }
+
+        .notice .btns1 {
+            position: absolute;
+            right: 50%;
+            top: 10px;
+        }
+        .notice .btns1 a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-indent: -9999px;
+            background-color: antiquewhite;
+        }
+        .notice .btns2 {
+            position: absolute;
+            right: 1%;
+            top: 10px;
+        }
+
+        .notice .btns2 a.on {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice">
+        <h1>알림판</h1>
+        <ul>
+            <li class="on"><img src="https://www.cha.go.kr/popupzone/getImage.do;jsessionid=5cnkjDWLLZJDqF3oI8jdT2zSeuE1RwI0txglbD2rC9MMvEe1zitHaljTQJGxfZCf.cha-was02_servlet_engine1?id=322987" alt=""></li>
+            <li><img src="https://www.cha.go.kr/popupzone/getImage.do;jsessionid=5cnkjDWLLZJDqF3oI8jdT2zSeuE1RwI0txglbD2rC9MMvEe1zitHaljTQJGxfZCf.cha-was02_servlet_engine1?id=322989" alt=""></li>
+            <li><img src="https://www.cha.go.kr/popupzone/getImage.do;jsessionid=poKp90dBkQcg9rbhaxcJBd7UG17ablGrtXsQwpBVuZoqZKU5zLmknUJmsl7wv80e.cha-was02_servlet_engine1?id=322983" alt=""></li>
+            <li><img src="https://www.cha.go.kr/popupzone/getImage.do;jsessionid=poKp90dBkQcg9rbhaxcJBd7UG17ablGrtXsQwpBVuZoqZKU5zLmknUJmsl7wv80e.cha-was02_servlet_engine1?id=322983" alt=""></li>
+        </ul>
+        <div class="btns1">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+        </div>
+        <div class="btns2">
+            <a href="#">이전</a>
+            <a href="#" class="on">재생</a>
+            <a href="#">정지</a>
+            <a href="#">다음</a>
+        </div>
+    </div>
+</body>
+</html>

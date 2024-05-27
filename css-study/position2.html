@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, h1, ul, li, dt, dd {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .tabbox {
+            position: relative;
+            width: 600px;
+            height: 250px;
+            background-color: aliceblue;
+
+            /*overflow: hidden;*/
+        }
+        .tabbox h1 {
+            float: left;
+            color: aqua;
+        }
+
+        .tabbox ul {
+            left: 10px;
+            top: 100px;
+            position: absolute;
+            display: none;
+            z-index: 1;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="tabbox">
+        <div class="tab tab1 on">
+            <h1>텝메뉴</h1>
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>게시글제목</dt>
+                            <dd>게시글내용</dd>
+                            <dd class="date">날짜</dd>
+                        </dl>
+                    </li>
+                    <li>리스트1</li>
+                    <li>리스트1</li>
+                </ul>
+            <div class="bu">더보기1</div>
+        </div><!-- // End-->
+
+        <div class="tab tab2">
+            <h1>텝메뉴</h1>
+                <ul>
+                    <li>리스트2</li>
+                    <li>리스트2</li>
+                    <li>리스트2</li>
+                </ul>
+            <div class="bu">더보기2</div>
+        </div>
+
+        <div class="tab tab3">
+            <h1>텝메뉴</h1>
+                <ul>
+                    <li>리스트3</li>
+                    <li>리스트3</li>
+                    <li>리스트3</li>
+                </ul>
+            <div class="bu">더보기3</div>
+        </div>
+    </div> <!-- tabbox end-->
+</body>
+</html>

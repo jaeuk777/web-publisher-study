@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연결연산</title>
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+        // div 요소를 5개 생성
+        for (let i=0; i<=5; i++) {  // 초기값; 조건; 증감식;
+            // document.write('<div class="a">'+i+'번째 div</div>');
+            document.write(`<div class="a">${i}번째 div</div>`);
+        }
+
+        // 실습
+        let webF = [
+            {
+                subject : 'HTML',
+                desc: '구조를 표현하는 하이퍼 텍스트 마크업 언어'
+            },
+            {
+                subject : 'CSS',
+                desc: '마크업 언어가 실제 표시되는 디자인 표현'
+            },
+            {
+                subject : 'Javascript',
+                desc: 'HTML과 CSS로 구성된 웹페이지를 동적으로 만들어주는 언어'
+            },
+        ];
+        
+        for(let j=0; j<webF.length; j++) {
+            document.write(
+                `<dl>
+                    <dt>${webF[j].desc}</dt>
+                    <dd>${webF[j].subject}</dd>
+                </dl>`
+            );
+        };
+    </script>
+</body>
+</html>

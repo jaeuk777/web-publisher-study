@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배너 바꾸기</title>
+    <style>
+        .banner {position: relative; width: 700px; height: 500px; border: 1px solid gray;}
+        .banner li {position: absolute; left: 0; top: 0; width: 700px; height: 300px; font-size: 50px; background-color: white;}
+        .banner li.on {z-index: 10;}
+        .banner .indicator {position: absolute;left: 0; bottom: 10px; z-index: 20;text-align: center;}
+        .banner .indicator span {
+            display: inline-block;
+            width: 20px;height: 20px;
+            border-radius: 10px;
+            text-indent: -9999px;
+            cursor: pointer;
+            background-color: wheat;
+        }
+        .banner .indicator span.on {background-color: cadetblue;}
+    </style>
+</head>
+<body>
+    <!-- <div class="banner_div">
+        <ul>
+            <li class="banner">banner1</li>
+            <li class="banner">banner2</li>
+            <li class="banner">banner3</li>
+        </ul>
+        <div class="banner_btn">
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.banner button');
+        items.forEach((item) => {
+            item.addEventListener('click', () => {
+                items.forEach((e) => {
+                    e.classList.remove('active');
+                })
+                item.classList.add('active');
+            })
+        })
+    </script> -->
+    <div class="banner">
+        <ul>
+            <li class="on">banner1</li>
+            <li>banner2</li>
+            <li>banner3</li>
+        </ul>
+        <div class="indicator">
+            <span class="on">1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+    </div>
+
+    <script>
+        // 관리하고 싶은 대상
+        const bannerLists = document.querySelectorAll('.banner li')
+        const indicator = document.querySelectorAll('.banner .indicator span')
+        let autoBanner = 0;
+        // 0번 버튼 클릭 >>> li.on, span.on
+        indicator.forEach((item, index) => {
+            item.addEventListener('mouseenter',() => changeBanner(index));
+        })
+
+        function changeBanner(cntIcon) {
+            // console.log(cntIcon);
+            autoNum = cntIcon;
+            for (let i=0; i<bannerLists.length; i++) {
+                bannerLists[i].className = '';
+                indicator[i].className = '';
+            }
+
+
+            bannerLists[cntIcon].className = 'on';
+            indicator[cntIcon].className = 'on';
+        }
+
+        // 자동실행 : 크기안에서 순회 0 > 1 > 2 > 0....
+        let autoNum = 0;
+
+        let autoID = null;
+        function autoBanner() {
+            autoID =  setInterval(() => {
+                autoNum++; // autoNum = autoNum+1
+                if(autoNum > 2){autoNum=0;} // 있다가 배너개수를 얻어와서 관성
+                // console.log(autoNum);
+                changeBanner(autoNum);
+            },200);
+        }
+
+        autoBanner(); //호출
+
+        // 마우스오버시 자동실행 제거
+        let banner = document.querySelector('.banner');
+        banner.addEventListener('mouseenter', ()=> {
+            clearInterval(autoID);
+            autoBanner();
+        })
+
+        banner.addEventListener('mouseenter', ()=> {
+            autoBanner();
+        })
+        // clearInterval(() => {
+        //     indicator.forEach((item, index) => {
+        //         item.addEventListener('mouseenter', changeBanner(index));
+        //     })
+        // })
+    </script>
+
+</body>
+</html>

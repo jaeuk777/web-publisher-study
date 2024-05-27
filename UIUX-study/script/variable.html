@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const numBox = "span 요소"
+        /* 여러줄 주석 */
+        let num = 1;
+        console.log(num + 1);
+
+        // let bool = confirm('장바구니에 담으시겠습니까?')
+        // 확인(참, true, 1)  ,취소(거짓, false, 0)
+        /*
+        if(bool) {  
+            console.log('장바구니에 담김');
+        }else{
+            console.log('물건을 선택하세요.');
+        }
+        */
+
+        let classA = ['홍씨','김씨','이씨',2]; // 배열
+
+        console.log (classA[0]);
+
+        function bannner() { // 직접 만드는 함수 - 호출해야됨
+            console.log('내가 만드는 함수');
+            console.log(num + 1);
+        }
+
+        bannner();
+
+        // 키:값 = 객체
+        let obj = {
+            objName : '블라우스',
+            objColor : 'red',   // ['red', 'blue'...]
+            objCodeNum : 12345
+        }
+
+        console.log(obj.objColor);
+
+        let martfu = ['제주 카라향 초고당도 제철 감귤 가정용', '24,900원', '무료'];
+        
+        function fu() {
+            console.log(martfu[0])
+            console.log(martfu[1])
+            console.log(martfu[2])
+        }
+
+        fu();
+
+        let pd = {
+            pdTxt : '제주...',
+            pdPrise : '23,900',
+            pdDel : '무료',
+            pdColor : ['red','blue','orange','pink']
+        }
+
+        console.log('상품 설명 : '+pd.pdTxt);
+        console.log('상품 가격 : '+pd.pdPrise+'원');
+        console.log('배달 정보 : '+pd.pdDel);
+        // 상품 색상 : pink
+        console.log('상품 색상 : '+pd.pdColor[3]);
+
+        // 사용자 휴대폰 번호를 받아서 DB에 저장
+        let phoneNum =  prompt('휴대폰 번호 입력하세요');
+        console.log(phoneNum)
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+body, h1, h2, h3, h4, h5, h6, ul, ol, li, p, dl, dt, dd {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 strong {
+    font-size: 15px;
+    font-style: none;
+    font-weight: normal;
+}
+
+ul, li, ol {list-style: none;}
+
+img {vertical-align: middle;}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}

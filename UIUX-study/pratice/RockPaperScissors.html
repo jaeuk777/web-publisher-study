@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+</head>
+<body>
+    <!-- <script>
+        const gamestart = document.querySelectorAll('.game button')
+        const gameBtn1 = document.querySelector('.game .button1');
+        const gameBtn2 = document.querySelector('.game .button2');
+        const gameBtn3 = document.querySelector('.game .button3');
+
+        
+        gamestart.addEventListener('click', () => {
+            let scissors = (gameBtn1 < gameBtn2 && gameBtn1 > gameBtn3 && gameBtn1 == gameBtn1);
+            let rock = (gameBtn2 < gameBtn1 && gameBtn2 < gameBtn3 && gameBtn2 == gameBtn2);
+            let papper = (gameBtn3 > gameBtn2 && gameBtn3 < gameBtn1 && gameBtn3 == gameBtn3);
+            
+            if (scissors) {
+                console.log('이겼습니다')
+            }
+        })
+
+    </script>
+    <div class="game">
+        <button type="button1">가위</button>
+        <button type="button2">바위</button>
+        <button type="button3">보</button>
+    </div> -->
+
+    <button type="button">주먹</button>
+    <button type="button">가위</button>
+    <button type="button">보</button>
+    <script>
+    let user = document.querySelectorAll('button');
+    user.forEach((item) => {
+        // 컴퓨터(random), 내가(버튼통해서)
+        let comTxt = ['주먹', '가위', '보'];
+        let comNum = Math.floor(Math.random()*3);
+        // console.log(comTxt[comNum]);
+        
+        let userChoice = item.innerText;
+        let computer = comTxt[comNum];
+        // 내가 이길 때, 질 때, 비길 때
+        let win = (userChoice=='주먹'&&computer=='가위') || (userChoice=='가위'&&computer=='보') || (userChoice=='보'&&computer=='주먹');
+        let lose = (userChoice=='주먹'&&computer=='보') || (userChoice=='가위'&&computer=='주먹') || (userChoice=='보'&&computer=='가위');
+        if(win) {
+            console.log(userChoice);    
+        }else if(lose) {
+            
+        }else{
+            
+        }
+    })    
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - 배치</title>
+    <style>
+        body {
+            padding: 100px;
+
+        }
+
+        .parent1 {
+            position: relative;
+            width: 500px;
+            height: 350px;
+            background-color: blanchedalmond;
+        }
+        .parent1 .box {
+            position: absolute;
+            width: 200px; 
+            height: 200px;
+            
+        }
+        .parent1 .box1 {
+            z-index: 10;
+            background-color: yellow;
+        }
+        .parent1 .box2 {
+            background-color: rgb(87, 156, 165);
+        }
+        .parent1 .box3 {
+            background-color: rgb(132, 122, 233);
+        }
+    </style>
+</head>
+<body>
+    <div class="parent1">
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+        <div class="box box3">box3</div>
+    </div>
+</body>
+</html>

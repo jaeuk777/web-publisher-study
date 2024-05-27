@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영양 정보 검색</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 60%;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .title {
+
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">영양 정보 검색</h1>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="음식 이름을 입력하세요" />
+        <button type="button" onclick="searchNutrition()">검색</button>
+    </div>
+    <div class="result" id="result"></div>
+    <script src="/miniPject/script/practice.js"></script>
+</body>
+</html>

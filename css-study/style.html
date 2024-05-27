@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent div{
+            width: 200px; 
+            height: 200px;
+            float: left;
+        }
+        .parent{
+            overflow: hidden;
+        }
+        #box1{background-color: aqua;}
+        .box2{background-color: azure;}
+        .box3{background-color: blueviolet;}
+        .box4{
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            width: 150px; 
+            height: 150px; 
+            background-color: rgb(32, 224, 221);
+        }
+
+        .parent2 {position: relative;} /* absolute로 띄운 자식을 가두기 위함 */
+        .parent2 .more {
+            position: absolute;
+            right: 0; 
+            top: 0; 
+            background-color: salmon;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div id="box1">박스1</div>
+        <div class="box2">박스2</div>
+        <div class="box3">박스3</div>
+    </div>
+    <p>단락</p>
+
+    <div class="box4">단독으로 고정배치</div>
+    <div class="parent2">
+        <a href="" class="more">더보기</a>
+    </div>
+
+</body>
+</html>

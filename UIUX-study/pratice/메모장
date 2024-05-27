@@ -1,0 +1,41 @@
+class, id(유일한 이름)
+
+background-color: 배경색상
+width: 세로크기
+height: 가로크기
+float: left, right(옆으로 나란히)
+position: 단락
+.: 클래스명
+#: id명
+position:absolute = 부모(position:reletive)
+position:fixed (스크린기준 고정)
+float:left - 부모(overflow:hidden)
+z-index ()
+770 * 350 img 690px
+
+호출 우선순위 id(100) > class(50) > tagname(1)
+인라인 블록: 크기가 정해진 택스트 타입(strong, input type, em) {크기를 제어 할수있는}
+하이퍼텍스트링크 : inline-block, block 
+
+가상요소: 부모,자식,자손 중에 nth-child(n) 호출 [last-child(마지막) first-chil(첫번째)]
+
+페이지 만드는 순서(쉽게)
+1. 상단 / 본문 / 하단
+2. h1 ~ h3 : 목차(접근성 향상 목적)
+
+이미지 img : 의미있는 이미지(내용~~) alt
+- 자주바뀌는 이미지 |
+배경이미지 : 꾸미기위해   다음>
+
+display: flex(부모의 통제한해서 자식요소 적용)
+flex:flex-warp ()
+
+li.list*5 (똑같은 class 이름 list 5개 만들기 )
+li.list$*5 ()
+li(list$)*5
+
+@media screen and(max-width: / min-width:) : 반응형 웹사이트 
+
+toLocaleString() : 숫자에 콤마 찍는 메소드
+
+js 함수 지정 : 함수로 지정하면 계속해서 사용할수 있다

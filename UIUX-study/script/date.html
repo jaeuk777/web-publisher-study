@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date()</title>
+</head>
+<body>
+    <script>
+        // date 함수를 생성
+        let today = new Date();
+        document.write(today);
+
+        // 년도
+        document.write(`<div>${today.getFullYear()}년</div>`);
+
+        // 월 : 0월 = 1월 (getMonth()+1)
+        document.write(`<div>${today.getMonth()+1}월</div>`);
+
+        // 일
+        document.write(`<div>${today.getDate()}일</div>`);
+
+        // 요일 
+        let days = ['일', '월', '화', '수', '목', '금', '토'];
+        document.write(`<div>${days[today.getDay()]}요일</div>`);
+
+        // 시간 -------------------------------오전/오전시간 표현
+        let hour = today.getHours();
+        if(hour<=12) {
+            hour = `오전 ${hour}`
+        }
+        if(hour>12) {
+            hour = `오후 ${hour-=12}`
+        }
+        document.write(`<div>${hour}시</div>`); // 16시 > 오후4시
+
+        // 분
+        document.write(`<div>${today.getMinutes()}분</div>`);
+
+        // 초
+        document.write(`<div>${today.getSeconds()}초</div>`);
+
+        // 밀리초
+        document.write(`<div>${today.getMilliseconds()}밀리초</div>`);
+
+        // 기준일 = 컴퓨터가 계산 수행을 하기 위한 조건
+        document.write(`<div>${today.getTime()}기준일</div>`);
+
+        // 오후 4:34
+        let newhour = today.getHours();
+        let newMinutes = today.getMinutes();
+        console.log(newhour);
+        if(newhour<=12) {
+            newhour = `오전 0${newhour}`
+        }else if(newhour>12) {
+            newhour = `오후 0${newhour-=12}`
+        }
+        if(newMinutes<10) {
+            newMinutes = `0${newMinutes}`
+        }
+        document.write(`<div>${newhour}:${newMinutes}</div>`)
+
+        //
+        let fullYear = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        if(month<10) {
+            month = `0${month}`
+        }
+        if(date<10) {
+            date = `0${date}`
+        }
+        document.write(`${fullYear}-${month}-${date}`)
+
+    </script>
+</body>
+</html>

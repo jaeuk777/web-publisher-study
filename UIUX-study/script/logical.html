@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>논리연산</title>
+</head>
+<body>
+    <script>
+        // A조건 그리고 B조건 모두 만족 : 논리곱(A$$B)
+        // A조건 그리고 B조건 c조건 중에 하나라도 만족 : 논리합(A||B)
+        // true 또는 false
+        let numA = 2, numB = 2, numC = 3;
+        let result1 = numA==numB;
+        let result2 = numB<numC;
+        let result3 = numB==numC;
+
+        console.log(`result1 = ${result1}`); // true
+        console.log(`result2 = ${result2}`); // true
+        console.log(`result3 = ${result3}`); // false
+
+        console.log(`${result1&&result2}`);
+        console.log(`${result2&&result3}`);
+        console.log(`${result1||result2}`);
+        // 로그인 : 아이디값 필수, 비밀번호값 필수
+    </script>
+
+    <div class="login_area">
+        <div><input type="text" id="userId" name="" class="" /></div>
+        <div><input type="password" id="userPwd" name="" class="" /></div>
+        <p class="msg_box"></p>
+        <button type="submit">로그인</button>
+        <p>과목별 점수</p>
+        <div>국어점수<input type="number" id="" name="" class="">점</div>
+        <div>수학점수<input type="number" id="" name="" class="">점</div>
+        <div>영어점수<input type="number" id="" name="" class="">점</div>
+
+    </div>
+    <script>
+        // 1) 아이디값, 비밀번호값
+        const userId = document.querySelector('#userId');
+        const userPwd = document.querySelector('#userPwd');
+        const loginBtn = document.querySelector('.login_area button');
+        const msgBox = document.querySelector('.msg_box');
+
+        // 2) 로그인 버튼을 클릭했을 때 아이디 값이랑 비밀번호 값 유효성 검사
+        loginBtn.addEventListener('click', ()=> {
+            console.log(userId.value);
+            console.log(userPwd.value);
+            let emptyID = userId.value.length == 0; // true 또는 false
+            let emptyPwd = userPwd.value.length == 0; // true 또는 false
+
+            // 아이디값이나 비밀번호값이 true이면 유효성검사
+            if(emptyID || emptyPwd) {
+                // console.log(`아이디나 비밀번호를 입력하세요`);
+                if(emptyID){
+                    msgBox.inner = '아이디를 입력해주세요.';
+                    userId.forcus();
+                }else{
+                    msgBox.innerText = '비밀번호를 입력해주세요.'
+                    userPwd.forcus();
+                }
+            }
+        });
+
+        // 20-30대 여성, 남성으로 구성된 우리반~
+        let students = [
+            {gender:'women', age:20},
+            {gender:'man', age:31},
+            {gender:'man', age:27},
+            {gender:'women', age:25},
+            {gender:'women', age:45},
+            {gender:'man', age:23},
+            {gender:'women', age:33}
+        ];
+
+        // students에 저장된 데이터중에 20대 여성만 콘솔에 출력
+        students.forEach((item) => {
+            // console.log(item.gender, item.age);
+            // 20대 여성 20~29 (age>=20 && age<30) && gender=='women'
+            if((item.age>=20 && item.age<30) && item.gender=='women') {
+                console.log(`${item.gender} : ${item.age}살`)
+            }
+            // 30대 이상 남성만 출력
+            // age>=30 && gender='man'
+
+        })
+
+        // for (let i=0; i<students.length; i++) {
+        //     const stGender = document.
+        //     if() {
+
+        //     }
+        // }
+
+
+
+    </script>
+</body>
+</html>

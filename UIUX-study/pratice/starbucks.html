@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .container {
+        width: 49.5%;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .coffee-menu {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .coffee-item {
+        margin: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .coffee-item img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .payment {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #00000076;
+        padding: 10px;
+        border-top: 2px solid #ccc;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment h2 {
+        margin-top: 0;
+    }
+
+    .order-item {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .order-item p {
+        margin: 0 10px;
+    }
+
+    .order-summary {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .order-summary img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .coffee-storename {
+        text-align: center;
+        color: darkgreen;
+        background-color: rgba(225, 255, 236, 0.409);
+    }
+
+    .payment button {
+        border: 0;
+        margin-left: 10px;
+        margin-right: 10px;
+        background-color: cadetblue;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="coffee-storename">STARBUCKS</h1>
+        <div class="coffee-menu">
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[106509]_20210430111852870.jpg" alt="Americano">
+                <p class="coffee-krname">아메리카노</p>
+                <p class="coffee-name">Americano</p>
+                <p class="coffee-price">3500원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[38]_20210415154821846.jpg" alt="Latte">
+                <p class="coffee-krname">카페라떼</p>
+                <p class="coffee-name">Latte</p>
+                <p class="coffee-price">4000원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110566]_20210415134334280.jpg" alt="Moca atte ice">
+                <p class="coffee-krname">아이스 카페 모카</p>
+                <p class="coffee-name">Moca ratte ice</p>
+                <p class="coffee-price">4500원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/02/[9200000002407]_20210225095106743.jpg" alt="Latte">
+                <p class="coffee-krname">리저브 나이트로</p>
+                <p class="coffee-name">Reserve Nitro</p>
+                <p class="coffee-price">4500원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000000487]_20210430112319040.jpg" alt="Latte">
+                <p class="coffee-krname">바닐라 크림 콜드 브루</p>
+                <p class="coffee-name">Vanilla cream cold brew</p>
+                <p class="coffee-price">5000원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002081]_20210415133656839.jpg" alt="Latte">
+                <p class="coffee-krname">돌체 콜드 블루</p>
+                <p class="coffee-name">dolce cold brew</p>
+                <p class="coffee-price">4000원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2022/03/[9200000002672]_20220311105511600.jpg" alt="Latte">
+                <p class="coffee-krname">제주 비자림 콜드 블루</p>
+                <p class="coffee-name">jeju forest cold brew</p>
+                <p class="coffee-price">5500원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[126197]_20210415154609863.jpg" alt="Latte">
+                <p class="coffee-krname">아이스 카라멜 마끼야또</p>
+                <p class="coffee-name">Iced Caramel Macchiato</p>
+                <p class="coffee-price">4500원</p>
+            </div>
+            <div class="coffee-item">
+                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2024/03/[9200000005178]_20240326103727795.jpg" alt="Latte">
+                <p class="coffee-krname">플랫 화이트</p>
+                <p class="coffee-name">Flat White</p>
+                <p class="coffee-price">4000원</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="payment" id="payment">
+        <h2>장바구니</h2>
+        <div id="order-details"></div>
+        <button onclick="confirmOrder()">주문완료</button>
+    </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const coffeeItems = document.querySelectorAll('.coffee-item');
+    coffeeItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const name = item.querySelector('.coffee-name').innerText;
+            const price = item.querySelector('.coffee-price').innerText.slice(0); // Remove dollar sign
+            const imgSrc = item.querySelector('img').src;
+            addCoffeeToOrder(name, price, imgSrc);
+        });
+    });
+});
+
+function addCoffeeToOrder(name, price, imgSrc) {
+    const orderDetails = document.getElementById('order-details');
+    let orderItem = document.getElementById(`order-${name}`);
+    
+    if (orderItem) {
+        const quantityElement = orderItem.querySelector('.quantity');
+        quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
+    } else {
+        orderItem = document.createElement('div');
+        orderItem.classList.add('order-item');
+        orderItem.id = `order-${name}`;
+        orderItem.innerHTML = `
+            <p>${name}</p>
+            <p>${price}</p>
+            <button onclick="decreaseQuantity('${name}')">-</button>
+            <p class="quantity">1</p>
+            <button onclick="increaseQuantity('${name}')">+</button>
+            <button onclick="removeCoffee('${name}')">삭제</button>
+            <img class="order-img" src="${imgSrc}" alt="${name}" style="display:none;">
+        `;
+        orderDetails.appendChild(orderItem);
+    }
+}
+
+function increaseQuantity(name) {
+    const orderItem = document.getElementById(`order-${name}`);
+    const quantityElement = orderItem.querySelector('.quantity');
+    quantityElement.innerText = parseInt(quantityElement.innerText) + 1;
+}
+
+function decreaseQuantity(name) {
+    const orderItem = document.getElementById(`order-${name}`);
+    const quantityElement = orderItem.querySelector('.quantity');
+    const currentQuantity = parseInt(quantityElement.innerText);
+    if (currentQuantity > 1) {
+        quantityElement.innerText = currentQuantity - 1;
+    } else {
+        removeCoffee(name);
+    }
+}
+
+function removeCoffee(name) {
+    const orderItem = document.getElementById(`order-${name}`);
+    orderItem.remove();
+}
+
+function confirmOrder() {
+    const orderDetails = document.getElementById('order-details');
+    let total = 0;
+
+    orderDetails.querySelectorAll('.order-item').forEach(orderItem => {
+        const price = parseFloat(orderItem.querySelector('p:nth-of-type(2)').innerText.slice(0)); // Remove dollar sign
+        const quantity = parseInt(orderItem.querySelector('.quantity').innerText);
+        total += price * quantity;
+    });
+
+    const confirmMessage = `총 가격: ${total.toFixed(0)}원\n결제하시겠습니까?`;
+    if (confirm(confirmMessage)) {
+        completeOrder();
+    }
+}
+
+function completeOrder() {
+    const orderDetails = document.getElementById('order-details');
+    const paymentSection = document.getElementById('payment');
+    
+    let summaryHtml = "<h2>커피 준비중입니다. 감사합니다.</h2>";
+    orderDetails.querySelectorAll('.order-item').forEach(orderItem => {
+        const name = orderItem.querySelector('p').innerText;
+        const imgSrc = orderItem.querySelector('.order-img').src;
+        const retrun = orderItem.querySelector('coffee-retrun');
+        summaryHtml += `
+            <div class="order-summary">
+                <img src="${imgSrc}" alt="${name}">
+                <p>${name}</p>
+                <button>다시 주문</button>
+            </div>`;
+    });
+
+    paymentSection.innerHTML = summaryHtml;
+}
+function orderreturn() {
+    const resetorder = document.querySelector('')
+} 
+
+    </script>
+</body>
+</html>

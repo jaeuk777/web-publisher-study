@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음료 주문 서비스</title>
+    <style>
+        body,h1,h2,h3,ul,li,dl,dt,dd{padding: 0; margin: 0;}
+        body {font-size: 15px;}
+        ul,li{list-style: none;}
+
+        .cafe {max-width: 500px; margin: 0 auto;}
+        .cafe h1 {
+            margin-bottom: 50px;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            background-color: seagreen;
+        }
+        .menu_area {text-align: center;}
+        .menu_area h2 {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .order_area {position: fixed;left: 50px;top: 50px;}
+
+    </style>
+</head>
+<body>
+    <!-- 드롭탑  -->
+    <div class="cafe">
+        <h1>WEB CAFE</h1>
+        <section class="menu_area">
+            <h2>MENU</h2>
+            <p>주문하실 음료를 선택하세요</p>
+            <ul>
+                <!-- <li>
+                    <img src="" alt="" />
+                    <dl>
+                        <dt>음료명-한글</dt>
+                        <dd>음료명-영어</dd>
+                        <dd>가격</dd>
+                    </dl>
+                </li> -->
+            </ul>
+        </section>     
+        <section class="order_area">
+            <h2>주문 내역</h2>
+            <div class="order_list"></div>
+            <h2>총 결제 금액</h2>
+            <div class="order_totalPrice"></div>
+        </section>
+    </div>
+    <script>
+        // 1. 음료 정보가 있어야함 : 음료하나당 객체화시키고 음료 데이터
+        // 전체를 하나의 배열로 만들자.
+        const drinkMenu = [{
+            korName : '제주 한라봉 말차',
+            engName : 'Jeju Hallabong Matcha',
+            imgSrc : 'https://cafedroptop.com/uploadimg/0.62061000_1711500361.jpg',
+            price : 6000
+        },{
+            korName : '납작 복숭아 하이볼 에이드',
+            engName : 'flat peach HiehBall Ade',
+            imgSrc : 'https://cafedroptop.com/uploadimg/0.67054800_1715647517.jpg',
+            price : 5000
+        },{
+            korName : '수박주스',
+            engName : 'waterMelon juice',
+            imgSrc : 'https://cafedroptop.com/uploadimg/0.15613000_1715647370.jpg',
+            price : 6500
+        },{
+            korName : '딸기주스',
+            engName : 'strewBeery juice',
+            imgSrc : 'https://cafedroptop.com/uploadimg/0.62197500_1706575693.jpg',
+            price : 6500
+        }]
+
+        // console.log(drinkMenu[1].engName);
+        // console.log(drinkMenu[2].korName);
+        // console.log(drinkMenu[3].imgSrc);
+
+        // 배열객체의 정보 모두를 출력
+        // .menu_area ul 안에 li로 메뉴정보 출력
+        const menuArea = document.querySelector('.menu_area ul');
+        function addMenuDrawUI(){
+            let lists = '';
+            for(let i=0; i<drinkMenu.length;i++){
+                lists += `
+                    <li>
+                        <img src="${drinkMenu[i].imgSrc}" alt="${drinkMenu[i].korName}" />
+                        <dl>
+                            <dt>${drinkMenu[i].korName}</dt>
+                            <dd>${drinkMenu[i].engName}</dd>
+                            <dd>${drinkMenu[i].price.toLocaleString()}</dd>
+                        </dl>
+                    </li>
+                    `
+            }
+            return lists;
+        }
+        // console.log(lists);
+        menuArea.innerHTML = addMenuDrawUI();
+        // 주문내역 필요한 정보
+        // 메뉴리스트에 있는 음료를 클릭하면 콘솔에 해당 주문 리스트를 출력
+        // 객체화
+        // [{음료명:음료명,수량:1,가격:5000},{음료명:음료명,수량:1,가격:5000}]
+        
+        // 주문자료=배열객체, 메뉴를 클릭했을 때
+        const menuList = document.querySelectorAll('.menu_area li')
+        // 메뉴를 클릭하면 주문객체를 만드는 함수 호출
+        menuList.forEach((item, index) => {
+            item.addEventListener('click',() => {
+                // 객체를 만드는 함수를 호출
+                orderObj(index);
+            });
+        })
+
+        // const delBtn = document.querySelector('.count')
+        let orderArr = [];
+        // let orderCount = 0;
+        function orderObj(index) {
+            let obj = drinkMenu[index];
+            // 비교검사
+            let bool = orderArr.some((item) => {return item.korName == obj.korName});
+            
+            if(bool)  {
+                return alert('선택하신 음료는 주문내역에 있으니 확인해주세요.')
+            }
+            console.log(bool);
+
+            // 주문객체 생성
+            let choiceMenu = {
+                korName : obj.korName,
+                price : obj.price,
+                count : 1,
+                totalPrice : obj.price
+            }
+            // orderArr[orderCount] = choiceMenu;
+            // orderCount++;
+
+            orderArr.push(choiceMenu); // push() : 배열함수(배열의 끝에 함수 추가)
+
+            // console.log(orderArr);
+            orderListBox.innerHTML = orderDrawUI();
+        }
+
+        // const orderArea = document.querySelector('.order_area');
+
+        // function orderPriceDrawUI () {
+
+        // }
+
+        // 함수화(화면에 그리는 작업)
+        const orderListBox = document.querySelector('.order_list');
+        function orderDrawUI () {
+            // 총 결제 금액
+            let totalpay = 0;
+            orderArr.forEach((irem)=>{
+                totalPay += item.totalPrice;
+            });
+            // 어느 영역에 처리할건지
+            let lists = '';
+            for(let i=0;i<orderArr.length;i++) {
+            lists += `
+                    <dl>
+                        <dt>${orderArr[i].korName}</dt>
+                        <dd>
+                            <button type="button" class="minus" onclick="minus(${i})">-</button>
+                            <span class="count">${orderArr[i].count}</span>
+                            <button type="button" class="plus" onclick="plus(${i})">+</button>
+                            <span class="totalprice">${orderArr[i].totalPrice.toLocaleString()}원</span>
+                        </dd>
+                    </dl>
+                    `
+                }
+            return lists;
+        }
+
+        function plus(inx) {
+
+            orderArr[inx].count += 1;
+            // 해당 음료의 총 금액을 해당 음료의 orderArr[inx].totalPrice에 반
+            orderArr[inx].totalPrice = (orderArr[inx].price*orderArr[inx].count)
+            orderListBox.innerHTML = orderDrawUI();
+
+        }
+
+        function minus(inx) {
+
+            // if(orderArr[inx].counter>1) {
+            // orderArr[inx].counter -= 1;
+            // orderListBox.innerHTML = orderDrawUI();
+            // }
+            let orderCount = orderArr[inx].count
+            if(orderCount == 1) {
+                orderCount.splice(inx,1) // splice(시작인덱스, 개수)
+            }else {
+                orderCount -= 1;
+            }
+            console.log(orderArr);
+            orderArr[inx]
+            orderListBox.innerHTML = orderDrawUI();
+        }
+
+        // orderArr의 모든 객체 .tatalPrice를 모두 더한 값을 콘솔에 출력 >> 후에 ui에 반영
+        // 총 결제 금액 : orderArr[방번호].totalPrice 합산한 최종 금액만 표시
+        
+    </script>
+</body>
+</html>

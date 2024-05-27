@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math : 계산 수행에 도움을 주는 메서드 집합</title>
+</head>
+<body>
+    <script>
+        let num1 = -30.73;
+        let num2 = 30.73;
+        let num3 = 30.25;
+
+        // Math.abs() : 절대값으로 반환
+        console.log(`num1 : ${Math.abs(num1)}`);
+        console.log(`num2 : ${Math.abs(num2)}`);
+
+        // Math.round() : 소수점자리 반올림(.5이상)
+        console.log(`num1 반올림: ${Math.round(num2)}`);
+        console.log(`num2 반올림: ${Math.round(num3)}`);
+
+        // Math.ceil() : 소수점자리 올림
+        console.log(`num1 올림: ${Math.ceil(num2)}`);
+        console.log(`num2 올림: ${Math.ceil(num3)}`);
+
+        // Math.floor() : 소수점자리 내림
+        console.log(`num1 내림: ${Math.floor(num2)}`);
+        console.log(`num2 내림: ${Math.floor(num3)}`);
+
+        // Math.random() : 0~1사이의 무작위 난수 반환
+        console.log(`랜덤수 : ${Math.random()}`);
+        console.log(`랜덤수 : ${Math.random()}`);
+        console.log(`랜덤수 : ${Math.random()}`);
+
+    </script>
+
+    <ul class="tab">
+        <li>탭메뉴1</li>
+        <li>탭메뉴2</li>
+        <li>탭메뉴3</li>
+        <li>탭메뉴4</li>
+        <li>탭메뉴5</li>
+    </ul>
+    <script>
+        // 새로고침 할 때 마다 무작위로 탭메뉴 활성화
+        // li[0] , li[1], li[2], li[3]
+        let lists = document.querySelectorAll('.tab li');
+        let listNum = lists.length;
+        let randomNum =  Math.floor(Math.random()*5);
+        console.log(listNum);
+        console.log(Math.floor(randomNum));
+
+        lists[randomNum].style.backgroundColor = 'yellow';
+    </script>
+</body>
+</html>

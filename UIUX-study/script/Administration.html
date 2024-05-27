@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            font-size: 50px;
+            color: blue;
+        }
+        div.on {
+            color: red;
+        }
+        span {
+            color: aqua;
+        }
+        span.on1 {
+            color:rgb(181, 85, 255)
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="dot_pr">
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+        <div>
+            <span>**********</span>
+        </div>
+    </div>
+
+    <script>
+        const divn1 = document.querySelectorAll('dot_pr div');
+        const spn1 = document.querySelectorAll('dot_pr span');
+        
+        for(i=1; i<=10; i++) {
+            spn1[i].addEventListener('click', () => ) {
+
+            }
+
+        }
+    </script> -->
+
+    <script>
+        // div 10줄 span 10개
+        // for (i=1; i<=10; i++) {
+        //     if(i%2==0) {
+        //         document.write('<div style="font-size: 50px; color :blue; text-align: center;">')
+        //     }else{
+        //         document.write('<div style="font-size: 50px; color :red; text-align: center;">')
+        //     }
+        //         for (j=1; j<=i; j++) {
+        //             document.write('<span>*</span>')
+        //         }
+        //     document.write('</div>')
+        // }
+
+        for (i=1; i<=10; i++) {
+            document.write('<div>')
+                for (j=1; j<=i; j++) {
+                    if(j%2==0) {
+                        document.write('<span class="on1">*</span>')
+                    }else{
+                        document.write('<span>*</span>')
+                    }
+                }
+            document.write('</div>')
+        }
+
+        // div-빨강(class=), div-초록(div)
+        // for(i=1; i<=10; i++) {
+        //     if(i%2==0) {
+        //         document.write('<div class="on">')
+        //     }else{
+        //         document.write('<div>')
+        //     }
+        //     for (j=1; j<=i; j++) {
+        //             document.write('<span>*</span>')
+        //         }
+        //     document.write('</div>')
+        // }
+
+        // for (i=1; i<10; i++) {
+        //     document.write('<div>2 * '+i+' = '+(2 * i)+'</div>');
+        // }
+
+        // // 2~9단 출력
+        // for(let j=2; j<10; j++) {
+        //     for(let i=1; i<10; i++) {
+        //         document.wirte('<div>'+j+' * '+i+' = '+(j * i)+'</div>');
+        //     }
+        // }
+    </script>
+
+    <div style="font-size: 15px;"></div>
+</body>
+</html>

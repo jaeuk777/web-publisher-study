@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cha_tab {
+            position: relative;
+            width: 1000px;
+            height: 500px;
+            background-color: aqua;
+        }
+
+        .cha_tab span {
+            position: absolute;
+            float: right;
+        }
+
+        .cha_tab div {
+            float: left;
+            width: 230px;
+            height: 300;
+            background-color: blueviolet;
+        }
+        
+
+        .cha_tab ul {
+            display: none;
+        }
+
+        /* .tab_area .on h1 {background-color: rgb(229, 255, 0);}
+        .tab_area .on p {background-color: rgb(0, 255, 255);}
+        .tab_area .on span {background-color: rgb(202, 57, 255);} */
+    </style>
+</head>
+<body>
+    <div class="cha_tab">
+        <div class="tab1">
+            <h1>공지사항</h1>
+            <ul>공지사항 리스트
+                <li>항목 1</li>
+                <li>항목 2</li>
+            </ul>
+            <span>공지사항 더보기</span>
+        </div>
+        <div class="tab2">
+            <h1>보도자료</h1>
+            <ul>보도자료 리스트
+                <li>항목 1</li>
+                <li>항목 2</li>
+            </ul>
+            <span>보도자료 더보기</span>
+        </div>
+
+        <div class="tab3">
+            <h1>설명자료</h1>
+            <ul>설명자료 리스트
+                <li>항목 1</li>
+                <li>항목 2</li>
+            </ul>
+            <span>설명자료 더보기</span>
+        </div>
+
+        <div class="tab4">
+            <h1>입찰정보</h1>
+            <ul>입창정보 리스트
+                <li>항목 1</li>
+                <li>항목 2</li>
+            </ul>
+            <span>입찰정보 더보기</span>
+        </div>
+    </div>
+
+    <script>
+        const h1Elements = document.querySelectorAll('.cha_tab h1');
+        const ulElements = document.querySelectorAll('.cha_tab ul');
+
+        for (let i = 0; i < h1Elements.length; i++) {
+            h1Elements[i].addEventListener('click', () => {
+                for (let j = 0; j < ulElements.length; j++) {
+                    ulElements[j].style.display = 'none';
+                }
+                ulElements[i].style.display = 'block';
+            });
+        }
+        
+    </script>
+
+    <!-- <div class="tab_area">
+        <div class="on">
+            <h1>제목</h1>
+            <p>리스트11111</p>
+            <span>더보기</span>
+        </div>
+
+        <div>
+            <h1>제목</h1>
+            <p>리스트11111</p>
+            <span>더보기</span>
+        </div>
+
+        <div>
+            <h1>제목</h1>
+            <p>리스트11111</p>
+            <span>더보기</span>
+        </div>
+
+        <div>
+            <h1>제목</h1>
+            <p>리스트11111</p>
+            <span>더보기</span>
+        </div>
+    </div>
+
+    <script>
+        // h1을 클릭하면 p.span 디자인 변경
+        const tabBox = document.querySelectorAll('.tab_area div');
+        const hns1 = document.querySelectorAll('.tab_area h1');
+        const lists = document.querySelectorAll('.tab_area p');
+        const mores = document.querySelectorAll('.tab_area span');
+
+        // 0번째 h1 클릭하면 0번째 h1, 0번째 p, 0번째 span 디자인(배경색)
+
+        // hns1[0].addEventListener('click', () => {
+        //     tabBox[0].className = 'on';
+        // })
+
+        for(let i=0; i<4; i++) {
+            hns1[i].addEventListener('click', () => {
+                for(let k=0; k<4; k++) {
+                    tabBox[k].className = '';
+                }
+                tabBox[i].className = 'on';
+            })
+        }
+
+        // hns1[0].addEventListener('click', () => {
+        //     hns1[0].className = 'on';
+        //     lists[0].className = 'on';
+        //     mores[0].className = 'on';
+        // }) // 동작(Event), 익명함수
+
+        // hns1[1].addEventListener('click', () => {
+        //     hns1[1].style.backgroundColor = 'orange';
+        //     lists[1].style.backgroundColor = 'orange';
+        //     mores[1].style.backgroundColor = 'orange';
+        // })
+    </script> -->
+
+</body>
+</html>
