@@ -23,7 +23,7 @@ body {
 }
 
 .header {
-    background-color: #6200ea;
+    background-color: #393E46;
     color: #ffffff;
     padding: 10px 0;
 }
@@ -63,11 +63,14 @@ body {
     padding: 10px;
     align-items: center;
 }
+.main h1 {
+    color: #00ADB5;
+}
 
 /* --------------------------header end------------------------- */
 
 .main {
-    background-color: #ffffff;
+    background-color: #EEEEEE;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
@@ -75,7 +78,7 @@ body {
 }
 
 .main h2 {
-    color: #6200ea;
+    color: #00ADB5;
 }
 
 section {
@@ -97,17 +100,17 @@ section {
 .search-box button {
     padding: 10px 20px;
     border: none;
-    background-color: #6A24FE;
+    background-color: #00ADB5;
     color: #ffffff;
     cursor: pointer;
     border-radius: 4px;
 }
 
 footer {
-    background-color: #6A24FE;
+    background-color: #393E46;
     color: #ffffff;
     text-align: center;
-    padding: 10px 0;
+    padding: 2px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -128,12 +131,12 @@ ul li {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    background-color: #00ADB5;
     border-radius: 4px;
 }
 
 .title {
-    color: #6A24FE;
+    color: #393E46;
     margin-bottom: 10px;
 }
 
@@ -173,7 +176,6 @@ ul li {
     width: 130px;
     height: 225px;
     float: right;
-    
 }
 
 .result {
@@ -199,7 +201,7 @@ ul li {
 }
 .pagination button {
     padding: 5px 10px;
-    background-color: #6200ea;
+    background-color: #00ADB5;
     color: white;
     border: none;
     border-radius: 4px;
@@ -208,4 +210,89 @@ ul li {
 .pagination button.disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+.addbutton {
+    padding: 5px 10px;
+    border: none;
+    background-color: #00ADB5;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+#resetCalories {
+    padding: 5px 10px;
+    border: none;
+    background-color: #00ADB5;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+/* --------------------------걸음수 가져오기------------------------- */
+.walking {
+    display: flex;
+    justify-content: center;
+}
+.walking-chat {
+    text-align: center;
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    transition: 0.3s;
+    /* left: 40%; */
+    /* background: conic-gradient(green 10deg, red 10deg 100deg ); */
+    background-color: #222831;
+    /* transform: translateX(-40); */
+}
+.center {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: #222831;
+    /* align-items: center; */
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.walk-info {
+    background-color: wheat;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 1000px;
+    text-align: center;
+    color: red;
+}
+
+/* --------------------------footer end------------------------- */
+@media screen and (max-width: 720px){
+    #nutritionTable {
+        font-size: 13px;
+    }
+    #nutritionTable tr th:nth-child(5) {
+        display: none;
+    }
+    #nutritionTable tr th:nth-child(6) {
+        display: none;
+    }
+    .td5 {
+        display: none;
+    }
+    .td6 {
+        display: none;
+    }
+
+}
+@media (max-width: 500px) {
+    #nutritionTable {
+        font-size: 10px;
+    }
+    .addbutton {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
 }

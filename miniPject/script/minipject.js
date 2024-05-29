@@ -50,9 +50,9 @@ function displayResults(result, page, itemsPerPage) {
             <td>${item.MAKER_NAME}</td>
             <td>${item.NUTR_CONT1} kcal</td>
             <td>${item.NUTR_CONT3} g</td>
-            <td>${item.NUTR_CONT4} g</td>
-            <td>${item.NUTR_CONT2} g</td>
-            <td><button onclick="addCalories(${item.NUTR_CONT1})">추가</button></td>
+            <td class="td5">${item.NUTR_CONT4} g</td>
+            <td class="td6">${item.NUTR_CONT2} g</td>
+            <td><button class="addbutton" onclick="addCalories(${item.NUTR_CONT1})">추가</button></td>
         `;
         resultBody.appendChild(tr);
     });
@@ -104,18 +104,18 @@ function addCalories(calories) {
     document.getElementById('caloriesToday').innerText = `오늘 먹은 칼로리: ${totalCalories.toFixed(2)} kcal`;
 }
 
-document.getElementById('resetCalories').addEventListener('click', function() {
+document.getElementById('resetCalories').addEventListener('click', function () {
     totalCalories = 0;
     document.getElementById('caloriesToday').innerText = '오늘 먹은 칼로리: 0 kcal';
 });
 
 // ------------------------------ 날씨 정보 가져오기 -------------------------
-const onload = document.querySelector('header_bottom') 
-window.onload = function() { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
+const onload = document.querySelector('header_bottom')
+window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
     navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo) {
-        document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) +`</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
+        document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + `</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
         document.getElementById('currentWeight').innerHTML = '내 몸무게: <span class="sp1">' + userInfo.weight + ' kg</span>'; // 입력정보창의 몸무게 가져오기 
         document.getElementById('bmi').innerHTML = 'BMI지수: <span class="sp2">' + calculateBMI(userInfo.height, userInfo.weight) + `</span>`; // BMI 지수 계산해서 가져오기
         document.getElementById('weightStatus').innerHTML = '체중: <span class="sp3">' + getWeightStatus(calculateBMI(userInfo.height, userInfo.weight)) + `</span>`; // bmi값으로 비만도 계산 함수 가져와서 표시(??표시된 글자 css 먹히는 법 찾아야함)
@@ -134,39 +134,39 @@ window.onload = function() { // 페이지에 들어갈때 작동하는 함수 (�
 
 const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
 const success = (position) => {
-const latitude = position.coords.latitude;
-const longitude = position.coords.longitude;
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-getWeather(latitude, longitude);
+    getWeather(latitude, longitude);
 };
 const getWeather = (lat, lon) => {
     const tempSection = document.querySelector('.temperature');
     const placeSection = document.querySelector('.place');
     const descSection = document.querySelector('.description');
     const iconSection = document.querySelector('.icons');
-fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
-)
-    .then((response) => {
-    return response.json();
-    })
-    .then((json) => {
-    const temperature = (json.main.temp-273.15).toFixed(0);
-    const place = json.name;
-    const description = json.weather[0].description;
-    const icon = json.weather[0].icon;
-    console.log(icon);
-    const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-    iconSection.setAttribute('src', iconURL);
+    fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
+    )
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            const temperature = (json.main.temp - 273.15).toFixed(0);
+            const place = json.name;
+            const description = json.weather[0].description;
+            const icon = json.weather[0].icon;
+            console.log(icon);
+            const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+            iconSection.setAttribute('src', iconURL);
 
-    tempSection.innerHTML = temperature + `도`;
-    placeSection.innerHTML = place;
-    descSection.innerHTML = description;
-    console.log(json);
-    })
-    .catch((error) => {
-    alert(error);
-    });
+            tempSection.innerHTML = temperature + `도`;
+            placeSection.innerHTML = place;
+            descSection.innerHTML = description;
+            console.log(json);
+        })
+        .catch((error) => {
+            alert(error);
+        });
 }
 
 // ------------------------------ 내 정보 불러오기 -------------------------
@@ -200,3 +200,48 @@ function getRecommendedIntake(age, gender) {
         return (2000 - (age * 10)) + ' kcal';
     }
 };
+
+// ------------------------------ 오늘 걸음수 측정 -------------------------
+let previousBeta = null;
+let isStepDetected = false;
+let stepCount = 0;
+const walkinginfo = document.querySelector('.walking');
+const chartColorchange = document.querySelector('.walking-chat');
+const chartPlus = document.querySelector('.center');
+
+function startStepCounting() {
+    // 걸음 수 측정을 위해 이벤트 리스너 등록
+    window.addEventListener("deviceorientation", (event) => {
+        const { beta } = event;
+
+        // 이전 beta 값이 null인 경우 초기화
+        if (previousBeta === null) {
+            previousBeta = beta;
+            return;
+        }
+
+        // 이전 값과 현재 값의 차이 계산
+        const deltaBeta = beta - previousBeta;
+
+        // 걸음을 감지하는 조건 설정
+        if (!isStepDetected && deltaBeta > 10) {
+            isStepDetected = true;
+        } else if (isStepDetected && deltaBeta < -10) {
+            isStepDetected = false;
+            stepCount++;
+        }
+
+        previousBeta = beta;
+        displayStepCount();
+    });
+}
+
+// 걸음 수 출력
+function displayStepCount(item) {
+    console.log("걸음 수:", stepCount);
+    chartColorchange.style.background = `conic-gradient(#00ADB5 ${stepCount}deg, white ${stepCount}deg 1000deg)`
+    // chartPlus.innerHTML = `<div class="walk-info">오늘 걸음수 : ${stepCount}</div>`
+}
+
+// 걸음 수 측정 시작
+startStepCounting();
