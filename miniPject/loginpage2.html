@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정보 입력</title>
-    <link rel="stylesheet" href="/miniPject/project.css">
+    <link rel="stylesheet" href="/miniPject/style/project.css">
     <style>
         *{
             padding: 0;
@@ -14,20 +14,20 @@
         body {
             font-size: 14px;
             font-family: 'Roboto',sans-serif;
-            background-color: white;
+            background-color: #222831;
         }
         .container {
             width: 400px;
-            height: 450px;
-            margin-top: 100px;
+            height: 550px;
+            margin-top: 80px;
             padding: 40px;
             box-sizing: border-box;
-            background-color: aliceblue;
-            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            background-color: #EEEEEE;
+            -webkit-box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
+            -moz-box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
+            -ms-box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
+            -o-box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
+            box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
         }
         .container > h1 {
             font-size: 24px;
@@ -39,6 +39,7 @@
             height: 48px;
             padding: 0 10px;
             box-sizing: border-box;
+            margin-top: 16px;
             margin-bottom: 16px;
             border-radius: 6px;
             background-color: #f8f8f8;
@@ -47,6 +48,7 @@
             color: #2a2a2a;
         }
         #userForm button{
+            border-radius: 6px;
             width: 100%;
             height: 40px;
             padding: 0 10px;
@@ -66,20 +68,20 @@
         <h1>사용자 정보 입력</h1>
         <form id="userForm">
             <label for="height">키 (cm):</label>
-            <input type="number" id="height" name="height" required>
-            <br>
+            <input type="number" id="height" name="height" placeholder="cm" required>
+            <br><br>
             <label for="weight">몸무게 (kg):</label>
-            <input type="number" id="weight" name="weight" required>
-            <br>
+            <input type="number" id="weight" name="weight" placeholder="kg" required>
+            <br><br>
             <label for="age">나이:</label>
-            <input type="number" id="age" name="age" required>
-            <br>
-            <label  id="gender" for="gender">성별:</label>
+            <input type="number" id="age" name="age" placeholder="age" required>
+            <br><br>
+            <label  id="gender" for="gender">성별 :</label>
             <select id="gender" name="gender" required>
                 <option value="male">남성</option>
                 <option value="female">여성</option>
             </select>
-            <br>
+            <br><br><br>
             <button type="submit">제출</button>
         </form>
     </div>
