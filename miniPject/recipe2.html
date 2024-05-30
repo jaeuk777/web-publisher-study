@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            background-color: #222831;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #recipe-detail {
+            display: none;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 600px;
+            padding: 40px;
+            background-color: #EEEEEE;
+            box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
+        }
+        .recipe-list-container {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .recipe-item {
+            display: inline-block;
+            text-align: center;
+            margin-right: 10px;
+        }
+        .recipe-item img {
+            display: block;
+            margin: 0 auto;
+        }
+        .mainimg {
+            width: 100px;
+            height: 80px;
+        }
+        .slides-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+        }
+        .navigation button {
+            background-color: #00ADB5;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        #back-button {
+            background-color: #00ADB5;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipes</h1>
+        <div class="recipe-list-container">
+            <ul id="recipes"></ul>
+        </div>
+        <div id="recipe-detail">
+            <h2 id="recipe-title"></h2>
+            <div class="slides-container">
+                <div class="slides" id="recipe-content"></div>
+                <div class="navigation">
+                    <button id="prev">Prev</button>
+                    <button id="next">Next</button>
+                </div>
+            </div>
+            <button id="back-button">Back</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('recipedata.json')
+                .then(response => response.json())
+                .then(data => {
+                    const recipesData = data.COOKRCP01.row;
+                    const recipeList = document.getElementById('recipes');
+                    const recipeDetail = document.getElementById('recipe-detail');
+                    const recipeTitle = document.getElementById('recipe-title');
+                    const recipeContent = document.getElementById('recipe-content');
+                    const backButton = document.getElementById('back-button');
+                    const prevButton = document.getElementById('prev');
+                    const nextButton = document.getElementById('next');
+
+                    // 레시피 목록 생성
+                    recipesData.forEach((recipe, index) => {
+                        const recipeItem = document.createElement('li');
+                        recipeItem.classList.add('recipe-item');
+
+                        const img = document.createElement('img');
+                        img.src = recipe.ATT_FILE_NO_MAIN;
+                        img.alt = recipe.RCP_NM;
+                        img.classList.add('mainimg');
+
+                        const recipeName = document.createElement('div');
+                        recipeName.textContent = recipe.RCP_NM;
+
+                        recipeItem.appendChild(img);
+                        recipeItem.appendChild(recipeName);
+                        recipeItem.addEventListener('click', () => showRecipeDetail(index));
+
+                        recipeList.appendChild(recipeItem);
+                    });
+
+                    backButton.addEventListener('click', () => {
+                        recipeList.parentElement.style.display = 'flex';
+                        recipeDetail.style.display = 'none';
+                        recipeContent.style.transform = 'translateX(0%)';
+                        currentIndex = 0;
+                    });
+
+                    let currentIndex = 0;
+
+                    function showRecipeDetail(index) {
+                        const recipe = recipesData[index];
+                        recipeTitle.textContent = recipe.RCP_NM;
+                        recipeContent.innerHTML = '';
+
+                        // 슬라이드 콘텐츠 생성
+                        for (let i = 1; i <= 20; i++) {
+                            const imgKey = `MANUAL_IMG${i.toString().padStart(2, '0')}`;
+                            const manualKey = `MANUAL${i.toString().padStart(2, '0')}`;
+                            if (recipe[imgKey] && recipe[manualKey]) {
+                                const slide = document.createElement('div');
+                                slide.classList.add('slide');
+
+                                const img = document.createElement('img');
+                                img.src = recipe[imgKey];
+                                slide.appendChild(img);
+
+                                const p = document.createElement('p');
+                                p.textContent = recipe[manualKey];
+                                slide.appendChild(p);
+
+                                recipeContent.appendChild(slide);
+                            }
+                        }
+
+                        recipeList.parentElement.style.display = 'none';
+                        recipeDetail.style.display = 'block';
+
+                        // 슬라이드 초기화
+                        currentIndex = 0;
+                        updateSlides();
+                    }
+
+                    function updateSlides() {
+                        const slides = document.querySelectorAll('.slide');
+                        const totalSlides = slides.length;
+                        const percentage = -100 * currentIndex;
+                        recipeContent.style.transform = `translateX(${percentage}%)`;
+
+                        prevButton.disabled = currentIndex === 0;
+                        nextButton.disabled = currentIndex === totalSlides - 1;
+                    }
+
+                    prevButton.addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateSlides();
+                        }
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        const totalSlides = document.querySelectorAll('.slide').length;
+                        if (currentIndex < totalSlides - 1) {
+                            currentIndex++;
+                            updateSlides();
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching the recipes:', error));
+        });
+    </script>
+</body>
+</html>
