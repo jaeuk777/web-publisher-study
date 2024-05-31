@@ -266,6 +266,12 @@ ul li {
     text-align: center;
     color: red;
 }
+.walking-counter {
+    padding: 30px;
+    margin: 50px;
+    color: #00ADB5;
+    justify-content: center;
+}
 
 /* --------------------------footer end------------------------- */
 @media screen and (max-width: 720px){
@@ -294,5 +300,10 @@ ul li {
         padding: 5px 10px;
         font-size: 10px;
     }
-
+}
+@media (max-width: 450px) {
+    .addbutton {
+        padding: 0.185rem;
+        font-size: 0.3rem;
+    }
 }

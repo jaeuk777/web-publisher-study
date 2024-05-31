@@ -41,13 +41,21 @@
             margin-bottom: 20px;
         }
         .recipe-item {
+            width: 300px;
+            height: 260px;
             display: inline-block;
             text-align: center;
             margin-right: 10px;
         }
+        .recipe-item {
+            
+        }
         .recipe-item img {
+            width: 250px;
+            height: 200px;
             display: block;
             margin: 0 auto;
+            border-radius: 10px;
         }
         .mainimg {
             width: 100px;
@@ -85,11 +93,30 @@
             cursor: pointer;
             margin-top: 10px;
         }
+        .back-button {
+            position: absolute;
+            font-size: 19px;
+            width: 50px;
+            height: 50px;
+            background-color: #00ADB5;
+            border-radius: 100%;
+            flex-direction: row;
+            padding: 10px;
+            top: 0px;
+            left: 0px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 400px;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+    <button type="button" class="back-button"><</button>
     <div class="container">
-        <h1>Recipes</h1>
+        <h1>건강 레시피</h1><br><br>
         <div class="recipe-list-container">
             <ul id="recipes"></ul>
         </div>
@@ -98,11 +125,11 @@
             <div class="slides-container">
                 <div class="slides" id="recipe-content"></div>
                 <div class="navigation">
-                    <button id="prev">Prev</button>
-                    <button id="next">Next</button>
+                    <button id="prev">이전</button>
+                    <button id="next">다음</button>
                 </div>
             </div>
-            <button id="back-button">Back</button>
+            <button id="back-button">목록</button>
         </div>
     </div>
     <script>
@@ -131,6 +158,7 @@
 
                         const recipeName = document.createElement('div');
                         recipeName.textContent = recipe.RCP_NM;
+                        // recipeName.className.add('img-name');
 
                         recipeItem.appendChild(img);
                         recipeItem.appendChild(recipeName);
@@ -162,6 +190,7 @@
                                 slide.classList.add('slide');
 
                                 const img = document.createElement('img');
+                                img.classList.add('recipe-img');
                                 img.src = recipe[imgKey];
                                 slide.appendChild(img);
 
@@ -208,6 +237,11 @@
                 })
                 .catch(error => console.error('Error fetching the recipes:', error));
         });
+
+        const backBtn = document.querySelector('.back-button')
+        backBtn.addEventListener('click', ()=> {
+            window.location.href = '/miniPject/minipject.html';
+        })
     </script>
 </body>
 </html>

@@ -115,8 +115,8 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
     navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo) {
-        document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + `</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
-        document.getElementById('currentWeight').innerHTML = '내 몸무게: <span class="sp1">' + userInfo.weight + ' kg</span>'; // 입력정보창의 몸무게 가져오기 
+        document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + ` kg</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
+        document.getElementById('currentWeight').innerHTML = '내 몸무게: <span class="sp1">' + calculatemyWeight(userInfo.weight, calculateStandardWeight(userInfo.height, userInfo.gender)) + ' </span>'; // 입력정보창의 몸무게 가져오기 
         document.getElementById('bmi').innerHTML = 'BMI지수: <span class="sp2">' + calculateBMI(userInfo.height, userInfo.weight) + `</span>`; // BMI 지수 계산해서 가져오기
         document.getElementById('weightStatus').innerHTML = '체중: <span class="sp3">' + getWeightStatus(calculateBMI(userInfo.height, userInfo.weight)) + `</span>`; // bmi값으로 비만도 계산 함수 가져와서 표시(??표시된 글자 css 먹히는 법 찾아야함)
         document.getElementById('recommendedIntake').innerHTML = '최소권장량: ' + getRecommendedIntake(userInfo.age, userInfo.gender); // 남자 2500 여자 2000 의 기본 칼로리로 나이와 성별로 기본 권장량 계산해서 표기
@@ -174,9 +174,16 @@ const getWeather = (lat, lon) => {
 function calculateStandardWeight(height, gender) {
     // 간단한 표준 몸무게 계산 공식 (예: 남성: height - 100, 여성: height - 105)
     if (gender === 'male') {
-        return (height - 100).toFixed(2) + ' kg';
+        return (height - 100) ;
     } else {
-        return (height - 105).toFixed(2) + ' kg';
+        return (height - 105) ;
+    }
+}
+function calculatemyWeight(weight, exweight) {
+    if (exweight <= weight) {
+        return weight.innerHTML = `<span style="color: red;">${weight} kg</span>`;
+    } else {
+        return weight.innerHTML = `<span style="color: green;">${weight} kg</span>`;
     }
 }
 
@@ -187,7 +194,7 @@ function calculateBMI(height, weight) {
 
 function getWeightStatus(bmi) {
     if (bmi < 18.5) return '<span class=bmi1>미달</span>';
-    if (bmi >= 18.5 && bmi < 24.9) return '<span class="bmi2">정상</span><img class="img2" src="/img/2024_min_v_01.jpg" alt="">';
+    if (bmi >= 18.5 && bmi < 24.9) return '<span class="bmi2">정상</span>'; //<img class="img2" src="/img/2024_min_v_01.jpg" alt="">'
     if (bmi >= 25 && bmi < 29.9) return '<span class="bmi3">과체중</span>';
     return '<span class="bmi4">비만</span>';
 }
@@ -238,8 +245,20 @@ function startStepCounting() {
 
 // 걸음 수 출력
 function displayStepCount(item) {
-    console.log("걸음 수:", stepCount);
+    chartPlus.innerHTML = `<span class="walking-counter">걸음수${stepCount}</span>`;
     chartColorchange.style.background = `conic-gradient(#00ADB5 ${stepCount}deg, white ${stepCount}deg 1000deg)`
+        while (true) {
+            console.log('마우스를 돌려보세요')
+            if (stepCount > 20) {
+                alert('조금만 더 힘내세요');
+                
+            }else if (stepCount) {
+
+            }
+            break;
+
+        }    
+    // console.log("걸음 수:", stepCount);
     // chartPlus.innerHTML = `<div class="walk-info">오늘 걸음수 : ${stepCount}</div>`
 }
 
