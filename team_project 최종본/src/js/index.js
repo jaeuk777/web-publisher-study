@@ -111,28 +111,29 @@ slides[i].addEventListener('mouseleave', () => {
 });
 }
 
-// function showSlides() {
-//     slides.forEach((slide, index) => {
-//         if (index == slideIndex) {
-//             slide.style.display = 'block';
-//         } else {
-//             slide.style.display = 'none';
-//         }
-//     });
-// }
+// ------------------------------------section3----------------------------------
+const videoBtn = document.querySelector('.videoBtn');
+const cardBtn = document.querySelector('.cardBtn');
+const cardNews = document.querySelector('.card_news');
+const videoNews = document.querySelector('.video_news');
+videoBtn.addEventListener('click', () => {
+  videoNews.style.display = 'flex';
+  cardNews.style.display = 'none';
+})
+cardBtn.addEventListener('click', ()=> {
+  videoNews.style.display = 'none';
+  cardNews.style.display = 'flex'
+})
 
-// showSlides();
-
-// prevBtn.addEventListener('click', () => {
-//     slideIndex = (slideIndex === 0) ? slides.length - 1 : slideIndex - 1;
-//     showSlides();
-// });
-
-// nextBtn.addEventListener('click', () => {
-//     slideIndex = (slideIndex === slides.length - 1) ? 0 : slideIndex + 1;
-//     showSlides();
-// });
-
-
-
+// ------------------------------------section4----------------------------------
+// const pension = document.querySelector('.pension_box');
+// const pensionBtn = document.querySelector('.pension_btn');
+// pension.addEventListener('mouseover', () =>{
+//   if (true) {
+//     pensionBtn.style.backgroundColor = 'black';
+//   } else {
+//     return;
+//     // return pensionBtn.style.backgroundColor = 'red';
+//   }
+// })
 

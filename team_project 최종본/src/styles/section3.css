@@ -1,0 +1,49 @@
+#section3 {
+    background-color: white
+}
+.section3_h2, .section3_h3 {
+    font-size: 0px;
+}
+
+.video_news, .card_news {
+    display: flex;
+}
+
+.card_news {
+    display: none;
+}
+
+.news_box dl dd a img{
+    padding: 10px;
+    border-radius: 20px;
+    width: 300px;
+    height: 170px;
+    object-fit: cover;
+}
+
+.news_box p {
+    font-size: 1.15rem;
+    padding: 10px;
+    width: 300px;
+    height: 30px;
+}
+
+.news_box dt {
+    font-size: 0.8rem;
+    padding: 10px;
+    width: 300px;
+    height: 10px;
+}
+
+.section3_h2 button {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0);
+}
+.section3_h2 button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

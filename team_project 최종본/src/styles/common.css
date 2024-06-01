@@ -1,8 +1,11 @@
 @charset "utf-8";
-html,
+html {
+  font-size: 10px;
+}
 body {
   padding: 0;
   margin: 0;
+  font-size: 1.6rem;
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -35,7 +38,7 @@ h3,
 h4,
 h5,
 h6,
-strong {
+strong {margin: 0px;
   font-weight: normal;
   font-size: 15px;
 }
