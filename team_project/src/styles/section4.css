@@ -1,0 +1,120 @@
+.section4-container {
+    display: flex;
+}
+.pension_box{
+    position: relative;
+    width: 300px;
+    height: 180px;
+    background-color: rgba(105, 195, 210, 0.901);
+    border-radius: 7px;
+    /* padding: 2rem; */
+}
+.pension_box:hover span{
+    background-color: white;
+}
+.pension_box h2,
+.pension_box span {
+    margin-left: 3rem;
+}
+
+.pension_box h2{
+    margin-top: 3rem;
+    position: absolute;
+}
+
+.pension_box span {
+    padding: 0.7rem;
+    border-radius: 40px;
+    margin-top: 12rem;
+    background-color: rgba(47, 92, 77, 0.188);
+    position: absolute;
+}
+
+.pension_box img {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+.sns_box {
+    margin-left: 3rem;
+    /* padding: 10px; */
+    padding-left: 25px;
+    width: 300px;
+    height: 180px;
+    background-color: white;
+    border: 0.1rem solid rgba(128, 128, 128, 0.186);
+    border-radius: 7px;
+}
+.sns_box h2 {
+    margin-bottom: 35px;
+}
+.sns_box span:nth-child(1) {
+    color: red;
+}
+.sns_box a {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.icon-naver {
+    background-color: rgb(0, 214, 0, 0.854 );
+    border: 0.1rem solid rgb(0, 214, 0, 0.854);
+}
+.icon-naver:hover {
+    background-color: white;
+}
+.icon-naver:hover i {
+    color:rgb(0, 214, 0);
+}
+.icon-instagram {
+    background-color: rgba(217, 0, 255, 0.854);
+    border: 0.1rem solid rgb(217, 0, 255, 0.854);
+}
+.icon-instagram:hover {
+    background-color: white;
+}
+.icon-instagram:hover i {
+    color: rgb(217, 0, 255);
+}
+.icon-facebook {
+    background-color: rgb(44, 61, 255, 0.854);
+    border: 0.1rem solid rgb(44, 61, 255, 0.854);
+}
+.icon-facebook:hover {
+    background-color: white;
+}
+.icon-facebook:hover i {
+    color: rgb(44, 61, 255);
+}
+.icon-youtube {
+    background-color: rgba(255, 0, 0, 0.846);
+    border: 0.1rem solid rgba(255, 0, 0, 0.846);
+}
+.icon-youtube:hover {
+    background-color: white;
+}
+.icon-youtube:hover i {
+    color: red;
+}
+.icon-x {
+    background-color: rgb(95, 210, 255);
+    border: 0.1rem solid rgb(95, 210, 255);
+}
+.icon-x:hover {
+    background-color: white;
+}
+.icon-x:hover i {
+    color: skyblue;
+}
+
+i {
+    color: white;
+    font-size: 2.6rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
