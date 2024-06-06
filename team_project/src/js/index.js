@@ -11,17 +11,32 @@ const nextBtn = document.querySelector('.btn_next');
 const stopBtn = document.querySelector('.btn_stop');
 const startBtn = document.querySelector('.btn_start');
 const slideCounter = document.querySelector('.slide_counter');
-const navimfo = document.querySelector('nav_info');
-const submenu = document.querySelector('submenu_container')
 let slideIndex = 0;
 let autoSlideInterval;
 
 // console.log(boarderlist);
 // console.log(bannerImg);
 
-// navimfo.addEventListener('mouseseen', ()=>{
-  
-// })
+document.addEventListener("DOMContentLoaded", function() {
+  const navInfo = document.querySelector(".header_nav.nav_info");
+  const submenuContainer = document.querySelector(".submenu_container");
+
+  navInfo.addEventListener("mouseenter", function() {
+    submenuContainer.style.display = "block";
+  });
+
+  navInfo.addEventListener("mouseleave", function() {
+    submenuContainer.style.display = "none";
+  });
+
+  submenuContainer.addEventListener("mouseenter", function() {
+    submenuContainer.style.display = "block";
+  });
+
+  submenuContainer.addEventListener("mouseleave", function() {
+    submenuContainer.style.display = "none";
+  });
+});
 
 let leftWidth = 0;
 artiHead.forEach((item, index) => {
