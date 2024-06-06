@@ -11,11 +11,17 @@ const nextBtn = document.querySelector('.btn_next');
 const stopBtn = document.querySelector('.btn_stop');
 const startBtn = document.querySelector('.btn_start');
 const slideCounter = document.querySelector('.slide_counter');
+const navimfo = document.querySelector('nav_info');
+const submenu = document.querySelector('submenu_container')
 let slideIndex = 0;
 let autoSlideInterval;
 
 // console.log(boarderlist);
 // console.log(bannerImg);
+
+// navimfo.addEventListener('mouseseen', ()=>{
+  
+// })
 
 let leftWidth = 0;
 artiHead.forEach((item, index) => {
