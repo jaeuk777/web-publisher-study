@@ -115,7 +115,7 @@ startBtn.addEventListener('click', () => {
   stopBtn.style.display = 'inline-block'; // 멈춤 버튼 표시
 });
 
-console.log(slides);
+// console.log(slides);
 
 for(let i=0; i<slides.length; i++) {
 
