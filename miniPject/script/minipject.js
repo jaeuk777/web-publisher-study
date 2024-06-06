@@ -246,18 +246,7 @@ function startStepCounting() {
 // 걸음 수 출력
 function displayStepCount(item) {
     chartPlus.innerHTML = `<span class="walking-counter">걸음수${stepCount}</span>`;
-    chartColorchange.style.background = `conic-gradient(#00ADB5 ${stepCount}deg, white ${stepCount}deg 1000deg)`
-        while (true) {
-            console.log('마우스를 돌려보세요')
-            if (stepCount > 20) {
-                alert('조금만 더 힘내세요');
-                
-            }else if (stepCount) {
-
-            }
-            break;
-
-        }    
+    chartColorchange.style.background = `conic-gradient(#00ADB5 ${stepCount}deg, white ${stepCount}deg 1000deg)`    
     // console.log("걸음 수:", stepCount);
     // chartPlus.innerHTML = `<div class="walk-info">오늘 걸음수 : ${stepCount}</div>`
 }
