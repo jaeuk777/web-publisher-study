@@ -1,5 +1,7 @@
 #section3 {
-    background-color: white
+    width: 100%;
+    background-color: white;
+    display: flex;
 }
 .section3_h2, .section3_h3 {
     font-size: 0px;
@@ -46,4 +48,55 @@
 .section3_h2 button:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+}
+.menu-item span.icon {
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 15px;
+    background-image: url('/team_project/src/images/quick.png');
+    /* background-size: cover; */
+}
+/* Define specific background positions for each icon */
+.icon-law {
+    background-position: 0 0;
+}
+.icon-institute {
+    background-position: -2.4rem 0;
+}
+.icon-research {
+    background-position: 0 -2.4rem;
+}
+.icon-organization {
+    background-position: -2.4rem -2.4rem;
+}
+.icon-application {
+    background-position: 0 -4.8rem;
+}
+.icon-check {
+    background-position: -2.4rem -4.8rem;
+}
+.icon-data {
+    background-position: 0 -7.2rem;
+}
+.icon-contact {
+    background-position: -4.8rem -7.2rem;
 }

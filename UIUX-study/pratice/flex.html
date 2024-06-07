@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+        *{padding: 0; margin: 0; list-style: none;}
+
+        .container{
+            width: 100%;
+            height: 100%;
+            background-color: rgb(209, 255, 211);
+
+            display: flex;
+            justify-content: center;
+        }
+        ul{
+            width: 500px;
+            background-color: rgb(102, 253, 152);
+            margin: 3px;
+
+            display: flex; /* 행 : row */
+            flex-direction: column;
+            /* flex-wrap: nowrap; */
+
+            justify-content: center;
+            align-items: center;
+
+            /* overflow: auto; */
+        }
+        li{
+            /* flex-shrink: 0; */
+            /* min-width: 200px; */
+
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            margin: 1px;
+        }
+        .ul{
+            width: 100%;
+            height: 800px;
+            background-color: rgb(94, 94, 160);
+
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-around; */
+            justify-content: space-between;
+            align-items: center;
+        }
+        .li{
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            margin: 2px;
+        }
+
+        .percent_div{
+            width: 100%;
+
+            height: 500px;
+            background-color: silver;
+        }
+        .px_div{
+            width: 800px;
+
+            height: 100%;
+            background-color: gray;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="ul">
+        <div class="li"></div>
+        <div class="li"></div>
+        <div class="li"></div>
+        <div class="li"></div>
+        <div class="li"></div>
+    </div>
+    <div class="percent_div">
+        <div class="px_div">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas, beatae? Soluta accusantium hic, quidem ad, sint nihil aperiam tempora, sapiente eius vel repellat excepturi doloribus mollitia voluptates asperiores dignissimos necessitatibus.
+        </div>
+    </div>
+</body>
+</html>

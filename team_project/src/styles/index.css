@@ -255,24 +255,34 @@ h2 {
 
 
 .banner_box_ul {
-/* margin-left: 300px;
-margin-right: 300px; */
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 .banner_box .banner_box_ul>li {
-justify-content: center;
   padding: 15px;
-  display: inline-block;
-  width: 30%;
+  width: 270px;
+  border-left: 1px solid gray;
+}
+.banner_box .banner_box_ul>li:hover {
+  background-color: #cccccca1;
+}
+.banner_box .banner_box_ul>li:nth-child(3){
+  border-right: 1px solid gray;
 }
 .banner_box .banner_box_ul>li>a {
   width: 100%;
   color: white;
+  font: 1.8rem;
   font-weight: bold;
   position: relative;
-  /* padding: 20px; */
+}
+.banner_box .banner_box_ul>li>a:hover {
+  text-decoration: underline;
 }
 .banner_box .banner_box_ul>li>a>i {
-  font-size: 1.8rem;
+  font-weight: bold;
+  font-size: 1.6rem;
   display: contents;
   color: white;
 }
