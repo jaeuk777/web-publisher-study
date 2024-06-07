@@ -1,6 +1,15 @@
 #section3 {
     width: 100%;
     background-color: white;
+    
+}
+.flex_box{
+    display: flex;
+    justify-content: space-between;
+    
+    /* align-items: center; */
+}
+.section3_container {
     display: flex;
 }
 .section3_h2, .section3_h3 {
@@ -49,7 +58,18 @@
     text-decoration: underline;
     cursor: pointer;
 }
-
+.favorites_box {
+    width: 50%;
+}
+.favorites_box h2 {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    padding: 20px;
+    padding-bottom: 0;
+    /* margin: 0 auto; */
+    font-size: 1.7rem;
+}
 .menu-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
