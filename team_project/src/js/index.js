@@ -147,14 +147,27 @@ cardBtn.addEventListener('click', ()=> {
 })
 
 // ------------------------------------section4----------------------------------
-// const pension = document.querySelector('.pension_box');
-// const pensionBtn = document.querySelector('.pension_btn');
-// pension.addEventListener('mouseover', () =>{
-//   if (true) {
-//     pensionBtn.style.backgroundColor = 'black';
-//   } else {
-//     return;
-//     // return pensionBtn.style.backgroundColor = 'red';
-//   }
-// })
+const swiperContainer = document.querySelector('.swiper-container');
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        const prevButton = document.querySelector('.swiper-button-prev');
+        const nextButton = document.querySelector('.swiper-button-next');
+
+        let currentIndex = 0;
+        const slideWidth = document.querySelector('.service-item').offsetWidth;
+
+        function goToSlide(index) {
+            if (index < 0 || index >= swiperWrapper.children.length) return;
+            swiperWrapper.style.transform = `translateX(-${index * slideWidth}px)`;
+            currentIndex = index;
+        }
+
+        prevButton.addEventListener('click', () => {
+            goToSlide(currentIndex - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            goToSlide(currentIndex + 1);
+        });
+
+
 

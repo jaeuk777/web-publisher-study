@@ -1,6 +1,170 @@
 .section4-container {
     display: flex;
 }
+/* .service-box {
+    width: 50%;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.tab-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.tab-menu span {
+    margin-right: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.tab-menu .active {
+    font-weight: bold;
+    color: #ff6b81;
+}
+
+.services {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #fef3f5;
+}
+
+.service-item {
+    width: 30%;
+    text-align: center;
+    padding: 20px;
+}
+
+.service-item .icon {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(141deg, #fff 0%, #fff 100%);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background-image: url('/team_project/src/images/r_icon.png');
+} */
+
+
+#icon1 {
+    background-position: 0 0;
+}
+
+#icon2 {
+    background-position: -5rem 0;
+}
+
+#icon3 {
+    background-position: -5rem -5rem;
+}
+
+.service-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+.service-box {
+    width: 50%;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.tab-menu span {
+    margin-right: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.tab-menu .active {
+    font-weight: bold;
+    color: #ff6b81;
+}
+
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.service-item {
+    width: 33.33%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.service-item .icon {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(141deg, #fff 0%, #fff 100%);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background-image: url('/team_project/src/images/r_icon.png');
+}
+
+.service-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.nav-button {
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 20px;
+}
+
+
 .pension_box{
     position: relative;
     width: 300px;

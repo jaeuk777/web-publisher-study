@@ -307,28 +307,52 @@
         </section>
         <section id="section4" class="">
           <div class="container section4-container">
-            <div class="tabs">
-              <button class="tab" onclick="showTab(0)">신고/신청</button>
-              <button class="tab" onclick="showTab(1)">찾아보기</button>
-              <button class="tab" onclick="showTab(2)">관련서비스</button>
-          </div>
-          <div class="content">
-              <div class="content-item">
-                  <div class="service">
-                      <img src="icon1.png" alt="보건복지 상담센터 129">
-                      <p>보건복지 상담센터 129</p>
+            <div class="service-box">
+              <div class="tab-menu">
+                  <span class="active">신고/신청</span>
+                  <span>찾아보기</span>
+                  <span>관련서비스</span>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+              </div>
+              <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                      <div class="service-item">
+                          <span class="icon" id="icon1"></span>
+                          <p>보건복지 상담센터 129</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon2"></span>
+                          <p>아이지킴콜 112</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon3"></span>
+                          <p>부정비리 신고센터</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon4"></span>
+                          <p>보건의료인 면허(자격)</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon5"></span>
+                          <p>진료정보침해사건 신고</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon6"></span>
+                          <p>민원신청</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon7"></span>
+                          <p>비금여진료비 확인</p>
+                      </div>
+                      <div class="service-item">
+                          <span class="icon" id="icon8"></span>
+                          <p>건강보험행정심판</p>
+                      </div>
                   </div>
-                  <div class="service">
-                      <img src="icon2.png" alt="아이즈짐콜 112">
-                      <p>아이즈짐콜 112</p>
-                  </div>
-                  <div class="service">
-                      <img src="icon3.png" alt="부정비리 신고센터">
-                      <p>부정비리 신고센터</p>
-                  </div>
+
               </div>
           </div>
-          <button class="nav-button" onclick="nextContent()">></button>
             <div class="pension_box">
               <a href="https://www.nps.or.kr/jsppage/intro/finance/finance_cal_info.jsp" target="_blank" title="새창 - 국민연금 재정계산">
                 <h2>제5차 국민연금 <br>재정계산</h2>
