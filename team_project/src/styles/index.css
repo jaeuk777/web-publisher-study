@@ -92,7 +92,7 @@ h2 {
   display: flex;
   width: 100%;
   height: auto;
-  display: none; /* 기본적으로 서브메뉴 숨기기 */
+  display: none; 
   position: absolute;
   background-color: white;
   border: 1px solid #ccc;
@@ -101,7 +101,7 @@ h2 {
 
 .header_nav.nav_info:hover + .submenu_container,
 .submenu_container:hover {
-  display: block; /* 호버 시 서브메뉴 표시 */
+  display: block; 
   color: red;
 }
 /* .header_nav.nav_info:hover a:hover {
@@ -109,7 +109,7 @@ h2 {
 } */
 
 .header_nav {
-  position: relative; /* 서브메뉴의 위치를 부모 기준으로 설정 */
+  position: relative; 
 }
 
 .nav_container li {
@@ -153,7 +153,7 @@ h2 {
 }
 
 .header_nav a:hover {
-  color: red; /* 마우스를 올렸을 때 글씨를 빨간색으로 변경 */
+  color: red; 
 }
 
 .header_nav a::after {
@@ -166,12 +166,12 @@ h2 {
   border-radius: 50%;
   bottom: -3px;
   left: 50%;
-  transform: translateX(-50%) scale(0); /* 초기 상태에서 동그라미 숨기기 */
-  transition: transform 0.1s ease-in-out; /* 애니메이션 설정 */
+  transform: translateX(-50%) scale(0); 
+  transition: transform 0.1s ease-in-out; 
 }
 
 .header_nav a:hover::after {
-  transform: translateX(-50%) scale(1); /* 호버 시 동그라미 표시 */
+  transform: translateX(-50%) scale(1); 
 }
 
 /* ---------------- header End ---------------- */
@@ -466,21 +466,6 @@ h2 {
   margin: 3px;
   background-color: rgba(0, 126, 237, 0);
 }
-
-/* .banner_imgbox .btn_next {
-  float: right;
-  top: 0;
-  right: 0;
-  position: absolute;
-  z-index: 50;
-}
-.banner_imgbox .btn_prev {
-  float: right;
-  top: 0;
-  right: 10;
-  position: absolute;
-  z-index: 50;
-} */
 
 
 /* ---------------- main End ---------------- */

@@ -79,13 +79,43 @@
     padding: 20px;
 }
 .menu-item {
+    position: relative;
+    width: 300px;
+    height: 40px;
     display: flex;
     align-items: center;
-    background-color: #f9f9f9;
+    border-radius: 7px;
+    border: 0.8px solid rgba(128, 128, 128, 0.267);
     padding: 10px;
-    border-radius: 8px;
     text-decoration: none;
     color: #333;
+    overflow: hidden;
+    z-index: 0;
+}
+.menu-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(134deg, #E82856 0%, #B867FF 100%);
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    z-index: -1;
+}
+.menu-item:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+.menu-item:hover {
+    color: white;
+}
+.menu-item span i {
+    color: black;
+    font-size: larger;
+    margin-left: 130px;
+    position: absolute;
 }
 .menu-item span.icon {
     display: inline-block;
@@ -95,7 +125,13 @@
     background-image: url('/team_project/src/images/quick.png');
     /* background-size: cover; */
 }
-/* Define specific background positions for each icon */
+.menu-item span.text {
+    transition: color 0.3s ease;
+}
+.menu-item:hover span.text {
+    color: white;
+}
+
 .icon-law {
     background-position: 0 0;
 }
