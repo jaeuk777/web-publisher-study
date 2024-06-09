@@ -1,159 +1,138 @@
 .section4-container {
     display: flex;
 }
-/* .service-box {
-    width: 50%;
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
 .tab-menu {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .tab-menu span {
-    margin-right: 20px;
-    font-size: 18px;
+    font-weight: bolder;
+    font-size: 2.3rem;
+    padding: 9px;
+    margin-left: 1px;
+}
+.prev-btn, .next-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 2px;
+    color: gray;
+    text-decoration: none;
+    border: 0.5px solid gray;
+    border-radius: 50%;
     cursor: pointer;
 }
-
-.tab-menu .active {
-    font-weight: bold;
-    color: #ff6b81;
+.prev-btn {
+    margin-left: 150px;
 }
 
-.services {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    background-color: #fef3f5;
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgb(255, 88, 88);
+    border: 0.5px solid white;
+    color: white;
 }
 
 .service-item {
-    width: 30%;
+    width: 33%;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
+    transition: transform 0.5s ease; /* 슬라이딩 효과를 위한 transition 속성 추가 */
+}
+
+.services {
+    width: 600px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgba(255, 192, 203, 0.22);
+    display: flex;
+    overflow: hidden;
+}
+
+.service-item.hidden {
+    transform: translateX(100%); /* 숨겨진 아이콘은 오른쪽으로 이동 */
+}
+
+.service-item:not(:nth-child(-n+3)) {
+    display: none;
 }
 
 .service-item .icon {
     display: block;
-    width: 5rem;
-    height: 5rem;
+    width: 9.3rem;
+    height: 9.3rem;
     background: linear-gradient(141deg, #fff 0%, #fff 100%);
     border-radius: 50%;
     margin: 0 auto 1.5rem;
     position: relative;
     overflow: hidden;
-    background-image: url('/team_project/src/images/r_icon.png');
-} */
-
+}
+.service-item .icon::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    background-image: url(/team_project/src/images/r_icon.png);
+    background-size: 40rem 15rem;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+.service-item .icon:hover::after {
+    /* background: linear-gradient(141deg, #FF0000 0%, #00FFFF 100%); */
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+}
+.service-item .icon::after {
+    content: '';
+    display: block;
+    background: linear-gradient(10deg, #E82856 0%, #B867FF 100%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: .2s ease;
+}
 
 #icon1 {
     background-position: 0 0;
 }
 
-#icon2 {
+#icon2::before {
     background-position: -5rem 0;
 }
 
-#icon3 {
+#icon3::before {
     background-position: -5rem -5rem;
 }
 
-.service-item p {
-    margin: 0;
-    font-size: 16px;
-    color: #333;
-}
-.service-box {
-    width: 50%;
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
+#icon4 {
+    background-position: -10rem 0;
 }
 
-.tab-menu {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px 0;
+#icon5 {
+    background-position: -10rem -5rem;
 }
 
-.tab-menu span {
-    margin-right: 20px;
-    font-size: 18px;
-    cursor: pointer;
+#icon6 {
+    background-position: -15rem 0;
 }
 
-.tab-menu .active {
-    font-weight: bold;
-    color: #ff6b81;
+#icon7 {
+    background-position: -15rem -5rem;
 }
 
-.swiper-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+#icon8 {
+    background-position: -20rem 0;
 }
 
-.swiper-wrapper {
-    display: flex;
-    transition: transform 0.3s ease;
-}
 
-.service-item {
-    width: 33.33%;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.service-item .icon {
-    display: block;
-    width: 5rem;
-    height: 5rem;
-    background: linear-gradient(141deg, #fff 0%, #fff 100%);
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    position: relative;
-    overflow: hidden;
-    background-image: url('/team_project/src/images/r_icon.png');
-}
-
-.service-item p {
-    margin: 0;
-    font-size: 16px;
-    color: #333;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-}
-
-.swiper-button-prev {
-    left: 10px;
-}
-
-.swiper-button-next {
-    right: 10px;
-}
 
 .nav-button {
     background-color: #fff;
@@ -166,9 +145,11 @@
 
 
 .pension_box{
+    margin-top: 55px;
+    margin-left: 50px;
     position: relative;
-    width: 300px;
-    height: 180px;
+    width: 380px;
+    height: 200px;
     background-color: rgba(105, 195, 210, 0.901);
     border-radius: 7px;
     /* padding: 2rem; */
