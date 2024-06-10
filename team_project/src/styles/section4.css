@@ -33,9 +33,10 @@
 }
 
 .service-item {
-    width: 33%;
+    width: 200px;
     text-align: center;
-    padding: 30px;
+    margin-top: 10px;
+    padding: 20px;
     transition: transform 0.5s ease; /* 슬라이딩 효과를 위한 transition 속성 추가 */
 }
 
@@ -104,13 +105,22 @@
 #icon1 {
     background-position: 0 0;
 }
+#icon1:hover::before {
+    background-image: url(/team_project/src/images/r_icon_h.png); 
+}
 
 #icon2::before {
     background-position: -5rem 0;
 }
+#icon2:hover::before {
+    background-image: url(/team_project/src/images/r_icon_h.png); 
+}
 
 #icon3::before {
     background-position: -5rem -5rem;
+}
+#icon3:hover::before {
+    background-image: url(/team_project/src/images/r_icon_h.png); 
 }
 
 #icon4 {
