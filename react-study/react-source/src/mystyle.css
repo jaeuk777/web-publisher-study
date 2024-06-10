@@ -1,0 +1,13 @@
+.App02 {
+    background-color: beige;
+    text-align: center;
+    padding: 1em;
+}
+.m1 {
+    background-color: rgb(196, 133, 255);
+    color: white;
+}
+#m2 {
+    padding: 1em;
+    border: 3px dashed green;
+}
