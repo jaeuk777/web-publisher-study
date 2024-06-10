@@ -14,7 +14,7 @@
 }
 .prev-btn, .next-btn {
     display: inline-block;
-    padding: 6px 10px;
+    padding: 7px 7px;
     margin: 2px;
     color: gray;
     text-decoration: none;
@@ -23,13 +23,22 @@
     cursor: pointer;
 }
 .prev-btn {
-    margin-left: 150px;
+    margin-left: 210px;
+}
+.prev-btn i, .next-btn i {
+    font-size: 2rem;
+    top: 10px;
+    position: relative;
+    color: black;
 }
 
 .prev-btn:hover, .next-btn:hover {
     background-color: rgb(255, 88, 88);
     border: 0.5px solid white;
     color: white;
+}
+.prev-btn:hover i, .next-btn:hover i{
+    color: white
 }
 
 .service-item {
@@ -151,7 +160,7 @@
 
 .pension_box{
     position: relative;
-    width: 300px;
+    width: 320px;
     height: 200px;
     background-color: rgba(105, 195, 210, 0.901);
     border-radius: 7px;
@@ -184,11 +193,11 @@
     position: absolute;
 }
 .sns_box {
-    margin-left: 3rem;
+    margin-left: 20px;
     /* padding: 10px; */
-    padding-left: 25px;
-    width: 300px;
-    height: 180px;
+    padding-left: 30px;
+    width: 290px;
+    height: 200px;
     background-color: white;
     border: 0.1rem solid rgba(128, 128, 128, 0.186);
     border-radius: 7px;
