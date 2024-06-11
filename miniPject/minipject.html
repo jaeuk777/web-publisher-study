@@ -14,8 +14,8 @@
                     <h2>프로필</h2>
                     <ul>
                         <li>        
-                            <span class="icon icon_menu"><h2>메뉴창</h2></span>
-                            
+                            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+                            <!-- <span class="icon icon_menu"><h2>메뉴창</h2></span> -->
                         </li>
                         <!-- <li>
                             <span class="icon icon-notification"></span>
@@ -38,6 +38,16 @@
             </div>
         </header>
         <!------------------------ header end ------------------------>
+        <div class="menu-overlay" id="menuOverlay"></div>
+        <nav class="menu-tab" id="menuTab">
+            <ul>
+                <li><a href="#myInfo">내 정보</a></li>
+                <li><a href="#nutritionSearch">영양 정보 검색</a></li>
+                <li><a href="#todaySteps">오늘 걸음수</a></li>
+                <li><a href="#healthRecipe">오늘의 건강 레시피</a></li>
+                <li><a href="loginpage2.html">로그아웃</a></li>
+            </ul>
+        </nav>
         <main class="main">
             <div class="container">
                 <section class="">
@@ -81,7 +91,7 @@
                 <h1>오늘 걸음수</h1>
                 <section class="walking">
                     <div class="walking-chat">
-                        <span class="center">개발자 창에서 sensore 켜주세요</span>
+                        <span class="center">개발자모드에 sensore 켜주세요</span>
                         <p class="walking-info"></p>
                     </div>
                 </section>

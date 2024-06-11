@@ -1,3 +1,21 @@
+// ------------------------------ 탭메뉴 -------------------------
+function toggleMenu() {
+    const menuTab = document.getElementById('menuTab');
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (menuTab.style.display === 'none' || menuTab.style.display === '') {
+        menuTab.style.display = 'block';
+        menuOverlay.style.display = 'block';
+    } else {
+        menuTab.style.display = 'none';
+        menuOverlay.style.display = 'none';
+    }
+}
+
+// 메뉴 오버레이 클릭 시 메뉴 닫기
+document.getElementById('menuOverlay').onclick = function() {
+    toggleMenu();
+}
+// ------------------------------ 영양 정보 검색 -------------------------
 let nutritionData = [];
 let currentPage = 1;
 const itemsPerPage = 10;
@@ -253,6 +271,7 @@ function displayStepCount(item) {
 
 // 걸음 수 측정 시작
 startStepCounting();
+// ------------------------------ 건강 레시피 -------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('recipedata.json')
@@ -363,3 +382,4 @@ const backBtn = document.querySelector('.back-button')
 backBtn.addEventListener('click', ()=> {
     window.location.href = '/miniPject/minipject.html';
 })
+
