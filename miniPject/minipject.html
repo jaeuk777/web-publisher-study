@@ -81,18 +81,26 @@
                 <h1>오늘 걸음수</h1>
                 <section class="walking">
                     <div class="walking-chat">
-                        <span class="center"></span>
+                        <span class="center">개발자 창에서 sensore 켜주세요</span>
                         <p class="walking-info"></p>
                     </div>
                 </section>
                 <section>
-                    <h1>오늘의 건강 레시피</h1>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                    <h1>건강 레시피</h1><br><br>
+                    <div class="recipe-list-container">
+                        <ul id="recipes"></ul>
+                    </div>
+                    <div id="recipe-detail">
+                        <h2 id="recipe-title"></h2>
+                        <div class="slides-container">
+                            <div class="slides" id="recipe-content"></div>
+                            <div class="navigation">
+                                <button id="prev">이전</button>
+                                <button id="next">다음</button>
+                            </div>
+                        </div>
+                        <button id="back-button">목록</button>
+                    </div>
                 </section>
             </div>
         </main>

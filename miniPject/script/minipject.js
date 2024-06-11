@@ -18,7 +18,7 @@ function searchNutrition() {
     resultBody.innerHTML = '';
     paginationDiv.innerHTML = '';
 
-    // 입력된 값에 따라 영양 정보를 검색합니다.
+    // 입력된 값에 따라 영양 정보를 검색
     const result = nutritionData.filter(item => item.DESC_KOR.includes(searchInput));
     if (result.length === 0) {
         resultBody.innerHTML = '<tr><td colspan="7">결과를 찾을 수 없습니다.</td></tr>';
@@ -253,3 +253,113 @@ function displayStepCount(item) {
 
 // 걸음 수 측정 시작
 startStepCounting();
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('recipedata.json')
+        .then(response => response.json())
+        .then(data => {
+            const recipesData = data.COOKRCP01.row;
+            const recipeList = document.getElementById('recipes');
+            const recipeDetail = document.getElementById('recipe-detail');
+            const recipeTitle = document.getElementById('recipe-title');
+            const recipeContent = document.getElementById('recipe-content');
+            const backButton = document.getElementById('back-button');
+            const prevButton = document.getElementById('prev');
+            const nextButton = document.getElementById('next');
+
+            // 레시피 목록 생성
+            recipesData.forEach((recipe, index) => {
+                const recipeItem = document.createElement('li');
+                recipeItem.classList.add('recipe-item');
+
+                const img = document.createElement('img');
+                img.src = recipe.ATT_FILE_NO_MAIN;
+                img.alt = recipe.RCP_NM;
+                img.classList.add('mainimg');
+
+                const recipeName = document.createElement('div');
+                recipeName.textContent = recipe.RCP_NM;
+                // recipeName.className.add('img-name');
+
+                recipeItem.appendChild(img);
+                recipeItem.appendChild(recipeName);
+                recipeItem.addEventListener('click', () => showRecipeDetail(index));
+
+                recipeList.appendChild(recipeItem);
+            });
+
+            backButton.addEventListener('click', () => {
+                recipeList.parentElement.style.display = 'flex';
+                recipeDetail.style.display = 'none';
+                recipeContent.style.transform = 'translateX(0%)';
+                currentIndex = 0;
+            });
+
+            let currentIndex = 0;
+
+            function showRecipeDetail(index) {
+                const recipe = recipesData[index];
+                recipeTitle.textContent = recipe.RCP_NM;
+                recipeContent.innerHTML = '';
+
+                // 슬라이드 콘텐츠 생성
+                for (let i = 1; i <= 20; i++) {
+                    const imgKey = `MANUAL_IMG${i.toString().padStart(2, '0')}`;
+                    const manualKey = `MANUAL${i.toString().padStart(2, '0')}`;
+                    if (recipe[imgKey] && recipe[manualKey]) {
+                        const slide = document.createElement('div');
+                        slide.classList.add('slide');
+
+                        const img = document.createElement('img');
+                        img.classList.add('recipe-img');
+                        img.src = recipe[imgKey];
+                        slide.appendChild(img);
+
+                        const p = document.createElement('p');
+                        p.textContent = recipe[manualKey];
+                        slide.appendChild(p);
+
+                        recipeContent.appendChild(slide);
+                    }
+                }
+
+                recipeList.parentElement.style.display = 'none';
+                recipeDetail.style.display = 'block';
+
+                // 슬라이드 초기화
+                currentIndex = 0;
+                updateSlides();
+            }
+
+            function updateSlides() {
+                const slides = document.querySelectorAll('.slide');
+                const totalSlides = slides.length;
+                const percentage = -100 * currentIndex;
+                recipeContent.style.transform = `translateX(${percentage}%)`;
+
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex === totalSlides - 1;
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlides();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                const totalSlides = document.querySelectorAll('.slide').length;
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateSlides();
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching the recipes:', error));
+});
+
+const backBtn = document.querySelector('.back-button')
+backBtn.addEventListener('click', ()=> {
+    window.location.href = '/miniPject/minipject.html';
+})
