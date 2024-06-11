@@ -33,7 +33,7 @@
 .footer .bottom-info p span {
     color: #aaa;
 }
-.footer .icons {
+.footer-icons {
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -43,3 +43,4 @@
 .footer .icons img {
     margin-left: 10px;
 }
+
