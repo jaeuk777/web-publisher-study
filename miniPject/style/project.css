@@ -278,15 +278,7 @@ ul li {
 #recipe-detail {
     display: none;
 }
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 600px;
-    padding: 40px;
-    background-color: #EEEEEE;
-    box-shadow: 0 5px 20px #eeeeee63, 0 1px 1px #eeeeee63;
-} */
+
 .recipe-list-container {
     display: flex;
     overflow-x: auto;
@@ -359,6 +351,7 @@ ul li {
     top: 0px;
     left: 0px;
 }
+
 @media (max-width: 600px) {
     .container {
         width: 400px;
@@ -366,13 +359,11 @@ ul li {
     }
 }
 
-/* 메뉴 아이콘 */
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-/* 메뉴 탭 */
 .menu-tab {
     position: absolute;
     top: 60px;
@@ -401,7 +392,6 @@ ul li {
     text-decoration: none;
 }
 
-/* 메뉴 오버레이 */
 .menu-overlay {
     position: fixed;
     top: 0;
