@@ -127,7 +127,6 @@ document.getElementById('resetCalories').addEventListener('click', function () {
     document.getElementById('caloriesToday').innerText = '오늘 먹은 칼로리: 0 kcal';
 });
 
-// ------------------------------ 날씨 정보 가져오기 -------------------------
 const onload = document.querySelector('header_bottom')
 window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
     navigator.geolocation.getCurrentPosition(success);
@@ -145,11 +144,13 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
 }
 
 
+
 // const button = document.querySelector('.button')
 // button.addEventListener('click',() => {
 //     navigator.geolocation.getCurrentPosition(success);
 // });
 
+// ------------------------------ 날씨 정보 가져오기 -------------------------
 const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
 const success = (position) => {
     const latitude = position.coords.latitude;
