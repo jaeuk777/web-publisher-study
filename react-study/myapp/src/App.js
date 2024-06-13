@@ -8,6 +8,15 @@ import MyComp1 from './pages/MyComp1'
 import { Container, Row, Col } from 'react-bootstrap';
 import PageNotFound from './pages/PageNotFound';
 import '../src/pages/Header.css'
+import UserDetail from './components/UserDetail';
+import BoardList from './components/BoardList';
+import UseEffectHook from './components/UseEffectHook';
+import LifeCycle from './components/LifeCycle';
+import Clcok from './components/Clcok';
+import UseRefHook from './components/UseRefHook';
+import AppPropsDrill from './context_api/AppPropsDrill';
+import AppCtx from './context_api/AppCtx';
+import AppCtx2 from './context_api/App'
 
 function App() {
   return (
@@ -21,14 +30,23 @@ function App() {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} sm={3} md={4} style={{border:'1px solid red'}}>
+          <Col xs={12} sm={3} md={4} className='d-none d-sm-block'>
             <Side/>
           </Col>
-          <Col xs={12} sm={9} md={8} style={{border:'1px solid green'}}>
+          <Col xs={12} sm={9} md={8} >
             <Routes>
               <Route path='/' element={<Home/>} />
               <Route path='/comp1'element={<MyComp1/>}/>
-              <Route path='/found' element={<PageNotFound/>}/>
+              <Route path='/users/:id' element={<UserDetail/>}/>
+              <Route path='/board' element={<BoardList/>}/>
+              <Route path='/life' element={<LifeCycle/>}/>
+              <Route path='/hook1' element={<UseEffectHook/>}/>
+              <Route path='/clock' element={<Clcok/>}/>
+              <Route path='/hook2' element={<UseRefHook/>}/>
+              <Route path='/app2' element={<AppPropsDrill/>}/>
+              <Route path='/hook3' element={<AppCtx/>}/>
+              <Route path='/hook4' element={<AppCtx2/>}/>
+              <Route path='*' element={<PageNotFound/>}/>
             </Routes>
           </Col>
         </Row>
