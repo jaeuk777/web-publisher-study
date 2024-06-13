@@ -129,7 +129,7 @@ document.getElementById('resetCalories').addEventListener('click', function () {
 
 const onload = document.querySelector('header_bottom')
 window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
-    navigator.geolocation.getCurrentPosition(success);
+    // navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo) {
         document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + ` kg</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
@@ -139,7 +139,7 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
         document.getElementById('recommendedIntake').innerHTML = '최소권장량: ' + getRecommendedIntake(userInfo.age, userInfo.gender); // 남자 2500 여자 2000 의 기본 칼로리로 나이와 성별로 기본 권장량 계산해서 표기
     } else {
         alert('사용자 정보를 입력해주세요.');
-        window.location.href = 'input.html'; // 정보입력창에서 html로 표시
+        window.location.href = './index.html'; // 정보입력창에서 html로 표시
     }
 }
 
@@ -151,42 +151,42 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
 // });
 
 // ------------------------------ 날씨 정보 가져오기 -------------------------
-const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
-const success = (position) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+// const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
+// const success = (position) => {
+//     const latitude = position.coords.latitude;
+//     const longitude = position.coords.longitude;
 
-    getWeather(latitude, longitude);
-};
-const getWeather = (lat, lon) => {
-    const tempSection = document.querySelector('.temperature');
-    const placeSection = document.querySelector('.place');
-    const descSection = document.querySelector('.description');
-    const iconSection = document.querySelector('.icons');
-    fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
-    )
-        .then((response) => {
-            return response.json();
-        })
-        .then((json) => {
-            const temperature = (json.main.temp - 273.15).toFixed(0);
-            const place = json.name;
-            const description = json.weather[0].description;
-            const icon = json.weather[0].icon;
-            console.log(icon);
-            const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-            iconSection.setAttribute('src', iconURL);
+//     getWeather(latitude, longitude);
+// };
+// const getWeather = (lat, lon) => {
+//     const tempSection = document.querySelector('.temperature');
+//     const placeSection = document.querySelector('.place');
+//     const descSection = document.querySelector('.description');
+//     const iconSection = document.querySelector('.icons');
+//     fetch(
+//         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
+//     )
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((json) => {
+//             const temperature = (json.main.temp - 273.15).toFixed(0);
+//             const place = json.name;
+//             const description = json.weather[0].description;
+//             const icon = json.weather[0].icon;
+//             console.log(icon);
+//             const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+//             iconSection.setAttribute('src', iconURL);
 
-            tempSection.innerHTML = temperature + `도`;
-            placeSection.innerHTML = place;
-            descSection.innerHTML = description;
-            console.log(json);
-        })
-        .catch((error) => {
-            alert(error);
-        });
-}
+//             tempSection.innerHTML = temperature + `도`;
+//             placeSection.innerHTML = place;
+//             descSection.innerHTML = description;
+//             console.log(json);
+//         })
+//         .catch((error) => {
+//             alert(error);
+//         });
+// }
 
 // ------------------------------ 내 정보 불러오기 -------------------------
 
@@ -381,6 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const backBtn = document.querySelector('.back-button')
 backBtn.addEventListener('click', ()=> {
-    window.location.href = '/miniPject/minipject.html';
+    window.location.href = './index.html';
 })
 
