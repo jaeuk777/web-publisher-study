@@ -14,9 +14,13 @@ import UseEffectHook from './components/UseEffectHook';
 import LifeCycle from './components/LifeCycle';
 import Clcok from './components/Clcok';
 import UseRefHook from './components/UseRefHook';
-import AppPropsDrill from './context_api/AppPropsDrill';
-import AppCtx from './context_api/AppCtx';
-import AppCtx2 from './context_api/App'
+import AppPropsDrill from './components/context_api/AppPropsDrill';
+import AppCtx from './components/context_api/AppCtx';
+import AppCtx2 from './components/context_api/App'
+import UseMemoHook from './components/UseMemoHook';
+import UseCallbackHook from './components/UseCallBackHook';
+import ReactMemo from './components/ReactMemo';
+import TodoApp from './components/Todo/TodoApp';
 
 function App() {
   return (
@@ -46,6 +50,10 @@ function App() {
               <Route path='/app2' element={<AppPropsDrill/>}/>
               <Route path='/hook3' element={<AppCtx/>}/>
               <Route path='/hook4' element={<AppCtx2/>}/>
+              <Route path='/hook5' element={<UseMemoHook/>}/>
+              <Route path='/hook6' element={<UseCallbackHook/>}/>
+              <Route path='/memo' element={<ReactMemo/>}/>
+              <Route path='/todo' element={<TodoApp/>}/>
               <Route path='*' element={<PageNotFound/>}/>
             </Routes>
           </Col>

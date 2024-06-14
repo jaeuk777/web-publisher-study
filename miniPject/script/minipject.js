@@ -131,6 +131,7 @@ const onload = document.querySelector('header_bottom')
 window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
     // navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(userInfo);
     if (userInfo) {
         document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + ` kg</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
         document.getElementById('currentWeight').innerHTML = '내 몸무게: <span class="sp1">' + calculatemyWeight(userInfo.weight, calculateStandardWeight(userInfo.height, userInfo.gender)) + ' </span>'; // 입력정보창의 몸무게 가져오기 
@@ -237,29 +238,69 @@ const chartPlus = document.querySelector('.center');
 
 function startStepCounting() {
     // 걸음 수 측정을 위해 이벤트 리스너 등록
-    window.addEventListener("deviceorientation", (event) => {
-        const { beta } = event;
+    // window.addEventListener("deviceorientation", (event) => {
+        // console.log('Alpha: ' + event.alpha);
+        // console.log('Beta: ' + event.beta);
+        // console.log('Gamma: ' + event.gamma);
+        // const { beta } = event;
 
-        // 이전 beta 값이 null인 경우 초기화
-        if (previousBeta === null) {
-            previousBeta = beta;
-            return;
-        }
+        // // 이전 beta 값이 null인 경우 초기화
+        // if (previousBeta === null) {
+        //     previousBeta = beta;
+        //     return;
+        // }
 
-        // 이전 값과 현재 값의 차이 계산
-        const deltaBeta = beta - previousBeta;
+        if (DeviceOrientationEvent.requestPermission) {
+            DeviceOrientationEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                window.addEventListener('deviceorientation', (event) => {
+                    console.log('Alpha: ' + event.alpha);
+                    console.log('Beta: ' + event.beta);
+                    console.log('Gamma: ' + event.gamma);
+                    const { beta } = event;
+                    
+                            // 이전 값과 현재 값의 차이 계산
+                    const deltaBeta = beta - previousBeta;
 
-        // 걸음을 감지하는 조건 설정
-        if (!isStepDetected && deltaBeta > 10) {
-            isStepDetected = true;
-        } else if (isStepDetected && deltaBeta < -10) {
-            isStepDetected = false;
-            stepCount++;
-        }
+                    // 걸음을 감지하는 조건 설정
+                    if (!isStepDetected && deltaBeta > 10) {
+                        isStepDetected = true;
+                    } else if (isStepDetected && deltaBeta < -10) {
+                        isStepDetected = false;
+                        stepCount++;
+                    }
 
-        previousBeta = beta;
-        displayStepCount();
-    });
+                    previousBeta = beta;
+                    displayStepCount();
+                    // 이전 beta 값이 null인 경우 초기화
+                    if (previousBeta === null) {
+                        previousBeta = beta;
+                        return;
+                    }
+                });
+            }
+            }).catch(console.error);
+            } else {
+            // 권한 요청이 필요 없는 브라우저의 경우
+            window.addEventListener('deviceorientation', (event) => {
+                console.log(event.alpha, event.beta, event.gamma);
+            });
+            }
+
+        // // 이전 값과 현재 값의 차이 계산
+        // const deltaBeta = beta - previousBeta;
+
+        // // 걸음을 감지하는 조건 설정
+        // if (!isStepDetected && deltaBeta > 10) {
+        //     isStepDetected = true;
+        // } else if (isStepDetected && deltaBeta < -10) {
+        //     isStepDetected = false;
+        //     stepCount++;
+        // }
+
+        // previousBeta = beta;
+        // displayStepCount();
+    ;
 }
 
 // 걸음 수 출력
@@ -379,8 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching the recipes:', error));
 });
 
-const backBtn = document.querySelector('.back-button')
-backBtn.addEventListener('click', ()=> {
-    window.location.href = './index.html';
-})
+// const backBtn = document.querySelector('.back-button')
+// backBtn.addEventListener('click', ()=> {
+//     window.location.href = './index.html';
+// })
 

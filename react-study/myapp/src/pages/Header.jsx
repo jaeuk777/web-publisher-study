@@ -10,6 +10,9 @@ export default function Header() {
                 <li>
                     <Link to="/comp1">MyComp1</Link>
                 </li>
+                <li>
+                    <Link to="/todo">Todo List</Link>
+                </li>
             </ul>
         </div>
     )

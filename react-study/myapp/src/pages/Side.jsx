@@ -31,6 +31,9 @@ export default function Side() {
                 <ListGroup.Item as={Link} to="/app2">PropsDrill</ListGroup.Item>
                 <ListGroup.Item as={Link} to="/hook3">Context Api</ListGroup.Item>
                 <ListGroup.Item as={Link} to="/hook4">useContextHook</ListGroup.Item>
+                <ListGroup.Item as={Link} to="/hook5">useMemoHook</ListGroup.Item>
+                <ListGroup.Item as={Link} to="/hook6">useCallBackHook</ListGroup.Item>
+                <ListGroup.Item as={Link} to="/memo">React.Memo</ListGroup.Item>
             </ListGroup>
         </Stack>
     )
