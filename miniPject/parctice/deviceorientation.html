@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <title>Device Orientation Example</title>
+</head>
+<body>
+    <button id="enableSensorsButton">Enable Sensors</button>
+    <div id="orientationData">Orientation data will appear here</div>
+
+    <script>
+        // 센서 사용을 요청하는 함수
+        function enableSensors() {
+            if (DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                // iOS 13+ 기기에서는 사용자 허가를 요청해야 함
+                DeviceOrientationEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('deviceorientation', handleOrientation);
+                        } else {
+                            alert('Permission to access device orientation was denied.');
+                        }
+                    })
+                    .catch(console.error);
+            } else {
+                // 다른 브라우저에서는 바로 이벤트 리스너 추가
+                window.addEventListener('deviceorientation', handleOrientation);
+            }
+        }
+
+        // 디바이스의 방향 데이터를 처리하는 함수
+        function handleOrientation(event) {
+            const alpha = event.alpha;
+            const beta = event.beta;
+            const gamma = event.gamma;
+
+            document.getElementById('orientationData').textContent = `
+                Alpha: ${alpha}
+                Beta: ${beta}
+                Gamma: ${gamma}
+            `;
+        }
+
+        // 버튼 클릭 이벤트 핸들러
+        document.getElementById('enableSensorsButton').addEventListener('click', enableSensors);
+    </script>
+</body>
+</html>

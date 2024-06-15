@@ -131,7 +131,6 @@ const onload = document.querySelector('header_bottom')
 window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
     // navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    console.log(userInfo);
     if (userInfo) {
         document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + ` kg</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
         document.getElementById('currentWeight').innerHTML = '내 몸무게: <span class="sp1">' + calculatemyWeight(userInfo.weight, calculateStandardWeight(userInfo.height, userInfo.gender)) + ' </span>'; // 입력정보창의 몸무게 가져오기 
@@ -152,42 +151,42 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
 // });
 
 // ------------------------------ 날씨 정보 가져오기 -------------------------
-// const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
-// const success = (position) => {
-//     const latitude = position.coords.latitude;
-//     const longitude = position.coords.longitude;
+const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
+const success = (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-//     getWeather(latitude, longitude);
-// };
-// const getWeather = (lat, lon) => {
-//     const tempSection = document.querySelector('.temperature');
-//     const placeSection = document.querySelector('.place');
-//     const descSection = document.querySelector('.description');
-//     const iconSection = document.querySelector('.icons');
-//     fetch(
-//         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
-//     )
-//         .then((response) => {
-//             return response.json();
-//         })
-//         .then((json) => {
-//             const temperature = (json.main.temp - 273.15).toFixed(0);
-//             const place = json.name;
-//             const description = json.weather[0].description;
-//             const icon = json.weather[0].icon;
-//             console.log(icon);
-//             const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-//             iconSection.setAttribute('src', iconURL);
+    getWeather(latitude, longitude);
+};
+const getWeather = (lat, lon) => {
+    const tempSection = document.querySelector('.temperature');
+    const placeSection = document.querySelector('.place');
+    const descSection = document.querySelector('.description');
+    const iconSection = document.querySelector('.icons');
+    fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&mode=json&lang=kr`
+    )
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            const temperature = (json.main.temp - 273.15).toFixed(0);
+            const place = json.name;
+            const description = json.weather[0].description;
+            const icon = json.weather[0].icon;
+            console.log(icon);
+            const iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+            iconSection.setAttribute('src', iconURL);
 
-//             tempSection.innerHTML = temperature + `도`;
-//             placeSection.innerHTML = place;
-//             descSection.innerHTML = description;
-//             console.log(json);
-//         })
-//         .catch((error) => {
-//             alert(error);
-//         });
-// }
+            tempSection.innerHTML = temperature + `도`;
+            placeSection.innerHTML = place;
+            descSection.innerHTML = description;
+            console.log(json);
+        })
+        .catch((error) => {
+            alert(error);
+        });
+}
 
 // ------------------------------ 내 정보 불러오기 -------------------------
 
@@ -238,17 +237,14 @@ const chartPlus = document.querySelector('.center');
 
 function startStepCounting() {
     // 걸음 수 측정을 위해 이벤트 리스너 등록
-    // window.addEventListener("deviceorientation", (event) => {
-        // console.log('Alpha: ' + event.alpha);
-        // console.log('Beta: ' + event.beta);
-        // console.log('Gamma: ' + event.gamma);
-        // const { beta } = event;
+    window.addEventListener("deviceorientation", (event) => {
+        const { beta } = event;
 
-        // // 이전 beta 값이 null인 경우 초기화
-        // if (previousBeta === null) {
-        //     previousBeta = beta;
-        //     return;
-        // }
+        // 이전 beta 값이 null인 경우 초기화
+        if (previousBeta === null) {
+            previousBeta = beta;
+            return;
+        }
 
         if (DeviceOrientationEvent.requestPermission) {
             DeviceOrientationEvent.requestPermission().then(permissionState => {
@@ -287,20 +283,20 @@ function startStepCounting() {
             });
             }
 
-        // // 이전 값과 현재 값의 차이 계산
-        // const deltaBeta = beta - previousBeta;
+        // 이전 값과 현재 값의 차이 계산
+        const deltaBeta = beta - previousBeta;
 
-        // // 걸음을 감지하는 조건 설정
-        // if (!isStepDetected && deltaBeta > 10) {
-        //     isStepDetected = true;
-        // } else if (isStepDetected && deltaBeta < -10) {
-        //     isStepDetected = false;
-        //     stepCount++;
-        // }
+        // 걸음을 감지하는 조건 설정
+        if (!isStepDetected && deltaBeta > 10) {
+            isStepDetected = true;
+        } else if (isStepDetected && deltaBeta < -10) {
+            isStepDetected = false;
+            stepCount++;
+        }
 
-        // previousBeta = beta;
-        // displayStepCount();
-    ;
+        previousBeta = beta;
+        displayStepCount();
+    });
 }
 
 // 걸음 수 출력
