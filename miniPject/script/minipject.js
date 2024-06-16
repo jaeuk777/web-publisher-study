@@ -129,7 +129,7 @@ document.getElementById('resetCalories').addEventListener('click', function () {
 
 const onload = document.querySelector('header_bottom')
 window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (이 함수 안에 geoloction 으로 경도 위도 값 가져오기, 유져 정보입력 칸에서 입력된 정보를 json 데이터로 값 가져오기)
-    // navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(success);
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo) {
         document.getElementById('standardWeight').innerHTML = '표준 몸무게: ' + `<span class="sp1">` + calculateStandardWeight(userInfo.height, userInfo.gender) + ` kg</span>`; // li 의 id값을 가져와서 남성 여성의 표준 몸무게 가져오기
