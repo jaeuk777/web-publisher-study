@@ -10,7 +10,7 @@ export default function SingleUser() {
 
     // fetch() 이용해서 get방식으로 요청을 보내보자.
     const getUSerInfo=()=>{
-        let url = `http://reqres.in/api/users/${id}`
+        let url = `https://reqres.in/api/users/${id}`
         console.log('url: ', url)
         fetch(url)
         .then(Response => Response.json())

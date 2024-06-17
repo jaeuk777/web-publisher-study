@@ -35,7 +35,7 @@ export default function Side() {
                 <ListGroup.Item as={Link} to="/hook6">useCallBackHook</ListGroup.Item>
                 <ListGroup.Item as={Link} to="/memo">React.Memo</ListGroup.Item>
                 <ListGroup.Item as={Link} to="/ajax1/7">Rest Apil (User)</ListGroup.Item>
-                <ListGroup.Item as={Link} to="/ajax2/">Rest Apil (UserList)</ListGroup.Item>
+                <ListGroup.Item as={Link} to="/ajax2?page=1&per_page=3">Rest Apil (UserList)</ListGroup.Item>
                 <ListGroup.Item as={Link} to="/ajax3">오늘의 날씨 </ListGroup.Item>
             </ListGroup>
         </Stack>
