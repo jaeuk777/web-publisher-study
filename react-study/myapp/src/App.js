@@ -21,6 +21,7 @@ import UseMemoHook from './components/UseMemoHook';
 import UseCallbackHook from './components/UseCallBackHook';
 import ReactMemo from './components/ReactMemo';
 import TodoApp from './components/Todo/TodoApp';
+import SingleUser from './components/Ajax/SingleUser';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               <Route path='/hook6' element={<UseCallbackHook/>}/>
               <Route path='/memo' element={<ReactMemo/>}/>
               <Route path='/todo' element={<TodoApp/>}/>
+              <Route path='/ajax1/:id' element={<SingleUser/>}/>
               <Route path='*' element={<PageNotFound/>}/>
             </Routes>
           </Col>
