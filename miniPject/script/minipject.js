@@ -151,7 +151,7 @@ window.onload = function () { // 페이지에 들어갈때 작동하는 함수 (
 // });
 
 // ------------------------------ 날씨 정보 가져오기 -------------------------
-const API_KEY = 'ac8c6dcb13dbbf70179b8cb69254643f';
+// const API_KEY = '';
 const success = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
