@@ -13,6 +13,9 @@ export default function Header() {
                 <li>
                     <Link to="/todo">Todo List</Link>
                 </li>
+                <li>
+                    <Link to="/naver">Naver Book</Link>
+                </li>
             </ul>
         </div>
     )

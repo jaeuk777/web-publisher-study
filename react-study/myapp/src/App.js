@@ -24,6 +24,7 @@ import TodoApp from './components/Todo/TodoApp';
 import SingleUser from './components/Ajax/SingleUser';
 import ListUser from './components/Ajax/ListUser';
 import OpenWeather from './components/Ajax/OpenWeather';
+import NaverBookApp from './components/naverBook/NaverBookApp';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
               <Route path='/ajax1/:id' element={<SingleUser/>}/>
               <Route path='/ajax2' element={<ListUser/>}/>
               <Route path='/ajax3' element={<OpenWeather/>}/>
+              <Route path='/naver' element={<NaverBookApp/>}/>
 
               <Route path='*' element={<PageNotFound/>}/>
             </Routes>

@@ -18,7 +18,6 @@ export default function OpenWeather() {
     useEffect(() => {
         const fetchLocation= async () => (
             await getCurrentLocation()
-
         )
         fetchLocation(); // 함수 호충
         // getCurrentLocation();
