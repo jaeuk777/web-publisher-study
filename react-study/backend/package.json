@@ -5,13 +5,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node SeverNaver.js",
-    "dev": "nodemon SeverNaver.js"
-
+    "dev": "nodemon severMember.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "type": "module",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",

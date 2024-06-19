@@ -25,6 +25,9 @@ import SingleUser from './components/Ajax/SingleUser';
 import ListUser from './components/Ajax/ListUser';
 import OpenWeather from './components/Ajax/OpenWeather';
 import NaverBookApp from './components/naverBook/NaverBookApp';
+import SignUp from './components/Member/SignUp';
+import MemberList from './components/Member/MemberList';
+
 
 function App() {
   return (
@@ -62,6 +65,8 @@ function App() {
               <Route path='/ajax2' element={<ListUser/>}/>
               <Route path='/ajax3' element={<OpenWeather/>}/>
               <Route path='/naver' element={<NaverBookApp/>}/>
+              <Route path='/signup' element={<SignUp/>}/>
+              <Route path='/members' element={<MemberList/>}/>
 
               <Route path='*' element={<PageNotFound/>}/>
             </Routes>
