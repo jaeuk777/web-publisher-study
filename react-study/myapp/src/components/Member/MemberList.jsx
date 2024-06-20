@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import './MemberList.css'
+import {Link, useNavigate} from 'react-router-dom'
 // useEffect 훅에서
 // fetchMemberList()호출해서 모든 회원정보 받아오기
 // 목록에 출력하세요
@@ -8,10 +9,34 @@ import './MemberList.css'
 const MemberList= () => {
     const [memberList, setMemberList] = useState([])
 
+    const navigate = useNavigate();
+
     useEffect(()=>{
 
         fetchMemberList();
     },[]);
+
+    // DELETE /api/members/1
+    const deletMember = async(no) => {
+        // alert('삭제')
+        const url = `/api/members/${no}`
+        try{
+            const response = await axios.delete(url)
+            const responseData = response.data;
+            alert(JSON.stringify(responseData))
+
+            if(responseData.result===`success`){
+                alert('삭제 성공')
+                // window.location.href='/members'
+                fetchMemberList();
+            }else{
+                alert('삭제 실패')
+            }
+
+        }catch(err){
+            alert('Error: '+err.message)
+        }
+    }
 
     const fetchMemberList = async () => {
         const url = '/api/members'
@@ -39,14 +64,14 @@ const MemberList= () => {
                 <li>등록일</li>
                 <li>삭제</li>
                 {memberList&&memberList.map((user, i) =>(
-                    <div key={i}>
+                    <Fragment key={i}>
                     <li >{user.no}</li>
-                    <li>{user.NAME}</li>
-                    <li>{user.USERID}</li>
-                    <li>{user.EMAIL}</li>
-                    <li>{user.REG_DATE}</li>
-                    <li>삭제</li>
-                    </div>
+                    <li>{user.name}</li>
+                    <li>{user.userid}</li>
+                    <li>{user.email}</li>
+                    <li>{user.reg_date}</li>
+                    <li><Link to='#' onClick={()=>{deletMember(user.no)}} >삭제</Link></li>
+                    </Fragment>
                     ))
                 }
             </ul>

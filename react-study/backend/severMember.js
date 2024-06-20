@@ -7,7 +7,7 @@ const cors = require('cors')
 const app = express()
 
 // 서버 포트 설정
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5003;
 
 // 미들웨어 설정
 app.use(cors())
@@ -67,7 +67,6 @@ app.get('/api/members', (req, res) =>{
     console.log('get /api/members')
     const sql = "SELECT no, NAME, USERID, PASSMD, EMAIL, date_format(reg_date, '%Y-%m-%d')REG_DATE FROM member ORDER BY no ASC";
 
-    
     pool.getConnection((err,con) => {
         if(err) return res.status(500).json(err)
         con.query(sql, (err, result) => {
@@ -99,8 +98,27 @@ app.delete('/api/members/:no', (req, res) => {
             }
         })
     })
+})
 
-
+app.post('/api/login', (req, res) => {
+    const {userid, passmd} = req.body;
+    console.log(userid, passmd)
+    const sql = "SELECT no, name, userid from MEMBER WHERE userid= ? and passmd= ?;"
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).json({result:'error', message:'Internal Server Error'})
+        con.query(sql, [userid, passmd], (err, result) => {
+            con.release();
+            if(err) return res.status(500).json({result:'error', message:'Database SQL Error'})
+            console.log('result: ', result)
+        if(result.length>0) {
+            const user = result[0]
+            res.json({result: 'success',msg:`${user.name}님 환영합니다`, data:{no:user.no, name:user.name, userid:user.userid}})
+        }else{
+            res.json({result:'fail', msg:'다시 로그인 해주세요'})
+        }
+        })
+    })
+    res.json({result:'success'})
 })
 
 // express 서버 시작
