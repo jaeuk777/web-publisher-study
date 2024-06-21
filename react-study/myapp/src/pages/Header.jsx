@@ -15,7 +15,7 @@ export default function Header() {
             if(tmpUserInfo) { //세션스토리지에 저장된 userInfo가 있을 경우
                 console.log('tmpUserInfo: ', tmpUserInfo, typeof tmpUserInfo) // string
                 // json 형태의 string을 json객체로 변환해주는 함수 : JSON.parse(문자역)==>json객체 반환
-                setUserInfo(JSON.parse(tmpUserInfo));
+                // setUserInfo(JSON.parse(tmpUserInfo));
                 loginAuthUser(JSON.parse(tmpUserInfo));
             }
         }
@@ -48,7 +48,7 @@ export default function Header() {
                         <Link to="#">{user.userid}님 로그인 중...</Link>
                     </li>
                     <li>
-                        <Link to="#" onClick={onLogout}>Lo해ㅕㅅ</Link>
+                        <Link to="#" onClick={onLogout}>Logout</Link>
                     </li>
                 </>
                 }

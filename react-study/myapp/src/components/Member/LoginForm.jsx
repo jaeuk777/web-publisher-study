@@ -31,7 +31,7 @@ export default function LoginForm() {
     }
     const requestLogin = () => {
         axios.post('/api/login', loginUser)
-        .then((response)=> {
+        .then(response=> {
             // alert(JSON.stringify(response.data))
             const res = response.data;
             console.log(res);

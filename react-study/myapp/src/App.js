@@ -30,6 +30,7 @@ import MemberList from './components/Member/MemberList';
 import LoginForm from './components/Member/LoginForm';
 import { LoginUserProvider, useLoginUser } from './components/context_api/LoginUserContext';
 import BoardApp from './components/Board/BoardApp';
+import BoardView from './components/Board/BoardView';
 // 로그인한 회원정보를 제공할 Context
 
 
@@ -74,6 +75,7 @@ function App() {
                 <Route path='/members' element={<MemberList/>}/>
                 <Route path='/login' element={<LoginForm/>}/>
                 <Route path='/post' element={<BoardApp/>}/>
+                <Route path='/post/:id' element={<BoardView/>}/>
 
                 <Route path='*' element={<PageNotFound/>}/>
               </Routes>

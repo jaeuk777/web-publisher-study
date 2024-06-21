@@ -118,9 +118,122 @@ app.post('/api/login', (req, res) => {
         }
         })
     })
-    res.json({result:'success'})
+})
+// board ----------------------------------------
+app.post('/api/boards',(req, res) => {
+    const {title, userid, content} = req.body; // post 방식의 body데이터 받기
+    if(!title||!userid||!content) {
+        return res.status(400).send('제목, 작성자, 글내용을 입력해야 해요')
+    }
+    const sql='insert into board set ?'
+    const boardData = {title,userid,content};
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql, boardData, (err, result) => {
+            con.release()
+            if(err) return res
+            .status(500)
+            .send(err)
+            // console.log('board write result: ', result)
+            if(result.affectedRows>0) {
+                res
+                .json({result:'success', data:{no:result.insertId}})
+            }else{
+                res
+                .json({result:'fail'})
+            }
+            // res.json({result:'success'})
+        })
+    })
+})
+// 글쓰기 끝 ------------------------------
+app.get('/api/boardTotal', (req, res) => {
+    const sql = `SELECT count(id) totalCount from board`
+    pool.getConnection((err,con) => {
+        if (err) return res.status(500).send(err)
+        con.query(sql,(err,result) => {
+        con.release()
+        if (err) return res.status(500).send(err)
+        // console.log(result)
+        //[{totalCount:result[0]}]
+        res.json({totalCount:result[0].totalCount})
+    })
+})})
+app.get('/api/boards', (req, res) => {
+    // console.log('get /api/members')
+    const sql = "SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board order by id desc"
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).json(err) // db 연결오류
+        con.query(sql, (err, result) => {
+            con.release();
+            if(err) return res.status(500).json(err) // sql문 오류
+            res.json(result)
+    })
+    })
+})
+//글 보기 관련
+app.put('/api/boardReadNum/:id', (req,res) => {
+    const id=req.params.id
+    // 조회수 증가
+    const sql = `UPDATE board SET readnum = readnum+1 where id=?`
+    pool.getConnection((err,con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql, [id],(err, result) => {
+            con.release()
+            if(err) return res.status(500).send(err)
+            console.log(result)
+            if(result.affectedRows>0) {
+                res.json({result:'success'})
+            }else{
+                return res.status(404).send('Board not found')
+            }
+    })
+    })
+})
+// 조회수 증가
+app.put('/api/boardReadNum/:id', (req,res)=>{
+    const id=req.params.id;
+    const sql = `UPDATE board SET readnum=readnum+1 where id=?`
+    db.run(sql,[id],(err) => {
+        if(err) return res.status(500).send(err)
+        res.json({result:'success'})
+    })
+})
+// 글 보기
+app.get('/api/boards/:id', (req, res) => {
+    const id=req.params.id;
+    console.log('id: ',id)
+
+    // console.log('get /api/members')
+    const sql = "SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board where id=?"
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).send('Internal Server Error') // db 연결오류
+        con.query(sql, [id], (err, result) => {
+            con.release();
+            if(err) return res.status(500).json(err) // sql문 오류
+            res.json(result)
+    })
+    })
 })
 
+// 글 삭제
+app.delete('/api/boards/:id', (req,res) => {
+    const id = req.params.id
+    const sql = `delete from board where id=?`
+    pool.getConnection((err,con) => {
+        if(err) return res.status(500).send(err)// db연결 오류
+        con.query(sql, [id], (err,result) => {
+            if(err) return res.status(500).send('Error') // db연결 오류
+            if(result.affectedRows>0) {
+                res.json({result:'success'})
+            }else{
+                res.json({result:'fail'})
+            }
+    })
+    })
+})
+
+// ----------------------------------------------
 // express 서버 시작
 app.listen(PORT, () => {
     console.log('serverMember 서버 시작됨...')
