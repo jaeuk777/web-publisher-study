@@ -26,11 +26,26 @@ fetch('./data.json')
     .then(data => nutritionData = data)
     .catch(error => console.error('Error loading JSON:', error));
 
+// 초기화 버튼
+function searchReset() {
+    document.getElementById('searchInput').value = '';
+    const resultBody = document.getElementById('resultBody');
+    const paginationDiv = document.getElementById('pagination');
+    const resultDiv = document.getElementById('result');
+
+    resultDiv.style.display = 'none';
+    resultBody.innerHTML = '';
+    paginationDiv.innerHTML = '';
+    
+    // currentPage= 1;
+
+}
 // 검색 기능
 function searchNutrition() {
     const searchInput = document.getElementById('searchInput').value;
     const resultBody = document.getElementById('resultBody');
     const paginationDiv = document.getElementById('pagination');
+    const resultDiv = document.getElementById('result');
 
     // 재검색 시 이전 결과 지우기
     resultBody.innerHTML = '';
@@ -40,7 +55,12 @@ function searchNutrition() {
     const result = nutritionData.filter(item => item.DESC_KOR.includes(searchInput));
     if (result.length === 0) {
         resultBody.innerHTML = '<tr><td colspan="7">결과를 찾을 수 없습니다.</td></tr>';
+        resultDiv.style.display = 'block';
         return;
+    }
+    if (searchInput === '') {
+        alert('음식을 검색해주세요');
+        return searchReset();
     }
 
     // 페이지네이션 설정
@@ -51,6 +71,8 @@ function searchNutrition() {
 
     // 페이지네이션 버튼 생성
     displayPagination(totalPages);
+
+    resultDiv.style.display = 'block';
 }
 
 function displayResults(result, page, itemsPerPage) {
@@ -116,6 +138,13 @@ function displayPagination(totalPages) {
         paginationDiv.appendChild(lastButton);
     }
 }
+
+// 엔터 키로 검색 실행
+document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        searchNutrition();
+    }
+});
 
 function addCalories(calories) {
     totalCalories += parseFloat(calories);

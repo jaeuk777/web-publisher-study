@@ -54,9 +54,10 @@
                     <h1 class="title">영양 정보 검색</h1>
                     <div class="search-box">
                         <input type="text" id="searchInput" placeholder="음식 이름을 입력하세요" />
+                        <button type="button" onclick="searchReset()">초기화</button>
                         <button type="button" onclick="searchNutrition()">검색</button>
                     </div>
-                    <div class="result">
+                    <div class="result" id="result">
                         <table id="nutritionTable">
                             <thead>
                                 <tr>

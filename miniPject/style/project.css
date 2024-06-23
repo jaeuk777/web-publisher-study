@@ -119,10 +119,11 @@ ul li {
 }
 
 .result {
+    display: none; 
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ddd;
-    background-color: #00ADB5;
+    background-color: #f9f9f9;
     border-radius: 4px;
 }
 
@@ -170,13 +171,6 @@ ul li {
     float: right;
 }
 
-.result {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-}
 .result table {
     width: 100%;
     border-collapse: collapse;
@@ -422,6 +416,7 @@ footer {
     width: 100%;
     height: 5%;
     bottom: 0;
+    z-index: 10000;
 }
 .section-main {
     margin-top: 50px;
