@@ -39,18 +39,18 @@
         </header>
         <!------------------------ header end ------------------------>
         <div class="menu-overlay" id="menuOverlay"></div>
-        <nav class="menu-tab" id="menuTab">
-            <ul>
-                <li><a href="#myInfo">내 정보</a></li>
-                <li><a href="#nutritionSearch">영양 정보 검색</a></li>
-                <li><a href="#todaySteps">오늘 걸음수</a></li>
-                <li><a href="#healthRecipe">오늘의 건강 레시피</a></li>
+        <nav class="menu-tab" id="menuTab" >
+            <ul class="menu-list">
+                <li><a class="hrefChange" href="#section1">내 정보</a></li>
+                <li><a href="#section2">영양 정보 검색</a></li>
+                <li><a href="#section3">오늘 걸음수</a></li>
+                <li><a href="#section4">오늘의 건강 레시피</a></li>
                 <li><a href="index.html">로그아웃</a></li>
             </ul>
         </nav>
         <main class="main">
             <div class="container">
-                <section class="">
+                <section class="section1" id="section1">
                     <h1 class="title">영양 정보 검색</h1>
                     <div class="search-box">
                         <input type="text" id="searchInput" placeholder="음식 이름을 입력하세요" />
@@ -77,7 +77,7 @@
                     </div>
                 </section>
                 <article class="section-main">
-                <section class="user-info">
+                <section class="user-info" id="section2">
                     <h1>내 정보 칸</h1>
                     <ul>
                         <li id="standardWeight">표준 몸무게: </li>
@@ -90,7 +90,7 @@
                     </ul>
                     <img src="" alt="">
                 </section>
-                <section class="walking">
+                <section class="walking" id="section3">
                     <!-- <h1><p>오늘 걸음수</p></h1> -->
                     <div class="walking-chat">
                         <span class="center">개발자모드에 sensore 켜주세요</span>
@@ -98,7 +98,7 @@
                     </div>
                 </section>
                 </article>
-                <section>
+                <section id="section4">
                     <h1>건강 레시피</h1><br><br>
                     <div class="recipe-list-container">
                         <ul id="recipes"></ul>

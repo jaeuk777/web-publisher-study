@@ -267,7 +267,7 @@ ul li {
     height: 60%;
     width: 50%;
     top: 80%;
-    left: 25%;
+    left: 21%;
     background-color: beige;
     border: 3px solid red;
     border-radius: 30px;
@@ -283,7 +283,7 @@ ul li {
     margin-bottom: 20px;
 }
 .recipe-item {
-    width: 250px;
+    width: 270px;
     height: 200px;
     display: inline-block;
     text-align: center;
@@ -467,6 +467,18 @@ footer {
     .recipe-item img {
         width: 110px;
         height: 110px;
+    }
+    #recipe-detail {
+        position: absolute;
+        height: 40%;
+        width: 50%;
+        top: 80%;
+        left: 21%;
+        background-color: beige;
+        border: 3px solid red;
+        border-radius: 30px;
+        padding: 14px;
+        display: none;
     }
 }
 @media (max-width: 500px) {
