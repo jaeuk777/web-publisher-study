@@ -102,14 +102,14 @@ app.delete('/api/members/:no', (req, res) => {
 
 app.post('/api/login', (req, res) => {
     const {userid, passmd} = req.body;
-    console.log(userid, passmd)
+    // console.log(userid, passmd)
     const sql = "SELECT no, name, userid from MEMBER WHERE userid= ? and passmd= ?;"
     pool.getConnection((err, con) => {
         if(err) return res.status(500).json({result:'error', message:'Internal Server Error'})
         con.query(sql, [userid, passmd], (err, result) => {
             con.release();
             if(err) return res.status(500).json({result:'error', message:'Database SQL Error'})
-            console.log('result: ', result)
+            // console.log('result: ', result)
         if(result.length>0) {
             const user = result[0]
             res.json({result: 'success',msg:`${user.name}님 환영합니다`, data:{no:user.no, name:user.name, userid:user.userid}})
@@ -159,9 +159,17 @@ app.get('/api/boardTotal', (req, res) => {
         res.json({totalCount:result[0].totalCount})
     })
 })})
+
+// 글 보기 || 글 수정
 app.get('/api/boards', (req, res) => {
+    // offset 피라미터값 받기
+    let offset = req.query.offset
+    if(!offset) {
+        offset=0;
+    }
+
     // console.log('get /api/members')
-    const sql = "SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board order by id desc"
+    const sql = `SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board order by id desc limit 5 offset ${offset}`
     pool.getConnection((err, con) => {
         if(err) return res.status(500).json(err) // db 연결오류
         con.query(sql, (err, result) => {
@@ -181,7 +189,7 @@ app.put('/api/boardReadNum/:id', (req,res) => {
         con.query(sql, [id],(err, result) => {
             con.release()
             if(err) return res.status(500).send(err)
-            console.log(result)
+            // console.log(result)
             if(result.affectedRows>0) {
                 res.json({result:'success'})
             }else{
@@ -202,7 +210,7 @@ app.put('/api/boardReadNum/:id', (req,res)=>{
 // 글 보기
 app.get('/api/boards/:id', (req, res) => {
     const id=req.params.id;
-    console.log('id: ',id)
+    // console.log('id: ',id)
 
     // console.log('get /api/members')
     const sql = "SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board where id=?"
@@ -232,8 +240,79 @@ app.delete('/api/boards/:id', (req,res) => {
     })
     })
 })
+// 글 수정 처리
+app.put('/api/boards/:id', (req, res) => {
+    // 글번호
+    const id = req.params.id;
+    // 수정한 글내용
+    // console.log(">>>id",id)
+    const {title,userid,content} = req.body;
+    // console.log(title, userid, content)
+
+    const sql = 'update board set title=?, userid=?, content=? where id=?'
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).send(err);
+        con.query(sql, [title, userid, content, id], (err, result)=>{
+            con.release()
+            if(err) return res.status(500).send(err);
+            if(result.affectedRows>0){
+                res.json({result:'success'})
+            }else{
+                res.json({result:'fail', msg:'게시글을 찾을 수 없어요'})
+            }
+        })
+    })
+
+})
+// 댓글 추가
+app.post(`/api/boards/:id/reply`, (req, res) => {
+    const board_id = req.params.id;
+    const {userid, content} = req.body;
+    const sql = `insert into reply(userid, content, board_id) values(?,?,?)`
+
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql, [userid, content, board_id], (err, result) => {
+            con.release();
+            if(err) return res.status(500).send(err)
+            if(result.affectedRows>0) {
+                res.json({result:'success'})
+            }else{
+                res.json({result:'fail'})
+            }
+    })
+    })
+
+})
+
 
 // ----------------------------------------------
+var client_id = 'ZFvmhoKbkCYXnwgVCgoM';
+var client_secret = 'INqVoJVl3y';
+// react에서 /api/books?query=react&start=1&display=12
+app.get('/api/books', function (req, res) {
+    let start = req.query.start;
+    let display = req.query.display;
+
+    var api_url = `https://openapi.naver.com/v1/search/book.json?query=${encodeURI(req.query.query)}&start=${start}&display=${display}`; // JSON 결과
+    console.log(api_url);
+//   var api_url = 'https://openapi.naver.com/v1/search/blog.xml?query=' + encodeURI(req.query.query); // XML 결과
+    var request = require('request');
+    var options = {
+        url: api_url,
+        headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+        };
+    request.get(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+        res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+        res.end(body);
+        } else {
+        res.status(response.statusCode).end();
+        console.log('error = ' + response.statusCode);
+        }
+    });
+});
+
 // express 서버 시작
 app.listen(PORT, () => {
     console.log('serverMember 서버 시작됨...')

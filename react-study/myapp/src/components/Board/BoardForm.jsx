@@ -1,4 +1,5 @@
-import React, {useState, useRef}from 'react'
+import React, {useState, useRef, useEffect}from 'react'
+import { useNavigate } from 'react-router-dom'
 import {Row, Col, Form, Button} from 'react-bootstrap'
 import axios from '../../Lib/AxiosCreate'
 
@@ -13,6 +14,22 @@ export default function BoardForm({onMode}) {
     const refTitle = useRef();
     const refContent = useRef();
     const refUserid = useRef();
+
+    const navigate = useNavigate();
+    let uid = null; // 로그인한 사람의 userid값 받을 예정
+    useEffect(() => {
+        // 세션스토리지에 저장된 userInfo가 있는지 꺼내보자
+        let str = sessionStorage.getItem('userInfo');
+        // alert(srt); // string 유형
+        if(str!==null) {
+            let user=JSON.parse(str); // 문자열을 parsing하여 JSON객체로 변환
+            uid = user.userid; //uid에 로그인한 사람의 아이디 할당
+            setForm({...form, userid:uid})
+        }else{
+            alert('로그인을 해야 글쓰기가 가능해요')
+            navigate('/login')
+        }
+    },[])
 
     const onChangeHandler = (e) => {
         const frmData = {... form, [e.target.name]:e.target.value}
@@ -37,6 +54,7 @@ export default function BoardForm({onMode}) {
             refUserid.current.focus();
             return;
         }
+        for(let i=0;i<16;i++)
         requestBoardWrite();
     }
     const onResetHandler = () => {

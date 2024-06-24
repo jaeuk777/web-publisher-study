@@ -45,7 +45,7 @@ export default function Header() {
                 {user&&
                 <>
                     <li className='bg-warning'>
-                        <Link to="#">{user.userid}님 로그인 중...</Link>
+                        <Link to="#">&nbsp;&nbsp;&nbsp;{user.userid}님 로그인 중...</Link>
                     </li>
                     <li>
                         <Link to="#" onClick={onLogout}>Logout</Link>

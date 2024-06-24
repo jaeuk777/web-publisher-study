@@ -3,13 +3,15 @@ import { useParams, Link, useNavigate} from 'react-router-dom'
 import {Row,Col,Button,Card, Container, Badge} from 'react-bootstrap'
 import {AiFillHeart, AiFillDislike} from 'react-icons/ai'
 import axios from '../../Lib/AxiosCreate'
+import ReplyForm from './ReplyForm'
+
 export default function BoardView() {
     const {id} = useParams() //게시글 번호
     const [board, setBoard] = useState();
+    const [logId, setLogId] = useState(''); // 로그인한 사람의 userid
 
     const navigate = useNavigate();
     
-    console.log(board)
     useEffect(()=>{
         const fetchData = async() => {
             // 비동기적으로 수행... 게시글 먼저 가져오고 그런뒤 댓글 가져올 예정
@@ -19,6 +21,18 @@ export default function BoardView() {
         }
         fetchData(); //호출
     },[id])
+
+    let uid = null; // 로그인한 사람의 userid값 받을 예정
+    useEffect(() => {
+        // 세션스토리지에 저장된 userInfo가 있는지 꺼내보자
+        let str = sessionStorage.getItem('userInfo');
+        alert(str); // string 유형
+        if(str!==null) {
+            let user=JSON.parse(str); // 문자열을 parsing하여 JSON객체로 변환
+            uid = user.userid; //uid에 로그인한 사람의 아이디 할당
+            setLogId(uid);
+        }
+    },[])
 
     const onDelete = async () => {
         let yn = window.confirm(`${id}번 글을 정말 삭제하시겠습니까?`)
@@ -49,13 +63,30 @@ export default function BoardView() {
         })
     }
 
+    // 댓글 추가
+    const addReply = async (newReply) => {
+        try{
+            const response = await axios.post(`/api/boards/${id}/reply`, newReply)
+            if(response.data.result === 'success') {
+                // 댓글 목록 가져오기
+                alert('댓글 성공')
+            }
+        }catch(err) {
+            alert('Error: '+err.response.status)
+        }
+
+    }
+
     return (
         <Container className='py-3'>
             <h2>BoardView [ No. {id}]</h2>
+            {/* 로그인한 사람의 아이디(uid)와 글쓴이의 아이디(board.userid)가 같은 경우에만 수정, 삭제 버튼을 출력하자 */}
+            {board&&(logId===board.userid)&&
             <div className='text-end my-2'>
                 <Link to={`/postEdit/${id}`}><Button variant='success' className='mx-1'>수   정</Button></Link>
                 <Button onClick={onDelete} variant='warning'>삭   제</Button>
             </div>
+            }
             {board&&
             <Card>
                 <Card.Body>
@@ -78,6 +109,12 @@ export default function BoardView() {
             {!board&&
                 <h3 className='text-center text-danger'>존재하지 않는 글입니다.</h3>
             }
+            <Row className='my-5'>
+                <Col className='px-1.5'>
+                    <h3 className='mt-4'>댓글 추가</h3>
+                    <ReplyForm addReply={addReply}/>
+                </Col>
+            </Row>
         </Container>
     )
 }

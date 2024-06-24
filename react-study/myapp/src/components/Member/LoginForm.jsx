@@ -46,7 +46,8 @@ export default function LoginForm() {
                 // sessionStorage는 웹브라우저 사용하는 동안 저장한 정보를 유지한다.
                 // 브라우저를 닫으면 저장한 정보는 날라간다
                 sessionStorage.setItem('userInfo', JSON.stringify(authUser))
-                window.location.href='/'; // 새로고침
+                // window.location.href='/'; // 새로고침
+                navigate('/');
             }else{
                 sessionStorage.clear(); // 세션 스토리지 클리어 (저장한 모든 정보 삭제됨)
                 sessionStorage.removeItem('userInfo')// userInfo 에 해당하는 값만 삭제
