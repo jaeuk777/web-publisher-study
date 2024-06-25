@@ -4,11 +4,13 @@ import {Row,Col,Button,Card, Container, Badge} from 'react-bootstrap'
 import {AiFillHeart, AiFillDislike} from 'react-icons/ai'
 import axios from '../../Lib/AxiosCreate'
 import ReplyForm from './ReplyForm'
+import ReplyList from './ReplyList'
 
 export default function BoardView() {
     const {id} = useParams() //게시글 번호
     const [board, setBoard] = useState();
     const [logId, setLogId] = useState(''); // 로그인한 사람의 userid
+    const [replies, setReplies] = useState([]);
 
     const navigate = useNavigate();
     
@@ -17,7 +19,7 @@ export default function BoardView() {
             // 비동기적으로 수행... 게시글 먼저 가져오고 그런뒤 댓글 가져올 예정
             await updateReadnum(); //조회수 증가
             await getBoard(); // 게시글 가져오기
-            // 댓글 가져오기
+            await getReplies(); // 댓글 가져오기
         }
         fetchData(); //호출
     },[id])
@@ -26,7 +28,7 @@ export default function BoardView() {
     useEffect(() => {
         // 세션스토리지에 저장된 userInfo가 있는지 꺼내보자
         let str = sessionStorage.getItem('userInfo');
-        alert(str); // string 유형
+        // alert(str); // string 유형 
         if(str!==null) {
             let user=JSON.parse(str); // 문자열을 parsing하여 JSON객체로 변환
             uid = user.userid; //uid에 로그인한 사람의 아이디 할당
@@ -69,12 +71,24 @@ export default function BoardView() {
             const response = await axios.post(`/api/boards/${id}/reply`, newReply)
             if(response.data.result === 'success') {
                 // 댓글 목록 가져오기
-                alert('댓글 성공')
+                // alert('댓글 성공')
+                getReplies();
             }
         }catch(err) {
             alert('Error: '+err.response.status)
         }
+    }
 
+    // 댓글 목록
+    const getReplies = async () => {
+        try{
+            const response = await axios.get(`/api/boards/${id}/reply`)
+            // alert(JSON.stringify(response.data))
+            setReplies(response.data)
+
+        }catch(err) {
+            alert('Error: ' + err.response.status)
+        }
     }
 
     return (
@@ -109,6 +123,13 @@ export default function BoardView() {
             {!board&&
                 <h3 className='text-center text-danger'>존재하지 않는 글입니다.</h3>
             }
+            <Row className='my-5'>
+                <Col className='px-1.5'>
+                    <h3 className='mt-4'>댓글 목록</h3>
+                    <ReplyList replies={replies}></ReplyList>
+                </Col>
+            </Row>
+
             <Row className='my-5'>
                 <Col className='px-1.5'>
                     <h3 className='mt-4'>댓글 추가</h3>

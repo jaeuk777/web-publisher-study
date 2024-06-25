@@ -19,6 +19,7 @@ export default function ReplyEditForm({addReply}) {
         setReply({...reply,[e.target.name]:e.target.value})
     }
 
+    
     return (
         <div>
             <Form onSubmit={onSubmitHandler}>
@@ -26,7 +27,7 @@ export default function ReplyEditForm({addReply}) {
                     <Form.Label>작성자</Form.Label>
                     <Form.Control type="text"
                     onChange={onChangeHandler}
-                    value={reply.value}
+                    value={reply.userid}
                     name="userid" required></Form.Control>
                 </Form.Group>
 
@@ -34,7 +35,7 @@ export default function ReplyEditForm({addReply}) {
                     <Form.Label>댓  글</Form.Label>
                     <Form.Control as="textarea" rows="3"
                     onChange={onChangeHandler}
-                    value={reply.value}
+                    value={reply.content}
                     type="text" name="content" required></Form.Control>
                 </Form.Group>
                 <Button type='submit'>댓글 추가</Button>

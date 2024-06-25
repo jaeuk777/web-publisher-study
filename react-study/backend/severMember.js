@@ -282,7 +282,19 @@ app.post(`/api/boards/:id/reply`, (req, res) => {
             }
     })
     })
-
+})
+// 게시글에 대한 댓글 목록 가져오기
+app.get(`/api/boards/:id/reply`, (req, res) => {
+    const board_id = req.params.id;
+    const sql = `select * from reply where board_id=?`
+    pool.getConnection((err, con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql, [board_id],(err,result) => {
+            con.release();
+            if(err) return res.status(500).send(err)
+            res.json(result)
+    })
+    })
 })
 
 

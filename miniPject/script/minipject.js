@@ -1,3 +1,13 @@
+// ------------------------------ menuOverlay 배경 색깔 -------------------------
+function darkBg() {
+    const recipeOverlay = document.getElementById('recipeOverlay');
+    const recipemenu = document.getElementById('recipe-detail')
+    if (recipeOverlay.style.display === 'none' || recipeOverlay.style.display === '') {
+        recipeOverlay.style.display = 'block';
+    }else{
+        recipeOverlay.style.display = 'none';
+    }
+}
 // ------------------------------ 탭메뉴 -------------------------
 function toggleMenu() {
     const menuTab = document.getElementById('menuTab');
@@ -22,6 +32,9 @@ document.querySelectorAll('.menu-list a').forEach(anchor => {
 
 // 메뉴 오버레이 클릭 시 메뉴 닫기
 document.getElementById('menuOverlay').onclick = function() {
+    toggleMenu();
+}
+document.getElementById('menu-list').onclick = function() {
     toggleMenu();
 }
 
@@ -362,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const backButton = document.getElementById('back-button');
             const prevButton = document.getElementById('prev');
             const nextButton = document.getElementById('next');
+            const backbg = document.getElementById('recipeOverlay');
 
             // 레시피 목록 생성
             recipesData.forEach((recipe, index) => {
@@ -388,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 recipeList.parentElement.style.display = 'flex';
                 recipeDetail.style.display = 'none';
                 recipeContent.style.transform = 'translateX(0%)';
+                backbg.style.display = 'none';
                 currentIndex = 0;
             });
 
@@ -419,12 +434,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                recipeList.parentElement.style.display = 'none';
+                // recipeList.parentElement.style.display = 'none';
                 recipeDetail.style.display = 'block';
 
                 // 슬라이드 초기화
                 currentIndex = 0;
                 updateSlides();
+                darkBg();
+                
             }
 
             function updateSlides() {
