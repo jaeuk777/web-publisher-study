@@ -68,5 +68,6 @@ interface IName{
 }
 console.log((<IName>person).name)
 console.log((<IName>person).age)
+
 console.log((person as IName).name)
 
