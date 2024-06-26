@@ -169,7 +169,7 @@ app.get('/api/boards', (req, res) => {
     }
 
     // console.log('get /api/members')
-    const sql = `SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d')wdate from board order by id desc limit 5 offset ${offset}`
+    const sql = `SELECT id, title, userid, content, readnum, date_format(wdate, '%Y-%m-%d') wdate, (select count(rid) from reply where board_id=B.id) replyCnt from board B order by id desc limit 5 offset ${offset}`
     pool.getConnection((err, con) => {
         if(err) return res.status(500).json(err) // db 연결오류
         con.query(sql, (err, result) => {
@@ -296,6 +296,44 @@ app.get(`/api/boards/:id/reply`, (req, res) => {
     })
     })
 })
+
+app.delete(`/api/boards/reply/:rid`, (req, res) => {
+    const rid = req.params.rid;
+    console.log('rid: ', rid)
+    const sql = `delete from reply where rid=?`;
+    pool.getConnection((err,con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql,[rid], (err, result)=>{
+            con.release();
+            if(err) return res.status(500).send(err)
+            if(result.affectedRows>0){
+                res.json({result:'success'})
+            }else{
+                res.json({result:'fail'})
+            }
+        })
+    })
+})
+app.put(`/api/boards/reply/:rid`, (req, res) => {
+    const {rid} = req.params;
+    const {userid, content} = req.body;
+    const sql = `update reply set userid=?, content=?, wdate=now() where rid=?`
+
+    pool.getConnection((err,con) => {
+        if(err) return res.status(500).send(err)
+        con.query(sql, [userid,content,rid], (err, result) => {
+            con.release()
+            if(err) return res.status(500).send(err)
+            if(result.affactedRows>0) {
+                res.json({result:'success'})
+            }else{
+                res.json({result:'fail'})
+            }
+    })
+    })
+
+})
+
 
 
 // ----------------------------------------------

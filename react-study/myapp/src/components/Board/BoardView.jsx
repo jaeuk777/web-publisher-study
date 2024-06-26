@@ -5,6 +5,8 @@ import {AiFillHeart, AiFillDislike} from 'react-icons/ai'
 import axios from '../../Lib/AxiosCreate'
 import ReplyForm from './ReplyForm'
 import ReplyList from './ReplyList'
+import ReplyEditForms from './ReplyEditForm'
+
 
 export default function BoardView() {
     const {id} = useParams() //게시글 번호
@@ -13,6 +15,10 @@ export default function BoardView() {
     const [replies, setReplies] = useState([]);
 
     const navigate = useNavigate();
+
+    // 댓글 관련 state
+    const [showEditModal, setShowEditModel] = useState(false)// 모달창
+    const [editReply, setEditReply] = useState(null);
     
     useEffect(()=>{
         const fetchData = async() => {
@@ -89,8 +95,42 @@ export default function BoardView() {
         }catch(err) {
             alert('Error: ' + err.response.status)
         }
+        
     }
 
+    const deletReply = async (replyId) => {
+        // alert(replyId)
+        const response = await axios.delete(`/api/boards/reply/${replyId}`)
+        if(response.data.result === 'success') {
+            getReplies()
+        }else{
+            alert('삭제 실패')
+        }
+    }
+    const startEditReply = (reply) => {
+        setEditReply(reply);
+        setShowEditModel(true);
+    }
+    // editForm의 input onChange 처리
+    const onEditInputChange = (e) => {
+        setEditReply({...editReply, [e.target.name]:e.target.value})
+    }
+    const updateReply = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.put(`/api/boards/reply/${editReply.rid}`, editReply)
+            if(response.data.result === 'success') {
+                setShowEditModel(false);
+                getReplies();
+                setEditReply(null);
+        }else{
+            alert('수정 실패')
+        }
+    }catch(err){
+        alert('Error:' +err.response.status)
+    }
+
+    }
     return (
         <Container className='py-3'>
             <h2>BoardView [ No. {id}]</h2>
@@ -126,7 +166,11 @@ export default function BoardView() {
             <Row className='my-5'>
                 <Col className='px-1.5'>
                     <h3 className='mt-4'>댓글 목록</h3>
-                    <ReplyList replies={replies}></ReplyList>
+                    <ReplyList 
+                    logId={logId}
+                    replies={replies} 
+                    deletReply={deletReply}
+                    startEditReply={startEditReply}/>
                 </Col>
             </Row>
 
@@ -136,6 +180,20 @@ export default function BoardView() {
                     <ReplyForm addReply={addReply}/>
                 </Col>
             </Row>
+
+            {/* 댓글 수정 모달 */}
+            <Row className='my-5'>
+                <Col className='px-1.5'>
+                    <ReplyEditForms 
+                    showEditModal={showEditModal}
+                    editReply={editReply}
+                    setShowEditModel={setShowEditModel}
+                    updateReply={updateReply}
+                    onEditInputChange={onEditInputChange}
+                    />
+                </Col>
+            </Row>
+
         </Container>
     )
 }

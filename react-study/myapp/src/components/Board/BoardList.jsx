@@ -128,7 +128,10 @@ export default function BoardList() {
                                     boardList.map((board, i)=>(
                                 <tr key={i}>
                                     <td>{board.id}</td>
-                                    <td><Link style={{listStyle:'none'}} to={`/post/${board.id}`}>{board.title}</Link></td>
+                                    <td><Link style={{listStyle:'none'}} to={`/post/${board.id}`}>{board.title}</Link>
+                                    &nbsp;&nbsp;&nbsp;
+                                    {board.replyCnt&&<Badge bg='success'>{board.replyCnt}</Badge>}
+                                    </td>
                                     <td>{board.userid}</td>
                                     <td>{board.wdate}</td>
                                     <td>{board.readnum}</td>
