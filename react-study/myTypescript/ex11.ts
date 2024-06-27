@@ -41,25 +41,25 @@ printArray<number>([1, 2, 3]);
 printArray<string>(['a', 'b', 'c']);
 
 // type에서 제너릭 사용
-type Person<T> = {
+type CPerson<T> = {
   no:T;
   name:string;
   tel:string;
 }
-// Person 타입의 객체 2개 생성
+// CPerson 타입의 객체 2개 생성
 // printArray() 함수의 매개변수로 전달
-const p1:Person<number> ={
+const p1:CPerson<number> ={
   no:1,
   name:'hong',
   tel:'010-1234-5678'
 }
-const p2:Person<string> ={
+const p2:CPerson<string> ={
   no:'2',
   name:'kim',
   tel:'010-1234-5678'
 }
-printArray<Person<number>>([p1]);
-printArray<Person<string>>([p2]);
+printArray<CPerson<number>>([p1]);
+printArray<CPerson<string>>([p2]);
 
 // 클래스에서 제너릭 사용
 // IValue 인터페이스를 상속받는 myValue 클래스 구성
