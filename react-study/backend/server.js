@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5003;
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/', static(path.join(__dirname, 'public')));
-// http://localhost:5004/ 요청이 오면 was서버의 public 폴더를 찾아서 그 안에 있는 index.html을 서비스 하도록 설정
+// http://localhost:5003/ 요청이 오면 was서버의 public 폴더를 찾아서 그 안에 있는 index.html을 서비스 하도록 설정
 
 
 // db접속

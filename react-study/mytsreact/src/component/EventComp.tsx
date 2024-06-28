@@ -42,17 +42,17 @@ export default function EventComp(props:IEventCompProps) {
     const files:FileList|null = e.target.files;
     if(files){
         for(let i=0;i<files.length;i++){
-        const file:File|null = files.item(i);
+        const file:File|null = files.item(i); // files[i]
         console.log(file);
         }
     }
     setForm({...form, [e.target.name]:e.target.files})
     }
     
-    const onButtonClick = (e:SyntheticEvent):void=>{
+    const onButtonClick = (e:React.SyntheticEvent):void=>{
     alert(form.userid?`안녕하세요. ${form.userid}님`:'아이디를 입력하세요.')
     }
-
+    
     return (
     <div style={{padding: '0 3rem'}}>
         <h2>다양한 이벤트 처리</h2>
