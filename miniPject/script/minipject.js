@@ -22,13 +22,13 @@ function toggleMenu() {
 }
 
 // 메뉴 클릭 시 부드럽게 스크롤 이동
-// document.querySelectorAll('.menu-list a').forEach(anchor => {
-//     anchor.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         const target = document.querySelector(this.getAttribute('href'));
-//         target.scrollIntoView({ behavior: 'smooth' });
-//     });
-// });
+document.querySelectorAll('.menu-list a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
 
 // 메뉴 오버레이 클릭 시 메뉴 닫기
 document.getElementById('menuOverlay').onclick = function() {
