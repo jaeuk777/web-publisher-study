@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node serverFileUp.js",
-    "dev": "nodemon serverFileUp.js"
+    "dev": "nodemon severMember.js"
   },
   "author": "",
   "license": "ISC",

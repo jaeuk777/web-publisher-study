@@ -71,6 +71,7 @@ export default function BoardView() {
         })
     }
 
+    
     // 댓글 추가
     const addReply = async (newReply) => {
         try{

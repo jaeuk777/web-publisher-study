@@ -44,7 +44,6 @@ export default function ReplyEditForm({addReply, logId}) {
                     value={reply.userid}
                     name="userid" required></Form.Control>
                 </Form.Group>
-
                 <Form.Group className='mb-3'>
                     <Form.Label>댓  글</Form.Label>
                     <Form.Control as="textarea" rows="3"
